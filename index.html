@@ -704,29 +704,63 @@ footer a:hover{color:var(--ink)}
 </div><!-- /doc-page -->
 
 <script>
-function tryUnlock() {
-  var first = document.getElementById('gate-first').value.trim();
-  var last  = document.getElementById('gate-last').value.trim();
-  var email = document.getElementById('gate-email').value.trim();
-  var errEl = document.getElementById('gate-err-msg');
+  const BREVO_KEY = "xsmtpsib-fc598a0608d2ee2a01bba3f624f0e788812c5a8d8c1c26cb16d67a7169187bc3-gj1Rx8b8rnVuQvbl";
+async function tryUnlock() {
+  const first = document.getElementById('gate-first').value.trim();
+  const last  = document.getElementById('gate-last').value.trim();
+  const email = document.getElementById('gate-email').value.trim();
+  const errEl = document.getElementById('gate-err-msg');
+  const btn = document.getElementById('gate-btn');
 
   errEl.style.display = 'none';
 
-  if (!first) { document.getElementById('gate-first').style.borderColor = 'red'; }
-  if (!last)  { document.getElementById('gate-last').style.borderColor  = 'red'; }
-
-  if (!first || !last) {
-    errEl.textContent = 'Please fill in your first and last name.';
+  // Check if fields are empty
+  if (!first || !last || !email || !email.includes('@')) {
+    errEl.textContent = 'Please fill in all fields with a valid email.';
     errEl.style.display = 'block';
     return;
   }
 
-  if (!email || email.indexOf('@') === -1) {
-    document.getElementById('gate-email').style.borderColor = 'red';
-    errEl.textContent = 'Please enter a valid email address - it must include an @.';
+  btn.disabled = true;
+  btn.textContent = 'Unlocking...';
+
+  try {
+    // This sends the data to your Brevo account
+    const response = await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "api-key": BREVO_KEY
+      },
+      body: JSON.stringify({
+        email: email,
+        attributes: { FIRSTNAME: first, LASTNAME: last },
+        updateEnabled: true // If they exist already, just update them
+      })
+    });
+
+    if (response.ok || response.status === 204 || response.status === 201) {
+      // SUCCESS: Run the animation to show the report
+      const card = document.getElementById('gate-card');
+      const blur = document.getElementById('gate-blur');
+      
+      card.style.display = 'none';
+      document.getElementById('gate-spacer').style.display = 'none';
+      blur.style.filter = 'none';
+      blur.style.opacity = '1';
+      blur.style.pointerEvents = 'auto';
+      document.getElementById('gate-notice').style.display = 'block';
+    } else {
+      throw new Error("Brevo Error");
+    }
+  } catch (error) {
+    btn.disabled = false;
+    btn.textContent = 'Unlock the Full Report ✦';
+    errEl.textContent = 'Something went wrong. Please try again.';
     errEl.style.display = 'block';
-    return;
   }
+}
 
   // All good - unlock
   var wrapper = document.getElementById('gate-wrapper');
@@ -749,21 +783,42 @@ function tryUnlock() {
 }
 
 /* hero signup */
-document.getElementById('hero-signup-btn').addEventListener('click', function() {
-  var email = document.getElementById('hero-signup-email').value.trim();
-  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var form = document.getElementById('hero-signup-form');
-  if (!re.test(email)) { form.style.borderColor = 'rgba(239,68,68,.4)'; return; }
-  document.getElementById('hero-signup-btn').textContent = 'Sending...';
-  setTimeout(function() {
+document.getElementById('hero-signup-btn').addEventListener('click', async function() {
+  const emailInput = document.getElementById('hero-signup-email');
+  const email = emailInput.value.trim();
+  const btn = document.getElementById('hero-signup-btn');
+  const form = document.getElementById('hero-signup-form');
+  
+  if (!email.includes('@')) { 
+    form.style.borderColor = 'rgba(239,68,68,.4)'; 
+    return; 
+  }
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "api-key": BREVO_KEY
+      },
+      body: JSON.stringify({ email: email, updateEnabled: true })
+    });
+
+    // Show the success message
     document.getElementById('hero-success-email').textContent = email;
     form.style.display = 'none';
     document.getElementById('hero-signup-meta').style.display = 'none';
     document.getElementById('hero-signup-success').style.display = 'block';
     document.getElementById('hero-signup-success').classList.add('show');
-  }, 800);
+  } catch (e) {
+    btn.textContent = 'Subscribe ✦';
+    btn.disabled = false;
+  }
 });
-document.getElementById('hero-signup-form').addEventListener('submit', function(e){ e.preventDefault(); });
 
 /* doc page open/close */
 function openDoc() {
