@@ -142,7 +142,7 @@ footer a:hover{color:var(--ink)}
 /* =============================================
    DOCUMENT PAGE
 ============================================= */
-#doc-page{display:none;position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto}
+#doc-page{display:none;position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:scroll;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
 #doc-page.open{display:block;animation:docIn .35s ease both}
 @keyframes docIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes docOut{from{opacity:1}to{opacity:0;transform:translateY(10px)}}
@@ -756,7 +756,7 @@ function unlockGate(silent) {
  
   if (!silent) {
     notice.style.display = 'block';
-    window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
+    var dp = document.getElementById('doc-page'); if(dp) dp.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
   }
 }
  
@@ -859,6 +859,7 @@ function openDoc() {
   var dp = document.getElementById('doc-page');
   dp.style.display = 'block';
   dp.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
  
   // If the user has already given their details, skip the gate silently
   try {
@@ -879,6 +880,7 @@ function openDoc() {
 }
 function closeDoc() {
   document.getElementById('doc-page').style.display = 'none';
+  document.body.style.overflow = '';
 }
 function goHome() {
   closeDoc();
@@ -897,4 +899,3 @@ document.querySelectorAll('.card[tabindex]').forEach(function(c) {
 </script>
 </body>
 </html>
- 
