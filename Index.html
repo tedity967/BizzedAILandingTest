@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Weekly Deal Teardown · BizzedAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0816;--ink:#e8e6f0;--ink-dim:#a8a3ba;--ink-dimmer:#8a84a0;--ink-dimmest:#6a6478;
+  --violet:#c4b5fd;--violet-deep:#8b5cf6;--pink:#ec4899;--pink-light:#f472b6;
+  --success:#10b981;--warn:#fbbf24;--danger:#ef4444;
+  --border:rgba(255,255,255,.1);--border-soft:rgba(255,255,255,.06);
+  --glass:rgba(255,255,255,.04);--glass-strong:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh}
+.bg-gradient{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(139,92,246,.28),transparent 60%),radial-gradient(ellipse 60% 50% at 90% 25%,rgba(236,72,153,.18),transparent 60%),radial-gradient(ellipse 70% 50% at 50% 90%,rgba(59,130,246,.15),transparent 60%),var(--bg)}
+.bg-grid{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%)}
+.content{position:relative;z-index:3}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font:inherit}
+
+/* NAV */
+.nav{max-width:1360px;margin:0 auto;padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer}
+.nav-center{display:flex;gap:36px;font-size:14px;color:var(--ink-dim)}
+.nav-center a{transition:color .2s}.nav-center a:hover{color:var(--ink)}
+.nav-btn{background:var(--glass-strong);border:1px solid var(--border);color:#fff;padding:9px 18px;border-radius:10px;font-size:13px;backdrop-filter:blur(10px);transition:all .2s}
+.nav-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+
+/* HERO */
+.hero{max-width:1360px;margin:0 auto;padding:60px 48px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:10px;background:var(--glass);border:1px solid rgba(196,181,253,.25);padding:8px 14px;border-radius:100px;font-size:12px;margin-bottom:28px;font-family:'JetBrains Mono',monospace;color:var(--violet);backdrop-filter:blur(10px);animation:fadeUp .6s ease both}
+.badge .sparkle{color:var(--pink-light);animation:spin 3s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(48px,6vw,80px);line-height:.95;letter-spacing:-3px;margin-bottom:22px;font-weight:600;max-width:1000px;margin-left:auto;margin-right:auto;animation:fadeUp .7s ease .1s both}
+h1 .grad{background:linear-gradient(135deg,#fff 0%,var(--violet) 55%,var(--pink-light) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.lede{font-size:19px;line-height:1.6;color:var(--ink-dim);max-width:640px;margin:0 auto 36px;animation:fadeUp .7s ease .2s both}
+.lede strong{color:#fff;font-weight:500}
+.signup-wrap{animation:fadeUp .7s ease .3s both}
+.signup{max-width:540px;margin:0 auto;display:flex;gap:8px;background:var(--glass);border:1px solid rgba(196,181,253,.3);border-radius:14px;padding:8px;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(139,92,246,.15)}
+.signup input{flex:1;padding:14px 16px;background:transparent;border:none;color:#fff;font-size:15px;outline:none}
+.signup input::placeholder{color:var(--ink-dimmest)}
+.signup button{background:linear-gradient(135deg,var(--violet-deep),var(--pink));color:#fff;padding:14px 26px;border-radius:10px;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(139,92,246,.4);transition:all .2s;white-space:nowrap}
+.signup button:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(139,92,246,.55)}
+.signup-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmest);margin-top:14px;letter-spacing:.5px}
+.signup.error{border-color:rgba(239,68,68,.4)}
+.signup-success{display:none;max-width:540px;margin:0 auto;padding:24px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:14px;backdrop-filter:blur(20px);text-align:center}
+.signup-success.show{display:block;animation:fadeUp .5s ease both}
+.signup-success-ttl{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:#fff;margin-bottom:6px}
+.signup-success-sub{font-size:13px;color:var(--ink-dim);line-height:1.55}
+.signup-success-sub strong{color:#fff}
+
+/* SECTION EB */
+.section-eb{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--violet);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.section-eb::before{content:'';width:32px;height:1px;background:var(--violet)}
+
+/* LATEST */
+.latest-section{max-width:1360px;margin:0 auto;padding:0 48px 60px}
+.latest{background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:40px;backdrop-filter:blur(30px);display:grid;grid-template-columns:1.1fr 1fr;gap:40px;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.3)}
+.latest::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(196,181,253,.35),transparent 50%,rgba(244,114,182,.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.latest-tag{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(139,92,246,.3),rgba(236,72,153,.2));border:1px solid rgba(196,181,253,.4);padding:6px 12px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pink-light);margin-bottom:22px;letter-spacing:1px}
+.latest-tag .d{width:7px;height:7px;background:var(--success);border-radius:50%;box-shadow:0 0 8px var(--success);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.4}}
+.latest-title{font-size:46px;line-height:1.05;letter-spacing:-1.5px;font-weight:600;margin-bottom:14px}
+.latest-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.latest-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dimmer);margin-bottom:18px;letter-spacing:.5px}
+.latest-desc{font-size:15px;line-height:1.65;color:var(--ink-dim);margin-bottom:24px}
+.latest-verdict{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;margin-bottom:20px;border-radius:12px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(251,191,36,.04));border:1px solid rgba(251,191,36,.3)}
+.latest-verdict .l{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--warn);letter-spacing:1.5px;text-transform:uppercase}
+.latest-verdict .r{font-size:14px;font-weight:600;color:var(--warn);font-family:'Instrument Serif',serif;font-style:italic}
+.latest-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--violet-deep),var(--pink));color:#fff;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 8px 30px rgba(139,92,246,.4);transition:all .2s;cursor:pointer}
+.latest-cta:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(139,92,246,.55)}
+.latest-preview{background:rgba(10,8,22,.7);border:1px solid var(--border-soft);border-radius:16px;padding:22px}
+.lp-hd{display:flex;justify-content:space-between;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase}
+.lp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.lp-s{background:var(--glass);padding:12px 10px;border-radius:10px;border:1px solid var(--border-soft)}
+.lp-s .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--violet);line-height:1}
+.lp-s .l{font-size:9px;color:var(--ink-dimmer);margin-top:6px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+.lp-chart-wrap{margin-bottom:14px}
+.lp-chart-caption{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-dimmer);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.lp-chart-caption .legend{display:flex;align-items:center;gap:5px;color:var(--danger);font-size:10px}
+.lp-chart-caption .legend::before{content:'';width:9px;height:9px;background:var(--danger);border-radius:2px}
+.lp-chart{background:var(--glass);padding:10px 10px 4px;border-radius:10px;border:1px solid var(--border-soft);display:flex;align-items:flex-end;gap:5px;height:80px}
+.lp-chart div{flex:1;border-radius:3px 3px 0 0}
+.bar-n{background:linear-gradient(180deg,var(--violet),rgba(196,181,253,.3))}
+.bar-d{background:linear-gradient(180deg,var(--danger),rgba(239,68,68,.3))}
+.lp-chart-labels{display:flex;gap:5px;margin-top:6px;padding:0 10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-dimmer)}
+.lp-chart-labels span{flex:1;text-align:center}
+.lp-chart-labels span.hl{color:var(--danger)}
+.lp-lock{padding:12px;border-radius:10px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--violet);background:linear-gradient(135deg,rgba(196,181,253,.1),rgba(244,114,182,.06));border:1px dashed rgba(196,181,253,.3)}
+
+/* ARCHIVE */
+.archive-section{max-width:1360px;margin:0 auto;padding:40px 48px 100px}
+.archive-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px}
+.archive-head h2{font-size:42px;letter-spacing:-1.5px;font-weight:600}
+.archive-head h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.archive-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dimmer);letter-spacing:1px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(20px);border-radius:18px;padding:24px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:rgba(196,181,253,.35);background:rgba(255,255,255,.06)}
+.card-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1.5px;text-transform:uppercase}
+.card-num{color:var(--violet)}
+.card-verdict{padding:3px 9px;border-radius:100px;font-size:9px;font-weight:600;border:1px solid}
+.v-cond{background:rgba(251,191,36,.15);color:var(--warn);border-color:rgba(251,191,36,.3)}
+.card-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.15;margin-bottom:6px;color:#fff}
+.card-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmer);margin-bottom:16px;letter-spacing:.3px}
+.card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px;padding:12px;background:rgba(10,8,22,.5);border-radius:10px;border:1px solid var(--border-soft)}
+.card-s .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;color:var(--violet);line-height:1}
+.card-s .l{font-size:8px;color:var(--ink-dimmest);margin-top:3px;font-family:'JetBrains Mono',monospace;letter-spacing:.8px;text-transform:uppercase}
+.card-desc{font-size:13px;color:var(--ink-dim);line-height:1.55;margin-bottom:14px;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border-soft);font-size:12px}
+.card-read{color:var(--violet);font-weight:500;transition:transform .2s;display:inline-block}
+.card:hover .card-read{transform:translateX(4px)}
+.card-time{color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;font-size:10px}
+.card-soon{background:rgba(10,8,22,.4);border:1px dashed rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:280px}
+.card-soon-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1.5px}
+.soon-badge{padding:3px 10px;border-radius:100px;font-size:9px;font-weight:600;background:rgba(196,181,253,.08);color:var(--violet);border:1px solid rgba(196,181,253,.2);letter-spacing:1px}
+.card-soon-date{font-family:'Instrument Serif',serif;font-style:italic;font-size:32px;line-height:1;letter-spacing:-1px;color:rgba(255,255,255,.15);margin-bottom:10px}
+.card-soon-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(196,181,253,.3);text-transform:uppercase;margin-bottom:auto}
+.card-soon-footer{margin-top:28px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.soon-pulse{width:6px;height:6px;background:rgba(196,181,253,.4);border-radius:50%;animation:pulse 2s infinite}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border-soft);padding:32px 48px;margin-top:40px;max-width:1360px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+footer a{color:var(--ink-dimmer);transition:color .2s;margin-left:20px}
+footer a:hover{color:var(--ink)}
+
+/* =============================================
+   DOCUMENT PAGE
+============================================= */
+#doc-page{display:none;position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto}
+#doc-page.open{display:block;animation:docIn .35s ease both}
+@keyframes docIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes docOut{from{opacity:1}to{opacity:0;transform:translateY(10px)}}
+
+.doc-topbar{position:sticky;top:0;z-index:10;background:rgba(10,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-soft);padding:14px 48px;display:flex;justify-content:space-between;align-items:center}
+.doc-back{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--violet);text-transform:uppercase;cursor:pointer;transition:gap .2s}
+.doc-back:hover{gap:12px}
+.doc-back-arr{font-size:16px}
+.doc-brand{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.doc-topbar-right{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1px;text-transform:uppercase}
+.doc-body{max-width:860px;margin:0 auto;padding:60px 48px 100px;position:relative;z-index:2}
+
+.doc-eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--violet);text-transform:uppercase;margin-bottom:28px}
+.doc-eyebrow::before{content:'';width:32px;height:1px;background:var(--violet)}
+.doc-title{font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:-2.5px;font-weight:600;margin-bottom:16px}
+.doc-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.doc-subtitle{font-size:16px;color:var(--ink-dim);line-height:1.6;max-width:640px;margin-bottom:32px}
+
+.doc-verdict-banner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:16px;overflow:hidden;margin-bottom:48px;border:1px solid var(--border)}
+.dvb-cell{background:var(--glass);padding:20px 24px;display:flex;flex-direction:column;gap:4px}
+.dvb-cell:first-child{background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(251,191,36,.04))}
+.dvb-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dimmest)}
+.dvb-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:var(--warn);line-height:1}
+
+.doc-stats{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+.doc-stat{background:var(--glass);border:1px solid var(--border-soft);border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;flex:1;min-width:100px}
+.doc-stat .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:24px;color:var(--violet);line-height:1}
+.doc-stat .l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-dimmer)}
+
+.doc-section{margin-bottom:48px}
+.doc-section-hd{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.doc-section-hd::after{content:'';flex:1;height:1px;background:var(--border-soft)}
+
+.doc-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.doc-table th{text-align:left;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dimmer);border-bottom:1px solid var(--border);background:rgba(10,8,22,.4)}
+.doc-table td{padding:12px 14px;font-size:13px;color:var(--ink-dim);line-height:1.5;border-bottom:1px solid var(--border-soft);vertical-align:top}
+.doc-table tr:hover td{background:rgba(255,255,255,.02)}
+.doc-table td:first-child{color:#fff;font-weight:500;font-size:12px}
+.row-warn td{background:rgba(239,68,68,.04)!important}
+.row-warn td:first-child{color:var(--danger)}
+
+.doc-callout{border-radius:14px;padding:20px 22px;margin-bottom:16px;font-size:13px;line-height:1.6}
+.doc-callout.warn{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.25);color:var(--ink-dim)}
+.doc-callout.warn strong{color:var(--warn)}
+.doc-callout.danger{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);color:var(--ink-dim)}
+.doc-callout.danger strong{color:var(--danger)}
+.doc-callout.violet{background:rgba(196,181,253,.06);border:1px solid rgba(196,181,253,.2);color:var(--ink-dim)}
+.doc-callout.violet strong{color:var(--violet)}
+
+.doc-checklist{display:flex;flex-direction:column;gap:10px}
+.chk-item{display:flex;gap:14px;align-items:flex-start;background:var(--glass);border:1px solid var(--border-soft);border-radius:12px;padding:14px 16px}
+.chk-badge{flex-shrink:0;padding:3px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px}
+.chk-badge.crit{background:rgba(239,68,68,.2);color:var(--danger);border:1px solid rgba(239,68,68,.3)}
+.chk-badge.high{background:rgba(251,191,36,.15);color:var(--warn);border:1px solid rgba(251,191,36,.25)}
+.chk-badge.med{background:rgba(196,181,253,.1);color:var(--violet);border:1px solid rgba(196,181,253,.2)}
+.chk-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:3px}
+.chk-desc{font-size:12px;color:var(--ink-dim);line-height:1.5}
+
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.offer-box{border-radius:14px;padding:20px}
+.offer-box.a{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2)}
+.offer-box.b{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.2)}
+.offer-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.offer-box.a .offer-label{color:var(--danger)}
+.offer-box.b .offer-label{color:var(--success)}
+.offer-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;gap:12px}
+.offer-row:last-child{border-bottom:none}
+.offer-row-k{color:var(--ink-dimmer);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px}
+.offer-row-v{color:#fff;font-weight:500;text-align:right;font-size:12px}
+
+.flag-list{display:flex;flex-direction:column;gap:8px}
+.flag-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5}
+.flag-item.green{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);color:var(--ink-dim)}
+.flag-item.red{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);color:var(--ink-dim)}
+.flag-item .icon{flex-shrink:0;width:20px;text-align:center;margin-top:1px}
+.flag-item strong{color:#fff}
+
+.doc-chart{background:rgba(10,8,22,.5);padding:12px 12px 4px;border-radius:12px;border:1px solid var(--border-soft);display:flex;align-items:flex-end;gap:6px;height:100px}
+.doc-chart div{flex:1;border-radius:4px 4px 0 0}
+.doc-chart-labels{display:flex;gap:6px;margin-top:8px;padding:0 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmer)}
+.doc-chart-labels span{flex:1;text-align:center}
+.doc-chart-labels span.hl{color:var(--danger)}
+
+.doc-footer-bar{margin-top:80px;padding-top:24px;border-top:1px solid var(--border-soft);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1px}
+.doc-footer-back{display:flex;align-items:center;gap:8px;color:var(--violet);cursor:pointer;text-transform:uppercase;letter-spacing:1.5px;font-size:10px;transition:gap .2s}
+.doc-footer-back:hover{gap:12px}
+
+/* =============================================
+   CONTENT GATE — blur + signup wall
+============================================= */
+/* the outer wrapper is relative so the gate card can sit absolutely on top */
+.doc-gate-wrapper{
+  position:relative;
+  /* enough bottom padding so blurred content is visible below the gate card */
+}
+
+/* blurred preview of locked content */
+.doc-gate-blur{
+  filter:blur(6px);
+  opacity:.4;
+  pointer-events:none;
+  user-select:none;
+  /* fade top edge so it blends with free content above */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);
+  transition:filter .5s ease,opacity .5s ease;
+}
+
+/* gate card floats above the blurred preview */
+.doc-gate-card{
+  position:absolute;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(540px,100%);
+  z-index:10;
+  background:rgba(8,6,20,.9);
+  border:1px solid rgba(196,181,253,.28);
+  border-radius:24px;
+  padding:44px 40px;
+  backdrop-filter:blur(40px);
+  box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(196,181,253,.06);
+  text-align:center;
+}
+/* shimmering gradient border */
+.doc-gate-card::before{
+  content:'';position:absolute;inset:0;border-radius:24px;padding:1px;
+  background:linear-gradient(135deg,rgba(196,181,253,.5),transparent 50%,rgba(244,114,182,.3));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+}
+.gate-lock-icon{font-size:36px;margin-bottom:18px;display:block;filter:drop-shadow(0 0 16px rgba(196,181,253,.5))}
+.gate-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:10px}
+.gate-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;line-height:1.1;color:#fff;margin-bottom:12px}
+.gate-desc{font-size:13px;color:var(--ink-dim);line-height:1.65;margin-bottom:28px;max-width:380px;margin-left:auto;margin-right:auto}
+.gate-desc strong{color:#fff}
+
+/* form fields */
+.gate-form{display:flex;flex-direction:column;gap:10px}
+.gate-name-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gate-input{
+  width:100%;padding:14px 16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(196,181,253,.18);
+  border-radius:11px;color:#fff;font-size:14px;outline:none;
+  font-family:'Instrument Sans',sans-serif;
+  transition:border-color .2s,background .2s;
+}
+.gate-input::placeholder{color:var(--ink-dimmest)}
+.gate-input:focus{border-color:rgba(196,181,253,.45);background:rgba(255,255,255,.09)}
+.gate-input.err{border-color:rgba(239,68,68,.55)}
+.gate-btn{
+  width:100%;padding:16px;margin-top:4px;
+  background:linear-gradient(135deg,var(--violet-deep),var(--pink));
+  color:#fff;border-radius:12px;font-size:15px;font-weight:600;
+  box-shadow:0 10px 32px rgba(139,92,246,.45);
+  transition:all .2s;letter-spacing:.3px;
+}
+.gate-btn:hover{transform:translateY(-1px);box-shadow:0 14px 40px rgba(139,92,246,.6)}
+.gate-btn:disabled{opacity:.55;cursor:default;transform:none}
+.gate-fine{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:.5px;margin-top:14px;line-height:1.6}
+.gate-err-msg{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--danger);margin-top:8px;display:none;letter-spacing:.3px}
+.gate-err-msg.show{display:block}
+
+/* UNLOCKED state */
+.doc-gate-wrapper.unlocked .doc-gate-card{display:none}
+.doc-gate-wrapper.unlocked .doc-gate-blur{
+  filter:none;opacity:1;
+  pointer-events:auto;user-select:auto;
+  -webkit-mask-image:none;mask-image:none;
+  animation:contentReveal .65s ease both;
+}
+@keyframes contentReveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* success notice shown above unlocked content */
+.gate-unlocked-notice{
+  display:none;
+  background:rgba(16,185,129,.08);
+  border:1px solid rgba(16,185,129,.28);
+  border-radius:16px;padding:20px 24px;
+  margin-bottom:36px;
+  text-align:center;
+  animation:fadeUp .5s ease both;
+}
+.gate-unlocked-notice.show{display:block}
+.gun-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--success);margin-bottom:5px}
+.gun-sub{font-size:13px;color:var(--ink-dim)}
+
+/* mobile */
+@media(max-width:1024px){
+  .nav{padding:20px 24px}.nav-center{display:none}
+  .hero{padding:40px 24px}
+  h1{font-size:54px;letter-spacing:-2px}
+  .latest-section{padding:0 24px 40px}
+  .latest{grid-template-columns:1fr;gap:28px;padding:28px}
+  .latest-title{font-size:34px}
+  .archive-section{padding:20px 24px 60px}
+  .archive-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .archive-head h2{font-size:32px}
+  .grid-3{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:12px;padding:28px 24px;text-align:center}
+  .doc-topbar{padding:14px 24px}
+  .doc-body{padding:40px 24px 80px}
+  .doc-verdict-banner{grid-template-columns:1fr}
+  .offer-grid{grid-template-columns:1fr}
+  .gate-name-row{grid-template-columns:1fr}
+  .doc-gate-card{padding:32px 22px}
+  .gate-title{font-size:24px}
+}
+@media(max-width:560px){
+  h1{font-size:40px;letter-spacing:-1.5px}
+}
+</style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+<div class="bg-grid"></div>
+
+<!-- ================================================================
+     MAIN PAGE
+================================================================ -->
+<div class="content" id="main-page">
+
+  <nav class="nav">
+    <span class="logo" onclick="goHome()">bizzed.ai</span>
+    <div class="nav-center">
+      <a href="https://www.bizzed.ai/">Product</a>
+      <a href="#archive">Research</a>
+      <a href="https://www.bizzed.ai/">Pricing</a>
+      <a href="#archive">Blog</a>
+    </div>
+    <a href="https://www.bizzed.ai/get-started" class="nav-btn">Get Started →</a>
+  </nav>
+
+  <section class="hero">
+    <div class="badge"><span class="sparkle">✦</span> The Weekly Deal Teardown</div>
+    <h1>Every Tuesday,<br>one real SMB deal<br><span class="grad">ripped <em>wide</em> open.</span></h1>
+    <p class="lede">We run one real SMB listing through <strong>17 specialized AI agents</strong> and publish the teardown. Financials, red flags, downside models, verdict. <strong>Free.</strong> Built for serious buyers.</p>
+    <div class="signup-wrap">
+      <form id="hero-signup-form" class="signup" novalidate>
+        <input type="email" id="hero-signup-email" placeholder="you@acquireco.com" required autocomplete="email">
+        <button type="submit" id="hero-signup-btn">Subscribe ✦</button>
+      </form>
+      <div class="signup-meta" id="hero-signup-meta">✓ 1,842 OPERATORS · ✓ FREE FOREVER · ✓ ZERO SPAM</div>
+      <div class="signup-success" id="hero-signup-success">
+        <div class="signup-success-ttl">You're in. Check your inbox.</div>
+        <div class="signup-success-sub">A welcome note is on its way to <strong id="hero-success-email">your email</strong>. Next teardown drops Tuesday.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="latest-section">
+    <div class="section-eb">Latest issue · live now</div>
+    <div class="latest">
+      <div>
+        <div class="latest-tag"><span class="d"></span>ISSUE #048 · APRIL 15, 2026</div>
+        <div class="latest-title">Albany Metro <em>HVAC.</em><br>Buy it, or walk?</div>
+        <div class="latest-meta">$4.36M REVENUE · 17 EMPLOYEES · ASKING $2.4M · 18YR OLD</div>
+        <div class="latest-desc">An HVAC shop riding the Albany semiconductor wave. In-house sheet metal fab. SBA pre-approved. But: 80% GC concentration, a 2023 earnings collapse, and a retiring owner who holds the licenses.</div>
+        <div class="latest-verdict">
+          <span class="l">◉ OUR VERDICT</span>
+          <span class="r">Conditional Buy @ $1.9M</span>
+        </div>
+        <button class="latest-cta" onclick="openDoc()">Read the full teardown →</button>
+      </div>
+      <div class="latest-preview">
+        <div class="lp-hd"><span>DEAL_TEARDOWN · #048</span><span>PART 1 OF 2</span></div>
+        <div class="lp-stats">
+          <div class="lp-s"><div class="n">$740K</div><div class="l">2025 SDE</div></div>
+          <div class="lp-s"><div class="n">3.24x</div><div class="l">Ask Mult</div></div>
+          <div class="lp-s"><div class="n">$1.9M</div><div class="l">Target</div></div>
+        </div>
+        <div class="lp-chart-wrap">
+          <div class="lp-chart-caption"><span>Revenue · 2021–2025</span><span class="legend">2023 dip</span></div>
+          <div class="lp-chart">
+            <div class="bar-n" style="height:55%"></div><div class="bar-n" style="height:68%"></div>
+            <div class="bar-d" style="height:32%"></div><div class="bar-n" style="height:72%"></div>
+            <div class="bar-n" style="height:92%"></div>
+          </div>
+          <div class="lp-chart-labels"><span>'21</span><span>'22</span><span class="hl">'23</span><span>'24</span><span>'25</span></div>
+        </div>
+        <div class="lp-lock">🔒 FULL REPORT · SIGN UP TO UNLOCK</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive-section" id="archive">
+    <div class="archive-head">
+      <h2>The <em>archive.</em></h2>
+      <div class="archive-count">1 PAST ISSUE · 2026</div>
+    </div>
+    <div class="grid-3">
+
+      <div class="card" onclick="openDoc()" role="button" tabindex="0">
+        <div class="card-hd"><span class="card-num">#048 · APR 15</span><span class="card-verdict v-cond">CONDITIONAL BUY</span></div>
+        <div class="card-title">Albany Metro HVAC.</div>
+        <div class="card-meta">$4.36M REV · 17 EMPLOYEES · HVAC / SHEET METAL</div>
+        <div class="card-stats">
+          <div class="card-s"><div class="n">$740K</div><div class="l">2025 SDE</div></div>
+          <div class="card-s"><div class="n">3.24x</div><div class="l">Ask Mult</div></div>
+          <div class="card-s"><div class="n">$1.9M</div><div class="l">Target</div></div>
+        </div>
+        <div class="card-desc">Albany semiconductor wave HVAC play. In-house fab shop is a real moat. 2023 earnings collapse + 80% GC concentration demand a structured counter-offer.</div>
+        <div class="card-foot"><span class="card-read">Read now →</span><span class="card-time">10 MIN READ</span></div>
+      </div>
+
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#049</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">Apr 22</div>
+        <div class="card-soon-label">Next teardown drops Tuesday</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Subscribe to get it in your inbox</div>
+      </div>
+
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#050</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">Apr 29</div>
+        <div class="card-soon-label">New deal, new teardown</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#051</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">May 6</div>
+        <div class="card-soon-label">17 agents. One verdict.</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#052</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">May 13</div>
+        <div class="card-soon-label">Financials. Red flags. Verdict.</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#053</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">May 20</div>
+        <div class="card-soon-label">Built for serious buyers.</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Bizzed AI · Due Diligence, Reimagined</div>
+    <div class="links">
+      <a href="https://www.bizzed.ai/">Home</a>
+      <a href="mailto:support@bizzed.ai">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </footer>
+
+</div><!-- /main-page -->
+
+
+<!-- ================================================================
+     DOCUMENT PAGE
+================================================================ -->
+<div id="doc-page">
+  <div class="bg-gradient" style="position:fixed;z-index:0"></div>
+  <div class="bg-grid" style="position:fixed;z-index:1"></div>
+
+  <div style="position:relative;z-index:3">
+
+    <div class="doc-topbar">
+      <div class="doc-back" onclick="closeDoc()"><span class="doc-back-arr">←</span>Back to Archive</div>
+      <div class="doc-brand">bizzed.ai</div>
+      <div class="doc-topbar-right">Issue #048 · Apr 15, 2026 · Confidential</div>
+    </div>
+
+    <div class="doc-body">
+
+      <!-- ── FREE SECTION ── -->
+      <div class="doc-eyebrow">Due Diligence Report · BizzedAI · April 2026</div>
+      <div class="doc-title">Albany Metro <em>HVAC,</em><br>Plumbing &amp; Sheet Metal.</div>
+      <div class="doc-subtitle">Albany Metro, New York · $4.36M Revenue · 17 Employees · Asking $2.4M</div>
+
+      <div class="doc-verdict-banner">
+        <div class="dvb-cell">
+          <div class="dvb-label">Verdict</div>
+          <div class="dvb-val">Conditional Buy</div>
+        </div>
+        <div class="dvb-cell">
+          <div class="dvb-label">Walk At</div>
+          <div class="dvb-val" style="color:var(--danger)">$2,400,000</div>
+        </div>
+        <div class="dvb-cell">
+          <div class="dvb-label">Target Price</div>
+          <div class="dvb-val" style="color:var(--success)">$1,900,000</div>
+        </div>
+      </div>
+
+      <div class="doc-stats">
+        <div class="doc-stat"><div class="n">$4.36M</div><div class="l">2025 Revenue</div></div>
+        <div class="doc-stat"><div class="n">$740K</div><div class="l">2025 SDE</div></div>
+        <div class="doc-stat"><div class="n">17%</div><div class="l">SDE Margin</div></div>
+        <div class="doc-stat"><div class="n">17</div><div class="l">Employees</div></div>
+        <div class="doc-stat"><div class="n">$1M</div><div class="l">SBA Pre-Approved</div></div>
+      </div>
+
+      <div class="doc-section">
+        <div class="doc-section-hd">Why $1.9M — Not $2.4M</div>
+        <table class="doc-table">
+          <thead><tr><th>Reason</th><th>The Math</th></tr></thead>
+          <tbody>
+            <tr><td>2023 earnings collapse is unpriced at ask</td><td>SDE fell 59% on a 16% revenue drop. At $2.4M the buyer absorbs all downside risk. At $1.9M with an earn-out, the seller shares it.</td></tr>
+            <tr><td>80% GC revenue is not recurring — it is a pipeline</td><td>GC relationships are personal to the owner. At transition, GC clients reassess. The asking price assumes zero attrition. That is not a safe assumption.</td></tr>
+            <tr><td>Fair value multiples do not support $2.4M</td><td>Defensible 2.5x–2.9x SDE on $740K = $1.85M–$2.15M. The ask implies 3.24x with no discount for project revenue risk or concentration.</td></tr>
+            <tr><td>Debt service at $2.4M is punishing</td><td>SBA at 9.75%–14.75%. At $2.4M, debt service eats ~20% of SDE. At $1.9M, payback drops from 3.8 years to 2.7 years.</td></tr>
+            <tr><td>Earn-out keeps the seller aligned</td><td>A $300K earn-out tied to 24-month GC retention forces the seller to support relationship transfer rather than collect and walk.</td></tr>
+          </tbody>
+        </table>
+        <div class="doc-callout warn">
+          <strong>The earn-out is the critical mechanism.</strong> Without it, you are paying $2.4M for relationships that may not survive the transition.
+        </div>
+      </div>
+
+      <!-- ── GATE WRAPPER: gate card sits on top of blurred locked content ── -->
+      <div class="doc-gate-wrapper" id="gate-wrapper">
+
+        <!-- SIGNUP GATE CARD -->
+        <div class="doc-gate-card" id="gate-card">
+          <span class="gate-lock-icon">🔐</span>
+          <div class="gate-kicker">You're halfway through — keep reading, free</div>
+          <div class="gate-title">The rest of the report is one step away.</div>
+          <div class="gate-desc">
+            Enter your name and email and we'll send the full teardown straight to your inbox — including the <strong>offer structure, conditions to proceed, 5-year financial track record, red flags, and the complete 10-item diligence checklist</strong>.
+          </div>
+          <form id="gate-form" class="gate-form" novalidate>
+            <div class="gate-name-row">
+              <input class="gate-input" id="gate-first" type="text" placeholder="First name" required autocomplete="given-name">
+              <input class="gate-input" id="gate-last"  type="text" placeholder="Last name"  required autocomplete="family-name">
+            </div>
+            <input class="gate-input" id="gate-email" type="text" placeholder="you@acquireco.com" autocomplete="email">
+            <div class="gate-err-msg" id="gate-err-msg">Please fill in all fields with a valid email.</div>
+            <button class="gate-btn" id="gate-btn" type="button" onclick="tryUnlock()">Unlock the Full Report ✦</button>
+          </form>
+          <div class="gate-fine">✓ FREE FOREVER &nbsp;·&nbsp; ✓ ONE EMAIL &nbsp;·&nbsp; ✓ ZERO SPAM<br>Unsubscribe with one click, any time.</div>
+        </div>
+
+        <!-- BLURRED LOCKED CONTENT (sits below gate card) -->
+        <div class="doc-gate-blur" id="gate-blur">
+          <!-- invisible spacer that keeps the wrapper tall enough for the gate card -->
+          <div id="gate-spacer" style="height:520px;pointer-events:none"></div>
+
+          <!-- OFFER STRUCTURE -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Recommended Offer Structure</div>
+            <div class="offer-grid">
+              <div class="offer-box a">
+                <div class="offer-label">Scenario A — Buy at Ask ($2.4M)</div>
+                <div class="offer-row"><span class="offer-row-k">SBA 7(a) cash at close</span><span class="offer-row-v">$1.0M</span></div>
+                <div class="offer-row"><span class="offer-row-k">Seller note</span><span class="offer-row-v">—</span></div>
+                <div class="offer-row"><span class="offer-row-k">Earn-out</span><span class="offer-row-v">—</span></div>
+                <div class="offer-row"><span class="offer-row-k">Equity at risk</span><span class="offer-row-v">$1.4M</span></div>
+                <div class="offer-row"><span class="offer-row-k">Payback period</span><span class="offer-row-v">~3.8 years</span></div>
+                <div class="offer-row"><span class="offer-row-k">Downside protection</span><span class="offer-row-v">None</span></div>
+              </div>
+              <div class="offer-box b">
+                <div class="offer-label">Scenario B — Recommended ($1.9M)</div>
+                <div class="offer-row"><span class="offer-row-k">SBA 7(a) cash at close</span><span class="offer-row-v">$1.0M</span></div>
+                <div class="offer-row"><span class="offer-row-k">Seller note</span><span class="offer-row-v">$600K @ 7%, 5-yr</span></div>
+                <div class="offer-row"><span class="offer-row-k">Earn-out</span><span class="offer-row-v">$300K / 24-mo GC retention</span></div>
+                <div class="offer-row"><span class="offer-row-k">Equity at risk</span><span class="offer-row-v">$900K</span></div>
+                <div class="offer-row"><span class="offer-row-k">Payback period</span><span class="offer-row-v">~2.7 years</span></div>
+                <div class="offer-row"><span class="offer-row-k">Downside protection</span><span class="offer-row-v">Earn-out caps GC attrition</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONDITIONS -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Conditions to Proceed</div>
+            <div class="doc-callout danger" style="margin-bottom:20px"><strong>Do not issue an LOI until all four CRITICAL items below are resolved.</strong></div>
+            <div class="doc-checklist">
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">2023 SDE Compression Explained</div><div class="chk-desc">Documented, verifiable non-recurring event supported by tax returns.</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">No Single GC Customer &gt;20% of Revenue</div><div class="chk-desc">Confirmed by customer-level revenue breakdown for top 5–10 GC clients.</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">All Contractor Licenses Held by the Entity</div><div class="chk-desc">Not personally by the retiring owner — or qualified replacement committed before close.</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">2025 SDE of $740,294 Verified</div><div class="chk-desc">At least 3 years of federal business tax returns and a line-by-line add-back schedule.</div></div></div>
+            </div>
+          </div>
+
+          <!-- FINANCIAL TRACK RECORD -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Financial Track Record</div>
+            <div class="doc-chart">
+              <div class="bar-n" style="height:55%"></div><div class="bar-n" style="height:68%"></div>
+              <div class="bar-d" style="height:32%"></div><div class="bar-n" style="height:72%"></div>
+              <div class="bar-n" style="height:92%"></div>
+            </div>
+            <div class="doc-chart-labels"><span>'21 $2.98M</span><span>'22 $3.54M</span><span class="hl">'23 $2.96M</span><span>'24 $3.65M</span><span>'25 $4.36M</span></div>
+            <table class="doc-table" style="margin-top:16px">
+              <thead><tr><th>Year</th><th>Revenue</th><th>SDE</th><th>Margin</th><th>Read</th></tr></thead>
+              <tbody>
+                <tr><td>2021</td><td>$2.98M</td><td>$541K</td><td>18.2%</td><td>Baseline. Healthy margins.</td></tr>
+                <tr><td>2022</td><td>$3.54M</td><td>$613K</td><td>17.3%</td><td>Revenue up 19%. Margins holding.</td></tr>
+                <tr class="row-warn"><td>2023 ⚠</td><td>$2.96M</td><td>$249K</td><td>8.4%</td><td>CRITICAL: SDE fell 59% on 16% rev drop. Root cause unknown.</td></tr>
+                <tr><td>2024</td><td>$3.65M</td><td>$648K</td><td>17.8%</td><td>Strong recovery. Albany semiconductor wave begins.</td></tr>
+                <tr><td>2025</td><td>$4.36M</td><td>$740K</td><td>17.0%</td><td>Best revenue year. Margins inline with historical average.</td></tr>
+              </tbody>
+            </table>
+            <div class="doc-callout danger" style="margin-top:16px"><strong>The 2023 signal — what it actually means.</strong> SDE fell 59% on a 16% revenue drop. Fixed costs don't flex when GC pipelines slow down. It will repeat in the next downturn unless the new owner builds recurring service revenue.</div>
+            <div class="doc-callout violet" style="margin-top:12px"><strong>The 2024–2025 rebound — real but concentrated.</strong> Revenue up 47% across two years, catching the Albany semiconductor construction wave. The growth is real but concentrated in one macro driver.</div>
+          </div>
+
+          <!-- MARKET -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Market &amp; Geography</div>
+            <p style="font-size:14px;color:var(--ink-dim);line-height:1.7">Albany is not a generic secondary market. The Albany-Schenectady-Troy MSA is New York's second-fastest growing region and sits in the middle of one of the largest industrial construction waves in U.S. history. The NY all-electric building mandate — live January 1, 2026 — creates direct demand for heat pumps, electric HVAC retrofits, and mechanical redesigns. The BLS projects 8% job growth for HVAC mechanics through 2034 and 20% growth in New York State specifically.</p>
+            <p style="font-size:14px;color:var(--ink-dim);line-height:1.7;margin-top:12px">PE firms accounted for 23% of all HVAC deals in 2024, up from 8% in 2023. Strategic acquirers are actively targeting this type of multi-trade business in this geography — a credible 3–5 year exit exists if the new owner professionalises and builds recurring revenue.</p>
+          </div>
+
+          <!-- FLAGS -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Green &amp; Red Flags</div>
+            <div class="flag-list" style="margin-bottom:14px">
+              <div class="flag-item green"><span class="icon">●</span><div><strong>In-house sheet metal fabrication shop</strong> — genuine competitive moat, captures margin, hard to replicate quickly.</div></div>
+              <div class="flag-item green"><span class="icon">●</span><div><strong>17 employees with strong internal succession resources</strong> — if verified, materially lowers key-person risk.</div></div>
+              <div class="flag-item green"><span class="icon">●</span><div><strong>SBA pre-approval of $1M</strong> — books professionally scrubbed, lender has already underwritten the deal.</div></div>
+              <div class="flag-item green"><span class="icon">●</span><div><strong>46% revenue growth since 2021</strong> — legitimate trajectory with Albany semiconductor tailwind through 2030.</div></div>
+            </div>
+            <div class="flag-list">
+              <div class="flag-item red"><span class="icon">●</span><div><strong>Owner retiring + 100% sale + 80% GC revenue</strong> = classic setup for post-close revenue attrition.</div></div>
+              <div class="flag-item red"><span class="icon">●</span><div><strong>2023 SDE collapse demonstrates thin fixed-cost coverage.</strong> Will repeat in next downturn without revenue mix restructuring.</div></div>
+              <div class="flag-item red"><span class="icon">●</span><div><strong>17 employees for $4.4M revenue is lean.</strong> Losing 2–3 key estimators or technicians is catastrophic.</div></div>
+              <div class="flag-item red"><span class="icon">●</span><div><strong>SBA covers only $1M of $2.4M ask.</strong> Buyer must fund $1.4M gap through equity and seller financing.</div></div>
+            </div>
+          </div>
+
+          <!-- CHECKLIST -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Critical Diligence Checklist</div>
+            <div class="doc-checklist">
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">1 · 2023 Root Cause</div><div class="chk-desc">Tax returns for 2023. Single project loss? Bad debt write-off? Market cycle?</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">2 · Customer Concentration</div><div class="chk-desc">Revenue breakdown by top 5–10 GC clients. If any single client exceeds 20%, renegotiate or walk.</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">3 · WIP Schedule</div><div class="chk-desc">24 months of work-in-progress and retainage. Project contractors hide working-capital holes here.</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Critical</span><div><div class="chk-title">4 · Licensing</div><div class="chk-desc">Who holds the master plumber and HVAC license? If solely the retiring owner, deal-breaker until transferred.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">High</span><div><div class="chk-title">5 · Key Employee Retention</div><div class="chk-desc">Identify top 3–5 staff. Require signed stay-bonus agreements pre-close.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">High</span><div><div class="chk-title">6 · Forward Backlog</div><div class="chk-desc">Signed contracts, LOIs, and bid pipeline — minimum 6 months.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">High</span><div><div class="chk-title">7 · Fab Shop Lease</div><div class="chk-desc">Term, escalation, renewal option. The fabrication shop is a core asset — confirm it transfers cleanly.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">High</span><div><div class="chk-title">8 · Bonding Capacity</div><div class="chk-desc">Current surety relationships and limits. Essential for commercial bid work.</div></div></div>
+              <div class="chk-item"><span class="chk-badge med">Medium</span><div><div class="chk-title">9 · Entity and Legal</div><div class="chk-desc">Legal name, entity type, EIN. No litigation, liens, or undisclosed liabilities.</div></div></div>
+              <div class="chk-item"><span class="chk-badge med">Medium</span><div><div class="chk-title">10 · Environmental</div><div class="chk-desc">Historical solvent and refrigerant exposure at fab shop site.</div></div></div>
+            </div>
+          </div>
+
+          <div class="doc-footer-bar">
+            <div class="doc-footer-back" onclick="closeDoc()">← Back to Archive</div>
+            <div>BizzedAI Due Diligence Report · Albany Metro HVAC · April 2026 · Confidential</div>
+          </div>
+
+        </div><!-- /gate-blur -->
+      </div><!-- /gate-wrapper -->
+
+      <!-- success notice shown after unlocking (outside gate wrapper so it appears above revealed content) -->
+      <div class="gate-unlocked-notice" id="gate-notice">
+        <div class="gun-title">Full report unlocked — enjoy the read.</div>
+        <div class="gun-sub">The complete teardown is also on its way to your inbox.</div>
+      </div>
+
+    </div><!-- /doc-body -->
+  </div>
+</div><!-- /doc-page -->
+
+<script>
+function tryUnlock() {
+  var first = document.getElementById('gate-first').value.trim();
+  var last  = document.getElementById('gate-last').value.trim();
+  var email = document.getElementById('gate-email').value.trim();
+  var errEl = document.getElementById('gate-err-msg');
+
+  errEl.style.display = 'none';
+
+  if (!first) { document.getElementById('gate-first').style.borderColor = 'red'; }
+  if (!last)  { document.getElementById('gate-last').style.borderColor  = 'red'; }
+
+  if (!first || !last) {
+    errEl.textContent = 'Please fill in your first and last name.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  if (!email || email.indexOf('@') === -1) {
+    document.getElementById('gate-email').style.borderColor = 'red';
+    errEl.textContent = 'Please enter a valid email address - it must include an @.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // All good - unlock
+  var wrapper = document.getElementById('gate-wrapper');
+  var card    = document.getElementById('gate-card');
+  var blur    = document.getElementById('gate-blur');
+  var notice  = document.getElementById('gate-notice');
+
+  card.style.display = 'none';
+  document.getElementById('gate-spacer').style.display = 'none';
+  blur.style.filter  = 'none';
+  blur.style.opacity = '1';
+  blur.style.webkitMaskImage = 'none';
+  blur.style.maskImage = 'none';
+  blur.style.pointerEvents = 'auto';
+  blur.style.userSelect = 'auto';
+
+  notice.style.display = 'block';
+
+  window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
+}
+
+/* hero signup */
+document.getElementById('hero-signup-btn').addEventListener('click', function() {
+  var email = document.getElementById('hero-signup-email').value.trim();
+  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var form = document.getElementById('hero-signup-form');
+  if (!re.test(email)) { form.style.borderColor = 'rgba(239,68,68,.4)'; return; }
+  document.getElementById('hero-signup-btn').textContent = 'Sending...';
+  setTimeout(function() {
+    document.getElementById('hero-success-email').textContent = email;
+    form.style.display = 'none';
+    document.getElementById('hero-signup-meta').style.display = 'none';
+    document.getElementById('hero-signup-success').style.display = 'block';
+    document.getElementById('hero-signup-success').classList.add('show');
+  }, 800);
+});
+document.getElementById('hero-signup-form').addEventListener('submit', function(e){ e.preventDefault(); });
+
+/* doc page open/close */
+function openDoc() {
+  var dp = document.getElementById('doc-page');
+  dp.style.display = 'block';
+  dp.scrollTop = 0;
+}
+function closeDoc() {
+  document.getElementById('doc-page').style.display = 'none';
+}
+function goHome() {
+  closeDoc();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDoc();
+});
+
+document.querySelectorAll('.card[tabindex]').forEach(function(c) {
+  c.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') openDoc();
+  });
+});
+</script>
+</body>
+</html>
