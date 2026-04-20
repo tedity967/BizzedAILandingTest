@@ -704,31 +704,16 @@ footer a:hover{color:var(--ink)}
 </div><!-- /doc-page -->
  
 <script>
-/* ─── Brevo integration ──────────────────────────────────────────────────── */
-var BREVO_API_KEY = 'xsmtpsib-fc598a0608d2ee2a01bba3f624f0e788812c5a8d8c1c26cb16d67a7169187bc3-gj1Rx8b8rnVuQvbl';
- 
+/* ─── Brevo integration (via Cloudflare Function proxy) ─────────────────── */
 /**
- * Upserts a contact in Brevo.
- * @param {string} email
- * @param {string} [firstName]
- * @param {string} [lastName]
- * @param {string} [source]  – stored in a custom attribute (optional label)
+ * Upserts a contact in Brevo via the /subscribe serverless proxy.
+ * The API key lives server-side in functions/subscribe.js — not exposed here.
  */
 function addToBrevo(email, firstName, lastName, source) {
-  var payload = { email: email, updateEnabled: true };
-  var attrs = {};
-  if (firstName) attrs.FIRSTNAME = firstName;
-  if (lastName)  attrs.LASTNAME  = lastName;
-  if (source)    attrs.SOURCE    = source;   // create this attribute in Brevo if you want it stored
-  if (Object.keys(attrs).length) payload.attributes = attrs;
- 
-  fetch('https://api.brevo.com/v3/contacts', {
+  fetch('/subscribe', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'api-key': BREVO_API_KEY
-    },
-    body: JSON.stringify(payload)
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, firstName: firstName, lastName: lastName, source: source })
   }).catch(function(err) {
     console.warn('Brevo contact sync failed:', err);
   });
