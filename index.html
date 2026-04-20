@@ -56,6 +56,10 @@ h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
 .signup.error{border-color:rgba(239,68,68,.4)}
 .signup-success{display:none;max-width:540px;margin:0 auto;padding:24px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:14px;backdrop-filter:blur(20px);text-align:center}
 .signup-success.show{display:block;animation:fadeUp .5s ease both}
+.signup-returning{display:none;max-width:540px;margin:0 auto;padding:24px 28px;background:rgba(196,181,253,.06);border:1px solid rgba(196,181,253,.25);border-radius:14px;backdrop-filter:blur(20px);text-align:center}
+.signup-returning.show{display:block;animation:fadeUp .5s ease both}
+.signup-returning-ttl{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:#fff;margin-bottom:6px;letter-spacing:-.5px}
+.signup-returning-sub{font-size:13px;color:var(--ink-dim);line-height:1.55}
 .signup-success-ttl{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:#fff;margin-bottom:6px}
 .signup-success-sub{font-size:13px;color:var(--ink-dim);line-height:1.55}
 .signup-success-sub strong{color:#fff}
@@ -390,6 +394,10 @@ footer a:hover{color:var(--ink)}
       <div class="signup-success" id="hero-signup-success">
         <div class="signup-success-ttl">You're in. Check your inbox.</div>
         <div class="signup-success-sub">A welcome note is on its way to <strong id="hero-success-email">your email</strong>. Next teardown drops Tuesday.</div>
+      </div>
+      <div class="signup-returning" id="hero-returning">
+        <div class="signup-returning-ttl">Welcome back, <span id="hero-returning-name">there</span>. ✦</div>
+        <div class="signup-returning-sub">You're on the list — next teardown drops <strong>Tuesday</strong>. <a href="#archive" style="color:var(--violet)">Read the latest issue →</a></div>
       </div>
     </div>
   </section>
@@ -811,6 +819,12 @@ document.getElementById('hero-signup-btn').addEventListener('click', function() 
   btn.textContent = 'Sending…';
   btn.disabled    = true;
  
+  // Save to localStorage so we can greet them on return visits
+  try {
+    var existing = JSON.parse(localStorage.getItem('bizzed_user') || '{}');
+    localStorage.setItem('bizzed_user', JSON.stringify(Object.assign(existing, { first: first, last: last, email: email })));
+  } catch(e) {}
+ 
   // Send to Brevo (non-blocking)
   addToBrevo(email, first, last, 'hero-signup');
  
@@ -823,6 +837,22 @@ document.getElementById('hero-signup-btn').addEventListener('click', function() 
   }, 800);
 });
 document.getElementById('hero-signup-form').addEventListener('submit', function(e){ e.preventDefault(); });
+ 
+// On page load — greet returning users instead of showing the signup form
+(function() {
+  try {
+    var saved = JSON.parse(localStorage.getItem('bizzed_user') || 'null');
+    if (saved && saved.email) {
+      var nameToShow = saved.first ? saved.first : saved.email;
+      document.getElementById('hero-returning-name').textContent = nameToShow;
+      document.getElementById('hero-signup-form').style.display  = 'none';
+      document.getElementById('hero-signup-meta').style.display  = 'none';
+      var ret = document.getElementById('hero-returning');
+      ret.style.display = 'block';
+      ret.classList.add('show');
+    }
+  } catch(e) {}
+})();
  
 /* ─── Doc page open / close ──────────────────────────────────────────────── */
 function openDoc() {
@@ -867,3 +897,4 @@ document.querySelectorAll('.card[tabindex]').forEach(function(c) {
 </script>
 </body>
 </html>
+ 
