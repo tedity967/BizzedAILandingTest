@@ -142,12 +142,9 @@ footer a:hover{color:var(--ink)}
 /* =============================================
    DOCUMENT PAGE
 ============================================= */
-#doc-page{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:var(--bg);overflow-x:hidden;overflow-y:scroll;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+#doc-page{display:none;position:relative;z-index:100;background:var(--bg);min-height:100vh}
 #doc-page.open{display:block;animation:docIn .35s ease both}
-#doc-page::-webkit-scrollbar{width:8px}
-#doc-page::-webkit-scrollbar-track{background:rgba(255,255,255,.04)}
-#doc-page::-webkit-scrollbar-thumb{background:rgba(196,181,253,.3);border-radius:4px}
-#doc-page::-webkit-scrollbar-thumb:hover{background:rgba(196,181,253,.5)}
+ 
 @keyframes docIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes docOut{from{opacity:1}to{opacity:0;transform:translateY(10px)}}
  
@@ -760,7 +757,7 @@ function unlockGate(silent) {
  
   if (!silent) {
     notice.style.display = 'block';
-    var dp = document.getElementById('doc-page'); if(dp) dp.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
+    window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
   }
 }
  
@@ -861,9 +858,11 @@ document.getElementById('hero-signup-form').addEventListener('submit', function(
 /* ─── Doc page open / close ──────────────────────────────────────────────── */
 function openDoc() {
   var dp = document.getElementById('doc-page');
+  var mp = document.getElementById('main-page');
+  mp.style.display = 'none';
   dp.style.display = 'block';
-  dp.scrollTop = 0;
-  document.body.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
+  document.body.style.overflow = '';
  
   // If the user has already given their details, skip the gate silently
   try {
@@ -884,6 +883,8 @@ function openDoc() {
 }
 function closeDoc() {
   document.getElementById('doc-page').style.display = 'none';
+  document.getElementById('main-page').style.display = 'block';
+  window.scrollTo(0, 0);
   document.body.style.overflow = '';
 }
 function goHome() {
