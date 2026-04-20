@@ -727,6 +727,31 @@ function addToBrevo(email, firstName, lastName, source) {
 }
  
 /* ─── Gate / report unlock ───────────────────────────────────────────────── */
+ 
+function unlockGate(silent) {
+  // Remove the gate UI and reveal the full report
+  var wrapper = document.getElementById('gate-wrapper');
+  var card    = document.getElementById('gate-card');
+  var blur    = document.getElementById('gate-blur');
+  var notice  = document.getElementById('gate-notice');
+ 
+  if (!card) return;
+  card.style.display  = 'none';
+  var spacer = document.getElementById('gate-spacer');
+  if (spacer) spacer.style.display = 'none';
+  blur.style.filter          = 'none';
+  blur.style.opacity         = '1';
+  blur.style.webkitMaskImage = 'none';
+  blur.style.maskImage       = 'none';
+  blur.style.pointerEvents   = 'auto';
+  blur.style.userSelect      = 'auto';
+ 
+  if (!silent) {
+    notice.style.display = 'block';
+    window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
+  }
+}
+ 
 function tryUnlock() {
   var first = document.getElementById('gate-first').value.trim();
   var last  = document.getElementById('gate-last').value.trim();
@@ -755,31 +780,18 @@ function tryUnlock() {
     return;
   }
  
-  // Disable button while we send
+  // Save to localStorage so the gate is skipped on future visits
+  try {
+    localStorage.setItem('bizzed_user', JSON.stringify({ first: first, last: last, email: email }));
+  } catch(e) {}
+ 
   btn.disabled = true;
   btn.textContent = 'Unlocking…';
  
   // Send to Brevo (non-blocking)
   addToBrevo(email, first, last, 'report-gate');
  
-  // Unlock the report
-  var wrapper = document.getElementById('gate-wrapper');
-  var card    = document.getElementById('gate-card');
-  var blur    = document.getElementById('gate-blur');
-  var notice  = document.getElementById('gate-notice');
- 
-  card.style.display  = 'none';
-  document.getElementById('gate-spacer').style.display = 'none';
-  blur.style.filter          = 'none';
-  blur.style.opacity         = '1';
-  blur.style.webkitMaskImage = 'none';
-  blur.style.maskImage       = 'none';
-  blur.style.pointerEvents   = 'auto';
-  blur.style.userSelect      = 'auto';
- 
-  notice.style.display = 'block';
- 
-  window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
+  unlockGate(false);
 }
  
 /* ─── Hero newsletter signup ─────────────────────────────────────────────── */
@@ -817,6 +829,23 @@ function openDoc() {
   var dp = document.getElementById('doc-page');
   dp.style.display = 'block';
   dp.scrollTop = 0;
+ 
+  // If the user has already given their details, skip the gate silently
+  try {
+    var saved = localStorage.getItem('bizzed_user');
+    if (saved) {
+      var user = JSON.parse(saved);
+      // Pre-fill the fields (in case they're visible briefly)
+      var gf = document.getElementById('gate-first');
+      var gl = document.getElementById('gate-last');
+      var ge = document.getElementById('gate-email');
+      if (gf) gf.value = user.first || '';
+      if (gl) gl.value = user.last  || '';
+      if (ge) ge.value = user.email || '';
+      // Unlock immediately, no notice banner
+      unlockGate(true);
+    }
+  } catch(e) {}
 }
 function closeDoc() {
   document.getElementById('doc-page').style.display = 'none';
@@ -838,4 +867,3 @@ document.querySelectorAll('.card[tabindex]').forEach(function(c) {
 </script>
 </body>
 </html>
- 
