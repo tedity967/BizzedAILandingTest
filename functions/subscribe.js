@@ -1,5 +1,5 @@
 export async function onRequestPost(context) {
-  const BREVO_API_KEY = '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';
+  const BREVO_API_KEY = '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';
  
   let body;
   try {
@@ -53,3 +53,4 @@ export async function onRequestOptions() {
     }
   });
 }
+ 
