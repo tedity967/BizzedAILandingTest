@@ -18,6 +18,11 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.08)}
+::-webkit-scrollbar-thumb{background:rgba(196,181,253,.8);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#c4b5fd}
+* { scrollbar-width: thin; scrollbar-color: rgba(196,181,253,.8) rgba(255,255,255,.08); }
 .bg-gradient{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(139,92,246,.28),transparent 60%),radial-gradient(ellipse 60% 50% at 90% 25%,rgba(236,72,153,.18),transparent 60%),radial-gradient(ellipse 70% 50% at 50% 90%,rgba(59,130,246,.15),transparent 60%),var(--bg)}
 .bg-grid{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%)}
 .content{position:relative;z-index:3}
