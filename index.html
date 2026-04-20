@@ -45,10 +45,12 @@ h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
 .lede{font-size:19px;line-height:1.6;color:var(--ink-dim);max-width:640px;margin:0 auto 36px;animation:fadeUp .7s ease .2s both}
 .lede strong{color:#fff;font-weight:500}
 .signup-wrap{animation:fadeUp .7s ease .3s both}
-.signup{max-width:540px;margin:0 auto;display:flex;gap:8px;background:var(--glass);border:1px solid rgba(196,181,253,.3);border-radius:14px;padding:8px;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(139,92,246,.15)}
-.signup input{flex:1;padding:14px 16px;background:transparent;border:none;color:#fff;font-size:15px;outline:none}
+.signup{max-width:540px;margin:0 auto;display:flex;flex-direction:column;gap:8px;background:var(--glass);border:1px solid rgba(196,181,253,.3);border-radius:14px;padding:12px;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(139,92,246,.15)}
+.signup-name-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.signup input{flex:1;padding:13px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(196,181,253,.15);border-radius:10px;color:#fff;font-size:15px;outline:none;font-family:'Instrument Sans',sans-serif;transition:border-color .2s}
+.signup input:focus{border-color:rgba(196,181,253,.4)}
 .signup input::placeholder{color:var(--ink-dimmest)}
-.signup button{background:linear-gradient(135deg,var(--violet-deep),var(--pink));color:#fff;padding:14px 26px;border-radius:10px;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(139,92,246,.4);transition:all .2s;white-space:nowrap}
+.signup button{background:linear-gradient(135deg,var(--violet-deep),var(--pink));color:#fff;padding:14px 26px;border-radius:10px;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(139,92,246,.4);transition:all .2s;white-space:nowrap;margin-top:2px}
 .signup button:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(139,92,246,.55)}
 .signup-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmest);margin-top:14px;letter-spacing:.5px}
 .signup.error{border-color:rgba(239,68,68,.4)}
@@ -377,6 +379,10 @@ footer a:hover{color:var(--ink)}
     <p class="lede">We run one real SMB listing through <strong>17 specialized AI agents</strong> and publish the teardown. Financials, red flags, downside models, verdict. <strong>Free.</strong> Built for serious buyers.</p>
     <div class="signup-wrap">
       <form id="hero-signup-form" class="signup" novalidate>
+        <div class="signup-name-row">
+          <input type="text" id="hero-signup-first" placeholder="First name" autocomplete="given-name">
+          <input type="text" id="hero-signup-last" placeholder="Last name" autocomplete="family-name">
+        </div>
         <input type="email" id="hero-signup-email" placeholder="you@acquireco.com" required autocomplete="email">
         <button type="submit" id="hero-signup-btn">Subscribe ✦</button>
       </form>
@@ -778,6 +784,8 @@ function tryUnlock() {
  
 /* ─── Hero newsletter signup ─────────────────────────────────────────────── */
 document.getElementById('hero-signup-btn').addEventListener('click', function() {
+  var first = document.getElementById('hero-signup-first').value.trim();
+  var last  = document.getElementById('hero-signup-last').value.trim();
   var email = document.getElementById('hero-signup-email').value.trim();
   var re    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var form  = document.getElementById('hero-signup-form');
@@ -792,7 +800,7 @@ document.getElementById('hero-signup-btn').addEventListener('click', function() 
   btn.disabled    = true;
  
   // Send to Brevo (non-blocking)
-  addToBrevo(email, '', '', 'hero-signup');
+  addToBrevo(email, first, last, 'hero-signup');
  
   setTimeout(function() {
     document.getElementById('hero-success-email').textContent = email;
@@ -830,3 +838,4 @@ document.querySelectorAll('.card[tabindex]').forEach(function(c) {
 </script>
 </body>
 </html>
+ 
