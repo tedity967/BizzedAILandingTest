@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deal Teardowns · BizzedAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0816;--ink:#e8e6f0;--ink-dim:#a8a3ba;--ink-dimmer:#8a84a0;--ink-dimmest:#6a6478;
+  --violet:#c4b5fd;--violet-deep:#8b5cf6;--pink:#ec4899;--pink-light:#f472b6;
+  --success:#10b981;--warn:#fbbf24;--danger:#ef4444;
+  --border:rgba(255,255,255,.1);--border-soft:rgba(255,255,255,.06);
+  --glass:rgba(255,255,255,.04);--glass-strong:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.08)}
+::-webkit-scrollbar-thumb{background:rgba(196,181,253,.8);border-radius:4px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55}
+.bg-grid{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%)}
+.content{position:relative;z-index:3}
+
+/* NAV */
+.nav{max-width:1360px;margin:0 auto;padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer}
+.nav-center{display:flex;gap:10px;font-size:14px}
+.nav-pill{display:inline-flex;align-items:center;justify-content:center;padding:7px 18px;border-radius:100px;border:1px solid rgba(196,181,253,.2);background:rgba(255,255,255,.04);color:var(--ink-dim);font-size:13px;backdrop-filter:blur(8px);transition:all .25s;position:relative}
+.nav-pill:hover{color:#fff;border-color:rgba(196,181,253,.55);background:rgba(196,181,253,.08);transform:translateY(-1px);box-shadow:0 4px 20px rgba(139,92,246,.25)}
+.nav-pill.active{color:#fff;border-color:rgba(196,181,253,.5);background:rgba(196,181,253,.1)}
+.nav-btn{background:var(--glass-strong);border:1px solid var(--border);color:#fff;padding:9px 18px;border-radius:10px;font-size:13px;backdrop-filter:blur(10px);transition:all .2s}
+.nav-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+
+/* PAGE HEADER */
+.page-header{max-width:1360px;margin:0 auto;padding:60px 48px 40px;text-align:center;animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;color:var(--violet);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:10px}
+.page-eyebrow::before,.page-eyebrow::after{content:'';width:24px;height:1px;background:var(--violet)}
+.page-header h1{font-size:clamp(44px,6vw,76px);line-height:.95;letter-spacing:-3px;font-weight:600;margin-bottom:16px}
+.page-header h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.page-sub{font-size:17px;color:var(--ink-dim);max-width:540px;margin:0 auto 36px;line-height:1.6}
+.page-sub strong{color:#fff;font-weight:500}
+
+/* STATS BAR */
+.stats-bar{max-width:1360px;margin:0 auto;padding:0 48px 48px;display:flex;gap:0}
+.stat-item{flex:1;padding:20px 28px;border:1px solid var(--border-soft);background:var(--glass);backdrop-filter:blur(20px);text-align:center}
+.stat-item:first-child{border-radius:14px 0 0 14px}
+.stat-item:last-child{border-radius:0 14px 14px 0}
+.stat-item+.stat-item{border-left:none}
+.stat-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:32px;color:var(--violet);line-height:1;margin-bottom:4px}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmer);letter-spacing:1.5px;text-transform:uppercase}
+
+/* FEATURED ISSUE */
+.featured-section{max-width:1360px;margin:0 auto;padding:0 48px 40px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;color:var(--violet);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';width:28px;height:1px;background:var(--violet)}
+
+.featured-card{background:var(--glass);border:1px solid rgba(196,181,253,.2);border-radius:24px;padding:40px;backdrop-filter:blur(30px);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;position:relative;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.3);cursor:pointer;transition:all .3s}
+.featured-card::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(196,181,253,.4),transparent 55%,rgba(139,92,246,.25));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.featured-card:hover{transform:translateY(-4px);box-shadow:0 50px 100px rgba(139,92,246,.2)}
+.ft-tag{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(139,92,246,.3),rgba(196,181,253,.15));border:1px solid rgba(196,181,253,.4);padding:6px 12px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--violet);margin-bottom:22px;letter-spacing:1px}
+.ft-tag .d{width:7px;height:7px;background:var(--success);border-radius:50%;box-shadow:0 0 8px var(--success);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.4}}
+.ft-title{font-size:46px;line-height:1.05;letter-spacing:-1.5px;font-weight:600;margin-bottom:12px}
+.ft-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.ft-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmer);margin-bottom:16px;letter-spacing:.5px}
+.ft-desc{font-size:15px;line-height:1.65;color:var(--ink-dim);margin-bottom:22px}
+.ft-verdict{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;margin-bottom:20px;border-radius:12px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(251,191,36,.04));border:1px solid rgba(251,191,36,.3)}
+.ft-verdict .l{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--warn);letter-spacing:1.5px;text-transform:uppercase}
+.ft-verdict .r{font-size:14px;font-weight:600;color:var(--warn);font-family:'Instrument Serif',serif;font-style:italic}
+.ft-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--violet-deep),var(--pink));color:#fff;padding:13px 22px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 8px 30px rgba(139,92,246,.4);transition:all .2s}
+.ft-cta:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(139,92,246,.55)}
+.ft-preview{background:rgba(10,8,22,.7);border:1px solid var(--border-soft);border-radius:16px;padding:22px}
+.fp-hd{display:flex;justify-content:space-between;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase}
+.fp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.fp-s{background:var(--glass);padding:12px 10px;border-radius:10px;border:1px solid var(--border-soft)}
+.fp-s .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--violet);line-height:1}
+.fp-s .l{font-size:9px;color:var(--ink-dimmer);margin-top:6px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+.fp-chart{background:var(--glass);padding:10px 10px 4px;border-radius:10px;border:1px solid var(--border-soft);display:flex;align-items:flex-end;gap:5px;height:80px;margin-bottom:8px}
+.fp-chart div{flex:1;border-radius:3px 3px 0 0}
+.bar-n{background:linear-gradient(180deg,var(--violet),rgba(196,181,253,.3))}
+.bar-d{background:linear-gradient(180deg,var(--danger),rgba(239,68,68,.3))}
+.fp-labels{display:flex;gap:5px;padding:0 10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-dimmer)}
+.fp-labels span{flex:1;text-align:center}
+.fp-labels span.hl{color:var(--danger)}
+.fp-lock{padding:12px;border-radius:10px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--violet);background:linear-gradient(135deg,rgba(196,181,253,.1),rgba(244,114,182,.06));border:1px dashed rgba(196,181,253,.3);margin-top:12px}
+
+/* ARCHIVE GRID */
+.archive-section{max-width:1360px;margin:0 auto;padding:20px 48px 60px}
+.archive-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px}
+.archive-head h2{font-size:38px;letter-spacing:-1.5px;font-weight:600}
+.archive-head h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.archive-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dimmer);letter-spacing:1px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(20px);border-radius:18px;padding:24px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:rgba(196,181,253,.35);background:rgba(255,255,255,.06)}
+.card-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1.5px;text-transform:uppercase}
+.card-num{color:var(--violet)}
+.card-verdict{padding:3px 9px;border-radius:100px;font-size:9px;font-weight:600;border:1px solid}
+.v-cond{background:rgba(251,191,36,.15);color:var(--warn);border-color:rgba(251,191,36,.3)}
+.card-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.15;margin-bottom:6px;color:#fff}
+.card-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmer);margin-bottom:16px;letter-spacing:.3px}
+.card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px;padding:12px;background:rgba(10,8,22,.5);border-radius:10px;border:1px solid var(--border-soft)}
+.card-s .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;color:var(--violet);line-height:1}
+.card-s .l{font-size:8px;color:var(--ink-dimmest);margin-top:3px;font-family:'JetBrains Mono',monospace;letter-spacing:.8px;text-transform:uppercase}
+.card-desc{font-size:13px;color:var(--ink-dim);line-height:1.55;margin-bottom:14px;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border-soft);font-size:12px}
+.card-read{color:var(--violet);font-weight:500;transition:transform .2s;display:inline-block}
+.card:hover .card-read{transform:translateX(4px)}
+.card-time{color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;font-size:10px}
+.card-soon{background:rgba(10,8,22,.4);border:1px dashed rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:260px}
+.card-soon-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1.5px}
+.soon-badge{padding:3px 10px;border-radius:100px;font-size:9px;font-weight:600;background:rgba(196,181,253,.08);color:var(--violet);border:1px solid rgba(196,181,253,.2);letter-spacing:1px}
+.card-soon-date{font-family:'Instrument Serif',serif;font-style:italic;font-size:32px;line-height:1;letter-spacing:-1px;color:rgba(255,255,255,.15);margin-bottom:10px}
+.card-soon-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(196,181,253,.3);text-transform:uppercase;margin-bottom:auto}
+.card-soon-footer{margin-top:28px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.soon-pulse{width:6px;height:6px;background:rgba(196,181,253,.4);border-radius:50%;animation:pulse 2s infinite}
+
+footer{border-top:1px solid var(--border-soft);padding:32px 48px;margin-top:40px;max-width:1360px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+footer a{color:var(--ink-dimmer);transition:color .2s;margin-left:20px}
+footer a:hover{color:var(--ink)}
+
+@media(max-width:1024px){.featured-card{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.grid-3{grid-template-columns:1fr}.stats-bar{flex-direction:column}.stat-item{border-radius:0!important;border-top:none}.stat-item:first-child{border-radius:14px 14px 0 0!important;border-top:1px solid var(--border-soft)!important}}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="bg-grid"></div>
+<div class="content">
+
+  <nav class="nav">
+    <a href="index.html" class="logo">bizzed.ai</a>
+    <div class="nav-center">
+      <a href="https://www.bizzed.ai/" class="nav-pill">Product</a>
+      <a href="reports.html" class="nav-pill">Reports</a>
+      <a href="teardowns.html" class="nav-pill active">Teardowns</a>
+      <a href="https://www.bizzed.ai/" class="nav-pill">Pricing</a>
+    </div>
+    <a href="https://www.bizzed.ai/get-started" class="nav-btn">Get Started →</a>
+  </nav>
+
+  <section class="page-header">
+    <div class="page-eyebrow">Weekly · Free Forever · Since 2024</div>
+    <h1>Deal <em>Teardowns</em></h1>
+    <p class="page-sub">Every Tuesday, one real SMB listing run through <strong>17 specialized AI agents</strong>. Financials, red flags, downside models, verdict. Built for serious buyers.</p>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-n">48</div><div class="stat-l">Issues Published</div></div>
+    <div class="stat-item"><div class="stat-n">17</div><div class="stat-l">AI Agents Per Deal</div></div>
+    <div class="stat-item"><div class="stat-n">Free</div><div class="stat-l">Forever</div></div>
+    <div class="stat-item"><div class="stat-n">Tue</div><div class="stat-l">Weekly Cadence</div></div>
+    <div class="stat-item"><div class="stat-n">1,842</div><div class="stat-l">Subscribers</div></div>
+  </div>
+
+  <section class="featured-section">
+    <div class="section-label">Latest issue · live now</div>
+    <div class="featured-card" onclick="window.location='index.html?report=048'">
+      <div>
+        <div class="ft-tag"><span class="d"></span>ISSUE #048 · APRIL 15, 2026</div>
+        <div class="ft-title">Albany Metro <em>HVAC.</em><br>Buy it, or walk?</div>
+        <div class="ft-meta">$4.36M REVENUE · 17 EMPLOYEES · ASKING $2.4M · 18YR OLD</div>
+        <div class="ft-desc">An HVAC shop riding the Albany semiconductor wave. In-house sheet metal fab. SBA pre-approved. But: 80% GC concentration, a 2023 earnings collapse, and a retiring owner who holds the licenses.</div>
+        <div class="ft-verdict">
+          <span class="l">◉ OUR VERDICT</span>
+          <span class="r">Conditional Buy @ $1.9M</span>
+        </div>
+        <button class="ft-cta">Read the full teardown →</button>
+      </div>
+      <div class="ft-preview">
+        <div class="fp-hd"><span>DEAL_TEARDOWN · #048</span><span>PART 1 OF 2</span></div>
+        <div class="fp-stats">
+          <div class="fp-s"><div class="n">$740K</div><div class="l">2025 SDE</div></div>
+          <div class="fp-s"><div class="n">3.24x</div><div class="l">Ask Mult</div></div>
+          <div class="fp-s"><div class="n">$1.9M</div><div class="l">Target</div></div>
+        </div>
+        <div class="fp-chart">
+          <div class="bar-n" style="height:55%"></div><div class="bar-n" style="height:68%"></div>
+          <div class="bar-d" style="height:32%"></div><div class="bar-n" style="height:72%"></div>
+          <div class="bar-n" style="height:92%"></div>
+        </div>
+        <div class="fp-labels"><span>'21</span><span>'22</span><span class="hl">'23</span><span>'24</span><span>'25</span></div>
+        <div class="fp-lock">🔒 FULL REPORT · SIGN UP TO UNLOCK</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive-section" id="archive">
+    <div class="archive-head">
+      <h2>The <em>archive.</em></h2>
+      <div class="archive-count">1 PAST ISSUE · 2026</div>
+    </div>
+    <div class="grid-3">
+      <div class="card" onclick="window.location='index.html?report=048'" role="button" tabindex="0">
+        <div class="card-hd"><span class="card-num">#048 · APR 15</span><span class="card-verdict v-cond">CONDITIONAL BUY</span></div>
+        <div class="card-title">Albany Metro HVAC.</div>
+        <div class="card-meta">$4.36M REV · 17 EMPLOYEES · HVAC / SHEET METAL</div>
+        <div class="card-stats">
+          <div class="card-s"><div class="n">$740K</div><div class="l">2025 SDE</div></div>
+          <div class="card-s"><div class="n">3.24x</div><div class="l">Ask Mult</div></div>
+          <div class="card-s"><div class="n">$1.9M</div><div class="l">Target</div></div>
+        </div>
+        <div class="card-desc">Albany semiconductor wave HVAC play. In-house fab shop is a real moat. 2023 earnings collapse + 80% GC concentration demand a structured counter-offer.</div>
+        <div class="card-foot"><span class="card-read">Read now →</span><span class="card-time">10 MIN READ</span></div>
+      </div>
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#049</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">Apr 22</div>
+        <div class="card-soon-label">Next teardown drops Tuesday</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Subscribe to get it in your inbox</div>
+      </div>
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#050</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">Apr 29</div>
+        <div class="card-soon-label">New deal, new teardown</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#051</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">May 6</div>
+        <div class="card-soon-label">17 agents. One verdict.</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#052</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">May 13</div>
+        <div class="card-soon-label">Financials. Red flags. Verdict.</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+      <div class="card-soon">
+        <div class="card-soon-hd"><span style="color:var(--violet);font-size:10px;letter-spacing:1.5px">#053</span><span class="soon-badge">Coming Soon</span></div>
+        <div class="card-soon-date">May 20</div>
+        <div class="card-soon-label">Built for serious buyers.</div>
+        <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Bizzed AI · Due Diligence, Reimagined</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="reports.html">Reports</a>
+      <a href="mailto:support@bizzed.ai">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+  </footer>
+
+</div>
+<script>
+(function() {
+  var canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W, H, particles;
+  var COLORS = ['rgba(139,92,246,','rgba(196,181,253,','rgba(236,72,153,','rgba(244,114,182,','rgba(59,130,246,'];
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  function mkP() {
+    var c = COLORS[Math.floor(Math.random()*COLORS.length)];
+    return {x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+0.4,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.22,color:c,a:Math.random()*.55+.15,pulse:Math.random()*Math.PI*2,ps:Math.random()*.008+.003};
+  }
+  function init() { resize(); var n=Math.min(Math.floor(W*H/8000),160); particles=[]; for(var i=0;i<n;i++) particles.push(mkP()); }
+  var orbs=[{x:.15,y:.10,r:.38,color:'rgba(139,92,246,',phase:0,speed:.0004},{x:.85,y:.22,r:.28,color:'rgba(236,72,153,',phase:1.57,speed:.0003},{x:.50,y:.85,r:.32,color:'rgba(59,130,246,',phase:3.14,speed:.00035}];
+  var t=0;
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    var grd=ctx.createRadialGradient(W*.5,H*.5,0,W*.5,H*.5,Math.max(W,H)*.8);
+    grd.addColorStop(0,'rgba(10,8,22,0)'); grd.addColorStop(1,'rgba(10,8,22,0.92)');
+    ctx.fillStyle=grd; ctx.fillRect(0,0,W,H);
+    orbs.forEach(function(o){
+      var cx=W*o.x+Math.sin(t*o.speed+o.phase)*W*.06;
+      var cy=H*o.y+Math.cos(t*o.speed*.7+o.phase)*H*.05;
+      var rr=Math.max(W,H)*o.r;
+      var g=ctx.createRadialGradient(cx,cy,0,cx,cy,rr);
+      g.addColorStop(0,o.color+'0.22)'); g.addColorStop(.5,o.color+'0.08)'); g.addColorStop(1,o.color+'0)');
+      ctx.beginPath(); ctx.arc(cx,cy,rr,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    });
+    for(var i=0;i<particles.length;i++){var p=particles[i];for(var j=i+1;j<particles.length;j++){var q=particles[j];var dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(196,181,253,'+(1-d/110)*.06+')';ctx.lineWidth=.5;ctx.stroke();}}}
+    particles.forEach(function(p){p.pulse+=p.ps;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color+(p.a+Math.sin(p.pulse)*.12)+')';ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;});
+    t++; requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',function(){resize();});
+  init(); draw();
+})();
+</script>
+</body>
+</html>
