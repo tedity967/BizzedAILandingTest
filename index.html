@@ -901,6 +901,16 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeDoc();
 });
  
+// Auto-open report if ?report=048 (or any value) is in the URL
+(function() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('report')) {
+      openDoc();
+    }
+  } catch(e) {}
+})();
+ 
 document.querySelectorAll('.card[tabindex]').forEach(function(c) {
   c.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') openDoc();
