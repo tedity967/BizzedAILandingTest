@@ -139,6 +139,192 @@ h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
 .card-soon-footer{margin-top:28px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .soon-pulse{width:6px;height:6px;background:rgba(196,181,253,.4);border-radius:50%;animation:pulse 2s infinite}
  
+/* =============================================
+   EXEC RESEARCH — LANDING + ARCHIVE
+============================================= */
+.exec-section-wrap{max-width:1360px;margin:0 auto;padding:40px 48px 20px}
+.exec-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.exec-intro h2{font-size:42px;letter-spacing:-1.5px;font-weight:600;line-height:1.05}
+.exec-intro h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--pink-light)}
+.exec-intro-sub{font-size:14px;color:var(--ink-dim);max-width:440px;line-height:1.6}
+.section-eb.pink{color:var(--pink-light)}
+.section-eb.pink::before{background:var(--pink-light)}
+ 
+.exec-latest{background:var(--glass);border:1px solid var(--border);border-radius:24px;padding:40px;backdrop-filter:blur(30px);display:grid;grid-template-columns:1.1fr 1fr;gap:40px;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.3)}
+.exec-latest::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(244,114,182,.4),transparent 50%,rgba(196,181,253,.25));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.exec-latest-tag{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(236,72,153,.3),rgba(139,92,246,.2));border:1px solid rgba(244,114,182,.4);padding:6px 12px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pink-light);margin-bottom:22px;letter-spacing:1px}
+.exec-latest-tag .d{width:7px;height:7px;background:var(--pink-light);border-radius:50%;box-shadow:0 0 8px var(--pink);animation:pulse 1.8s infinite}
+.exec-latest-title{font-size:46px;line-height:1.05;letter-spacing:-1.5px;font-weight:600;margin-bottom:14px}
+.exec-latest-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--pink-light)}
+.exec-latest-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-dimmer);margin-bottom:18px;letter-spacing:.5px}
+.exec-latest-desc{font-size:15px;line-height:1.65;color:var(--ink-dim);margin-bottom:24px}
+.exec-latest-verdict{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;margin-bottom:20px;border-radius:12px;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(16,185,129,.04));border:1px solid rgba(16,185,129,.3)}
+.exec-latest-verdict .l{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--success);letter-spacing:1.5px;text-transform:uppercase}
+.exec-latest-verdict .r{font-size:14px;font-weight:600;color:var(--success);font-family:'Instrument Serif',serif;font-style:italic}
+.exec-latest-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--pink),var(--violet-deep));color:#fff;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 8px 30px rgba(236,72,153,.4);transition:all .2s;cursor:pointer}
+.exec-latest-cta:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(236,72,153,.55)}
+.exec-preview{background:rgba(10,8,22,.7);border:1px solid var(--border-soft);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.exec-preview-hd{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase}
+.exec-kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.exec-kpi{background:var(--glass);padding:12px;border-radius:10px;border:1px solid var(--border-soft)}
+.exec-kpi .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--pink-light);line-height:1}
+.exec-kpi .l{font-size:9px;color:var(--ink-dimmer);margin-top:6px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+.exec-preview-caption{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-dimmer);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.exec-preview-chart{background:var(--glass);padding:10px 10px 4px;border-radius:10px;border:1px solid var(--border-soft);display:flex;align-items:flex-end;gap:5px;height:80px}
+.exec-preview-chart div{flex:1;border-radius:3px 3px 0 0}
+.bar-p{background:linear-gradient(180deg,var(--pink-light),rgba(244,114,182,.2))}
+.bar-pv{background:linear-gradient(180deg,var(--violet),rgba(196,181,253,.25))}
+.exec-preview-labels{display:flex;gap:5px;margin-top:6px;padding:0 10px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-dimmer)}
+.exec-preview-labels span{flex:1;text-align:center}
+.exec-preview-lock{padding:12px;border-radius:10px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--pink-light);background:linear-gradient(135deg,rgba(244,114,182,.1),rgba(196,181,253,.06));border:1px dashed rgba(244,114,182,.3)}
+ 
+.exec-archive-wrap{max-width:1360px;margin:0 auto;padding:30px 48px 80px}
+.exec-archive-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}
+.exec-archive-head h3{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2.5px;color:var(--ink-dim);text-transform:uppercase}
+.exec-archive-head .ct{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmer);letter-spacing:1px}
+.exec-card{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(20px);border-radius:18px;padding:24px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.exec-card:hover{transform:translateY(-4px);border-color:rgba(244,114,182,.35);background:rgba(255,255,255,.06)}
+.exec-card-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1.5px;text-transform:uppercase}
+.exec-card-num{color:var(--pink-light)}
+.exec-card-verdict{padding:3px 9px;border-radius:100px;font-size:9px;font-weight:600;border:1px solid}
+.v-strong{background:rgba(16,185,129,.15);color:var(--success);border-color:rgba(16,185,129,.3)}
+.v-focused{background:rgba(244,114,182,.15);color:var(--pink-light);border-color:rgba(244,114,182,.3)}
+.exec-card-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.15;margin-bottom:6px;color:#fff}
+.exec-card-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dimmer);margin-bottom:16px;letter-spacing:.3px}
+.exec-card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px;padding:12px;background:rgba(10,8,22,.5);border-radius:10px;border:1px solid var(--border-soft)}
+.exec-card-s .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;color:var(--pink-light);line-height:1}
+.exec-card-s .l{font-size:8px;color:var(--ink-dimmest);margin-top:3px;font-family:'JetBrains Mono',monospace;letter-spacing:.8px;text-transform:uppercase}
+.exec-card-desc{font-size:13px;color:var(--ink-dim);line-height:1.55;margin-bottom:14px;flex:1}
+.exec-card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border-soft);font-size:12px}
+.exec-card-read{color:var(--pink-light);font-weight:500;transition:transform .2s;display:inline-block}
+.exec-card:hover .exec-card-read{transform:translateX(4px)}
+.exec-card-time{color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;font-size:10px}
+ 
+/* =============================================
+   EXEC DOC — dashboard widgets (reuses doc-page chrome)
+============================================= */
+.exec-verdict-banner{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1px;background:var(--border);border-radius:16px;overflow:hidden;margin-bottom:40px;border:1px solid var(--border)}
+.exec-verdict-banner .dvb-cell:first-child{background:linear-gradient(135deg,rgba(16,185,129,.14),rgba(16,185,129,.04))}
+.exec-verdict-banner.focused .dvb-cell:first-child{background:linear-gradient(135deg,rgba(244,114,182,.14),rgba(244,114,182,.04))}
+.exec-verdict-banner .dvb-cell:first-child .dvb-val{color:var(--success)}
+.exec-verdict-banner.focused .dvb-cell:first-child .dvb-val{color:var(--pink-light)}
+ 
+.dash-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.dash-kpi{background:var(--glass);border:1px solid var(--border-soft);border-radius:14px;padding:18px;position:relative;overflow:hidden}
+.dash-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink-light),var(--violet))}
+.dash-kpi .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;color:#fff;line-height:1;margin-bottom:6px}
+.dash-kpi .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.3px;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:6px}
+.dash-kpi .sub{font-size:11px;color:var(--ink-dim);line-height:1.4}
+ 
+.thesis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.thesis-card{background:var(--glass);border:1px solid var(--border-soft);border-radius:14px;padding:18px}
+.thesis-card-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--pink-light);margin-bottom:10px}
+.thesis-card-ttl{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:#fff;line-height:1.15;margin-bottom:10px}
+.thesis-card-desc{font-size:12px;color:var(--ink-dim);line-height:1.55}
+ 
+.rank-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.rank-item{display:grid;grid-template-columns:54px 1fr 140px;gap:16px;align-items:center;background:var(--glass);border:1px solid var(--border-soft);border-radius:14px;padding:16px 18px}
+.rank-num{font-family:'Instrument Serif',serif;font-style:italic;font-size:40px;color:var(--pink-light);line-height:1;text-align:center}
+.rank-body-ttl{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.rank-body-desc{font-size:12px;color:var(--ink-dim);line-height:1.5}
+.rank-stat{text-align:right}
+.rank-stat .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:17px;color:var(--pink-light);line-height:1.1}
+.rank-stat .l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-dimmer);margin-top:4px}
+ 
+.counter-block{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.counter-col{border-radius:14px;padding:18px 20px}
+.counter-col.arg{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.22)}
+.counter-col.read{background:rgba(244,114,182,.06);border:1px solid rgba(244,114,182,.22)}
+.counter-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.counter-col.arg .counter-lbl{color:var(--warn)}
+.counter-col.read .counter-lbl{color:var(--pink-light)}
+.counter-body{font-size:12.5px;color:var(--ink-dim);line-height:1.6}
+.counter-body em{font-family:'Instrument Serif',serif;font-style:italic;color:#e8e6f0}
+ 
+.heatmap-wrap{background:rgba(10,8,22,.4);border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.heatmap{width:100%;border-collapse:collapse}
+.heatmap th{text-align:left;padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-dimmer);background:rgba(10,8,22,.6);border-bottom:1px solid var(--border-soft)}
+.heatmap th.c{text-align:center}
+.heatmap td{padding:11px 14px;font-size:12px;color:var(--ink-dim);border-bottom:1px solid var(--border-soft);vertical-align:middle}
+.heatmap td:first-child{color:#fff;font-weight:500}
+.heatmap tr:last-child td{border-bottom:none}
+.score-cell{text-align:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12px}
+.score-cell span{display:inline-block;min-width:34px;padding:4px 8px;border-radius:6px}
+.s-9,.s-10{background:rgba(16,185,129,.18);color:#6ee7b7}
+.s-7,.s-8{background:rgba(196,181,253,.15);color:var(--violet)}
+.s-5,.s-6{background:rgba(251,191,36,.15);color:var(--warn)}
+.s-3,.s-4{background:rgba(239,68,68,.15);color:#fca5a5}
+ 
+.waterfall{background:rgba(10,8,22,.5);border:1px solid var(--border-soft);border-radius:14px;padding:18px;margin-bottom:16px}
+.wf-row{display:grid;grid-template-columns:1fr 90px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border-soft)}
+.wf-row:last-child{border-bottom:none}
+.wf-row.total{padding-top:14px;margin-top:6px;border-top:1px dashed rgba(244,114,182,.3);border-bottom:none}
+.wf-label{font-size:12.5px;color:var(--ink-dim);line-height:1.4}
+.wf-label strong{color:#fff;font-weight:500}
+.wf-row.add .wf-label::before{content:'+ ';color:var(--success);font-weight:700;font-family:'JetBrains Mono',monospace}
+.wf-row.sub .wf-label::before{content:'− ';color:var(--danger);font-weight:700;font-family:'JetBrains Mono',monospace}
+.wf-row.base .wf-label::before{content:'▸ ';color:var(--violet);font-weight:700;font-family:'JetBrains Mono',monospace}
+.wf-row.total .wf-label::before{content:'◆ ';color:var(--pink-light);font-weight:700;font-family:'JetBrains Mono',monospace}
+.wf-value{text-align:right;font-family:'Instrument Serif',serif;font-style:italic;font-size:18px}
+.wf-row.base .wf-value{color:var(--violet)}
+.wf-row.add .wf-value{color:var(--success)}
+.wf-row.sub .wf-value{color:var(--danger)}
+.wf-row.total .wf-value{color:var(--pink-light);font-size:22px}
+ 
+.framework-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.fw-card{background:var(--glass);border:1px solid var(--border-soft);border-radius:14px;padding:18px 14px;text-align:center}
+.fw-letter{font-family:'Instrument Serif',serif;font-style:italic;font-size:42px;line-height:1;color:var(--pink-light);margin-bottom:4px}
+.fw-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dimmer);margin-bottom:10px}
+.fw-score-big{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:#fff;margin-bottom:6px}
+.fw-score-big .tot{font-size:12px;color:var(--ink-dimmer)}
+.fw-desc{font-size:11px;color:var(--ink-dim);line-height:1.45}
+.fw-composite{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(135deg,rgba(244,114,182,.1),rgba(139,92,246,.06));border:1px solid rgba(244,114,182,.25);border-radius:14px;padding:18px 22px;margin-bottom:16px}
+.fw-composite-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--pink-light);margin-bottom:4px}
+.fw-composite-score{font-family:'Instrument Serif',serif;font-style:italic;font-size:32px;color:#fff;line-height:1}
+.fw-composite-note{flex:1;font-size:12px;color:var(--ink-dim);line-height:1.5}
+ 
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.swot-box{border-radius:14px;padding:18px 20px;min-height:160px}
+.swot-s{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.22)}
+.swot-w{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.22)}
+.swot-o{background:rgba(196,181,253,.06);border:1px solid rgba(196,181,253,.22)}
+.swot-t{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.22)}
+.swot-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.swot-s .swot-lbl{color:var(--success)}
+.swot-w .swot-lbl{color:var(--danger)}
+.swot-o .swot-lbl{color:var(--violet)}
+.swot-t .swot-lbl{color:var(--warn)}
+.swot-box ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.swot-box li{font-size:12px;color:var(--ink-dim);line-height:1.5;padding-left:14px;position:relative}
+.swot-box li::before{content:'•';position:absolute;left:0;opacity:.5}
+ 
+.tension-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.tension-row{display:grid;grid-template-columns:80px 1.2fr 1.2fr;gap:14px;padding:14px 16px;background:var(--glass);border:1px solid var(--border-soft);border-radius:12px;align-items:flex-start}
+.tension-sig{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;text-align:center;white-space:nowrap;border:1px solid}
+.tension-sig.green{background:rgba(16,185,129,.12);color:var(--success);border-color:rgba(16,185,129,.3)}
+.tension-sig.yellow{background:rgba(251,191,36,.12);color:var(--warn);border-color:rgba(251,191,36,.3)}
+.tension-sig.red{background:rgba(239,68,68,.12);color:var(--danger);border-color:rgba(239,68,68,.3)}
+.tension-risk{font-size:13px;color:#fff;line-height:1.5}
+.tension-mit{font-size:12px;color:var(--ink-dim);line-height:1.5}
+ 
+.source-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:.3px;padding:12px 14px;background:rgba(10,8,22,.4);border:1px dashed rgba(255,255,255,.08);border-radius:10px;line-height:1.7;margin-top:12px;column-count:2;column-gap:20px}
+ 
+@media(max-width:1024px){
+  .exec-latest{grid-template-columns:1fr;gap:28px;padding:28px}
+  .exec-latest-title{font-size:34px}
+  .exec-section-wrap,.exec-archive-wrap{padding-left:24px;padding-right:24px}
+  .thesis-grid{grid-template-columns:1fr}
+  .dash-kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .counter-block{grid-template-columns:1fr}
+  .framework-grid{grid-template-columns:repeat(2,1fr)}
+  .swot-grid{grid-template-columns:1fr}
+  .tension-row{grid-template-columns:1fr}
+  .rank-item{grid-template-columns:44px 1fr;gap:12px}
+  .rank-stat{grid-column:1 / -1;text-align:left;padding-left:56px}
+  .exec-verdict-banner{grid-template-columns:1fr}
+  .source-note{column-count:1}
+}
+ 
 /* FOOTER */
 footer{border-top:1px solid var(--border-soft);padding:32px 48px;margin-top:40px;max-width:1360px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
 footer a{color:var(--ink-dimmer);transition:color .2s;margin-left:20px}
@@ -422,9 +608,9 @@ footer a:hover{color:var(--ink)}
     <span class="logo" onclick="goHome()">bizzed.ai</span>
     <div class="nav-center">
       <a href="https://www.bizzed.ai/">Product</a>
-      <a href="#archive">Research</a>
+      <a href="#exec-research">Reports</a>
+      <a href="#archive">Teardowns</a>
       <a href="https://www.bizzed.ai/">Pricing</a>
-      <a href="#archive">Blog</a>
     </div>
     <a href="https://www.bizzed.ai/get-started" class="nav-btn">Get Started →</a>
   </nav>
@@ -544,6 +730,83 @@ footer a:hover{color:var(--ink)}
         <div class="card-soon-footer"><span class="soon-pulse"></span>Every Tuesday · Free forever</div>
       </div>
  
+    </div>
+  </section>
+ 
+  <!-- EXECUTIVE RESEARCH — Sector deep-dives -->
+  <section class="exec-section-wrap" id="exec-research">
+    <div class="section-eb pink">Executive Research · Sector-level deep dives</div>
+    <div class="exec-intro">
+      <h2>Market <em>intelligence,</em><br>not just one deal.</h2>
+      <div class="exec-intro-sub">Every month we pick a sector, run it through our research stack, and publish the full market teardown. Acquisition thesis, fragmentation, valuation multiples, geography, and the read on where capital should go next.</div>
+    </div>
+ 
+    <div class="exec-latest">
+      <div>
+        <div class="exec-latest-tag"><span class="d"></span>RESEARCH #002 · APRIL 2026</div>
+        <div class="exec-latest-title">The <em>Pet Industry.</em><br>Why we're buyers.</div>
+        <div class="exec-latest-meta">$158B U.S. MARKET · 30+ YRS UNBROKEN GROWTH · 20,000+ INDEPENDENTS</div>
+        <div class="exec-latest-desc">A $158B recession-resilient sector with a fragmented non-vet services layer PE has barely touched. Entry at 2.77–3.32x SDE, exit potential 5–8x EBITDA. The full acquisition thesis, the three subsectors that matter, and the five markets to start in.</div>
+        <div class="exec-latest-verdict">
+          <span class="l">◉ OUR VERDICT</span>
+          <span class="r">Strong Buy — Non-Vet Services</span>
+        </div>
+        <button class="exec-latest-cta" onclick="openExecDoc('pet')">Read the full research →</button>
+      </div>
+      <div class="exec-preview">
+        <div class="exec-preview-hd"><span>PET · RESEARCH #002</span><span>AT A GLANCE</span></div>
+        <div class="exec-kpi-grid">
+          <div class="exec-kpi"><div class="n">$158B</div><div class="l">U.S. Market '25</div></div>
+          <div class="exec-kpi"><div class="n">8.78%</div><div class="l">Daycare CAGR</div></div>
+          <div class="exec-kpi"><div class="n">2.77x</div><div class="l">Entry SDE</div></div>
+          <div class="exec-kpi"><div class="n">5–8x</div><div class="l">Exit EBITDA</div></div>
+        </div>
+        <div>
+          <div class="exec-preview-caption"><span>Spend resilience · recession years</span><span style="color:var(--pink-light)">+16.2% '20</span></div>
+          <div class="exec-preview-chart">
+            <div class="bar-pv" style="height:40%"></div><div class="bar-pv" style="height:48%"></div>
+            <div class="bar-p" style="height:55%"></div><div class="bar-pv" style="height:62%"></div>
+            <div class="bar-p" style="height:92%"></div><div class="bar-pv" style="height:78%"></div>
+          </div>
+          <div class="exec-preview-labels"><span>'05</span><span>'07</span><span>'08</span><span>'15</span><span>'20</span><span>'25</span></div>
+        </div>
+        <div class="exec-preview-lock">🔒 FULL RESEARCH · SIGN UP TO UNLOCK</div>
+      </div>
+    </div>
+ 
+    <div class="exec-archive-wrap">
+      <div class="exec-archive-head">
+        <h3>— Past research</h3>
+        <div class="ct">1 PAST REPORT · 2026</div>
+      </div>
+      <div class="grid-3">
+        <div class="exec-card" onclick="openExecDoc('hvac')" role="button" tabindex="0">
+          <div class="exec-card-hd"><span class="exec-card-num">#001 · APR 2026</span><span class="exec-card-verdict v-focused">FOCUSED BUY</span></div>
+          <div class="exec-card-title">European HVAC Services.</div>
+          <div class="exec-card-meta">$15.7B MKT · 94% MICRO · 7% CAGR · GERMANY / UK</div>
+          <div class="exec-card-stats">
+            <div class="exec-card-s"><div class="n">3–6x</div><div class="l">Entry EBITDA</div></div>
+            <div class="exec-card-s"><div class="n">10–12x</div><div class="l">Platform Exit</div></div>
+            <div class="exec-card-s"><div class="n">52%</div><div class="l">Deal Fail Rate</div></div>
+          </div>
+          <div class="exec-card-desc">Maintenance-heavy European HVAC is a real rollup. But subsidy risk on installs, a hard labour ceiling, and cross-border complexity mean entry discipline matters more than the thesis.</div>
+          <div class="exec-card-foot"><span class="exec-card-read">Read now →</span><span class="exec-card-time">12 MIN READ</span></div>
+        </div>
+ 
+        <div class="card-soon">
+          <div class="card-soon-hd"><span style="color:var(--pink-light);font-size:10px;letter-spacing:1.5px">#003</span><span class="soon-badge" style="background:rgba(244,114,182,.08);color:var(--pink-light);border-color:rgba(244,114,182,.25)">Coming Soon</span></div>
+          <div class="card-soon-date">May 2026</div>
+          <div class="card-soon-label">Next sector deep-dive</div>
+          <div class="card-soon-footer"><span class="soon-pulse" style="background:rgba(244,114,182,.4)"></span>Monthly · Free with signup</div>
+        </div>
+ 
+        <div class="card-soon">
+          <div class="card-soon-hd"><span style="color:var(--pink-light);font-size:10px;letter-spacing:1.5px">#004</span><span class="soon-badge" style="background:rgba(244,114,182,.08);color:var(--pink-light);border-color:rgba(244,114,182,.25)">Coming Soon</span></div>
+          <div class="card-soon-date">Jun 2026</div>
+          <div class="card-soon-label">New market, new thesis</div>
+          <div class="card-soon-footer"><span class="soon-pulse" style="background:rgba(244,114,182,.4)"></span>Monthly · Built for operators</div>
+        </div>
+      </div>
     </div>
   </section>
  
@@ -864,6 +1127,491 @@ footer a:hover{color:var(--ink)}
   </div>
 </div><!-- /doc-page -->
  
+<!-- ================================================================
+     EXEC DOC — PET INDUSTRY (Research #002)
+================================================================ -->
+<div id="exec-doc-pet" style="display:none;position:relative;z-index:100;background:var(--bg);min-height:100vh">
+  <div class="bg-gradient" style="position:fixed;z-index:0"></div>
+  <div class="bg-grid" style="position:fixed;z-index:1"></div>
+  <div style="position:relative;z-index:3">
+ 
+    <div class="doc-topbar">
+      <div class="doc-back" onclick="closeExecDoc('pet')"><span class="doc-back-arr">←</span>Back to Research</div>
+      <div class="doc-brand">bizzed.ai</div>
+      <div class="doc-topbar-right">Research #002 · April 2026 · Confidential</div>
+    </div>
+ 
+    <div class="doc-body">
+ 
+      <!-- FREE SECTION -->
+      <div class="doc-eyebrow" style="color:var(--pink-light)">Executive Research · Sector Deep Dive · April 2026</div>
+      <div class="doc-title">The <em>Pet</em><br>Industry.</div>
+      <div class="doc-subtitle">$158B U.S. market · 30+ years of unbroken growth · 20,000+ independent operators · Yale-classified acyclical</div>
+ 
+      <div class="exec-verdict-banner">
+        <div class="dvb-cell"><div class="dvb-label">Verdict</div><div class="dvb-val">Strong Buy</div></div>
+        <div class="dvb-cell"><div class="dvb-label">Entry Multiple</div><div class="dvb-val" style="color:var(--violet)">2.77–3.32x SDE</div></div>
+        <div class="dvb-cell"><div class="dvb-label">Exit Multiple</div><div class="dvb-val" style="color:var(--pink-light)">5–8x EBITDA</div></div>
+      </div>
+ 
+      <div class="dash-kpi-grid">
+        <div class="dash-kpi"><div class="l">U.S. Market '25</div><div class="n">$158B</div><div class="sub">+3.7% YoY · $165B projected '26</div></div>
+        <div class="dash-kpi"><div class="l">Daycare CAGR</div><div class="n">8.78%</div><div class="sub">'25–'30 forecast — outpaces sector</div></div>
+        <div class="dash-kpi"><div class="l">Pet Households</div><div class="n">95M</div><div class="sub">+4M dog households YoY</div></div>
+        <div class="dash-kpi"><div class="l">Independent Ops</div><div class="n">20K+</div><div class="sub">Non-vet services · PE barely touched</div></div>
+      </div>
+ 
+      <!-- THE THESIS -->
+      <div class="doc-section">
+        <div class="doc-section-hd">The Thesis — Three Pillars</div>
+        <div class="thesis-grid">
+          <div class="thesis-card">
+            <div class="thesis-card-lbl">◉ Pillar 1</div>
+            <div class="thesis-card-ttl">Recession-resilient</div>
+            <div class="thesis-card-desc">Pet spending grew 5.1% in '08 and 16.2% in '20. Yale classifies non-vet pet services as acyclical — alongside eggs. 30+ years without a single down year.</div>
+          </div>
+          <div class="thesis-card">
+            <div class="thesis-card-lbl">◉ Pillar 2</div>
+            <div class="thesis-card-ttl">Fragmented market</div>
+            <div class="thesis-card-desc">No dominant national player in non-vet services. 20,000+ independent facilities. PE poured $51.6B into veterinary but left services wide open.</div>
+          </div>
+          <div class="thesis-card">
+            <div class="thesis-card-lbl">◉ Pillar 3</div>
+            <div class="thesis-card-ttl">Multiple arbitrage</div>
+            <div class="thesis-card-desc">Buy single locations at 2.77–3.32x SDE. Build a regional platform. Exit to PE at 5–8x EBITDA — the same playbook they ran in vet care.</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MARKET SEGMENTS -->
+      <div class="doc-section">
+        <div class="doc-section-hd">Market Structure — Where the $158B sits</div>
+        <div class="heatmap-wrap">
+          <table class="heatmap">
+            <thead><tr><th>Segment</th><th class="c">Market Size</th><th class="c">Growth</th><th>Key Characteristic</th></tr></thead>
+            <tbody>
+              <tr><td>Pet Food</td><td class="score-cell">~$65B+</td><td class="score-cell"><span class="s-7">6.2%</span></td><td>Largest segment; premium/fresh surging</td></tr>
+              <tr><td>Veterinary Care</td><td class="score-cell">~$38B+</td><td class="score-cell"><span class="s-8">Strong</span></td><td>Heavy PE consolidation; 32% price rise since '20</td></tr>
+              <tr style="background:rgba(244,114,182,.04)"><td style="color:var(--pink-light)">Pet Services (non-vet) ◆</td><td class="score-cell" style="color:var(--pink-light)">$14.3B</td><td class="score-cell"><span class="s-9">8.78%</span></td><td style="color:#e8e6f0"><strong>BizzedAI target — fragmented, PE-light, recurring</strong></td></tr>
+              <tr><td>Supplies / OTC</td><td class="score-cell">~$26.85B</td><td class="score-cell"><span class="s-5">1.64%</span></td><td>E-commerce dominant (51% share)</td></tr>
+              <tr><td>Live Animal Sales</td><td class="score-cell">~$3B+</td><td class="score-cell"><span class="s-6">Mod.</span></td><td>Adoption-driven; pandemic surge fading</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="counter-block">
+          <div class="counter-col arg">
+            <div class="counter-lbl">△ Counter-argument</div>
+            <div class="counter-body">Market size estimates vary across sources (APPA $158B vs. Mordor $155.4B). Roughly half of projected '26 growth is inflation-driven — real growth closer to 2.2%. The services sub-segment is normalizing post-COVID; some markets are now oversupplied.</div>
+          </div>
+          <div class="counter-col read">
+            <div class="counter-lbl">◆ BizzedAI read</div>
+            <div class="counter-body">Even at 2%+ real growth on $158B, that's still billions in incremental spend, and services grows faster than the whole. The inflation discount <em>strengthens</em> the thesis — unit demand is real, not nominal.</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- GATE -->
+      <div class="doc-gate-wrapper" id="gate-wrapper-pet">
+        <div class="doc-gate-card" id="gate-card-pet">
+          <span class="gate-lock-icon">🔐</span>
+          <div class="gate-kicker">Free · Keep reading the full research</div>
+          <div class="gate-title">The rest of the research is one step away.</div>
+          <div class="gate-desc">Enter your name and email and we'll send the full report straight to your inbox — including the <strong>top 3 subsectors, valuation multiples, top 5 geographic markets, example acquisition candidates, SOWS &amp; BRIT scorecards, SWOT analysis, and all 43 sources</strong>.</div>
+          <form id="gate-form-pet" class="gate-form" novalidate>
+            <div class="gate-name-row">
+              <input class="gate-input" id="gate-first-pet" type="text" placeholder="First name" required autocomplete="given-name">
+              <input class="gate-input" id="gate-last-pet"  type="text" placeholder="Last name"  required autocomplete="family-name">
+            </div>
+            <input class="gate-input" id="gate-email-pet" type="text" placeholder="you@acquireco.com" autocomplete="email">
+            <div class="gate-err-msg" id="gate-err-msg-pet">Please fill in all fields with a valid email.</div>
+            <button class="gate-btn" id="gate-btn-pet" type="button" onclick="tryUnlockExec('pet')">Unlock the Full Research ✦</button>
+          </form>
+          <div class="gate-fine">✓ FREE FOREVER &nbsp;·&nbsp; ✓ ONE EMAIL &nbsp;·&nbsp; ✓ ZERO SPAM<br>Unsubscribe with one click, any time.</div>
+        </div>
+ 
+        <div class="doc-gate-blur" id="gate-blur-pet">
+          <div id="gate-spacer-pet" style="height:520px;pointer-events:none"></div>
+ 
+          <!-- RECESSION RESILIENCE -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Recession Resilience — 30 Years of Data</div>
+            <div class="tension-grid">
+              <div class="tension-row"><span class="tension-sig green">GREEN</span><div class="tension-risk">2008 Great Recession</div><div class="tension-mit">Pet industry grew 5.1% in sales while overall retail dropped sharply. BLS: household pet spend rose from $430.80 ('07) to $570.88 ('08).</div></div>
+              <div class="tension-row"><span class="tension-sig green">GREEN</span><div class="tension-risk">2020 COVID Recession</div><div class="tension-mit">Pet sales grew 16.2% vs. 4.3% for the overall economy. ~23M households acquired a new pet in 2020–21. Spend climbed from $103B to $147B by '23.</div></div>
+              <div class="tension-row"><span class="tension-sig green">GREEN</span><div class="tension-risk">Yale Budget Lab — Acyclical</div><div class="tension-mit">Yale economist Tedeschi classified non-vet pet products as acyclical — ranked alongside eggs in resistance to business cycles. <strong>Vet care is procyclical</strong>; non-vet is not.</div></div>
+            </div>
+            <div class="counter-block">
+              <div class="counter-col arg">
+                <div class="counter-lbl">△ Counter-argument</div>
+                <div class="counter-body">22% of pet owners reported reduced spending in '25 (up 10% from '24) — pressure is building before a formal recession. The 2020 recession was uniquely favorable: lockdowns drove adoption and home-based pet spend simultaneously.</div>
+              </div>
+              <div class="counter-col read">
+                <div class="counter-lbl">◆ BizzedAI read</div>
+                <div class="counter-body">Weight acquisitions toward grooming (non-discretionary) and daycare (employment-driven). Be cautious about boarding-heavy operations that depend on discretionary travel. Set a minimum <em>60/40 daycare-grooming to boarding</em> revenue ratio as a screening threshold.</div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- TOP 3 SUBSECTORS -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Top 3 Acquisition Subsectors</div>
+            <div class="rank-list">
+              <div class="rank-item">
+                <div class="rank-num">1</div>
+                <div>
+                  <div class="rank-body-ttl">Dog Daycare &amp; Boarding</div>
+                  <div class="rank-body-desc">Recurring membership revenue, RTO tailwind, cross-sell anchor. Daycare drives ~74% of revenue at Dogtopia — recession-resistant (driven by work, not travel).</div>
+                </div>
+                <div class="rank-stat"><div class="n">$10.35B</div><div class="l">Combined size</div><div class="n" style="margin-top:8px">4.40x SDE</div><div class="l">'25 median</div></div>
+              </div>
+              <div class="rank-item">
+                <div class="rank-num">2</div>
+                <div>
+                  <div class="rank-body-ttl">Pet Grooming (Mobile + B&amp;M)</div>
+                  <div class="rank-body-desc">Non-discretionary recurring service. Sticky customer relationships — people don't switch groomers. Ideal bolt-on to any daycare platform.</div>
+                </div>
+                <div class="rank-stat"><div class="n">~$14.5B</div><div class="l">Combined</div><div class="n" style="margin-top:8px">2.77–3.32x</div><div class="l">SDE entry</div></div>
+              </div>
+              <div class="rank-item">
+                <div class="rank-num">3</div>
+                <div>
+                  <div class="rank-body-ttl">Training &amp; Behavior</div>
+                  <div class="rank-body-desc">High-margin bolt-on. COVID-puppy behavior backlog. Board-and-train commands $1K–$5K+ per dog and generates boarding revenue in parallel.</div>
+                </div>
+                <div class="rank-stat"><div class="n">Bolt-on</div><div class="l">Not standalone</div><div class="n" style="margin-top:8px">High</div><div class="l">Margin</div></div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- VALUATION -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Valuation Multiples — The Arbitrage</div>
+            <div class="heatmap-wrap">
+              <table class="heatmap">
+                <thead><tr><th>Business Type</th><th class="c">SDE Multiple</th><th class="c">EBITDA Multiple</th><th class="c">Revenue Multiple</th></tr></thead>
+                <tbody>
+                  <tr><td>Pet Grooming / Training / Boarding (small)</td><td class="score-cell"><span class="s-7">2.77–3.32x</span></td><td class="score-cell">3.56–4.10x</td><td class="score-cell">0.77–1.24x</td></tr>
+                  <tr><td>Dog Daycare / Boarding (BizBuySell '25)</td><td class="score-cell"><span class="s-8">4.40x</span></td><td class="score-cell">—</td><td class="score-cell">1.15x</td></tr>
+                  <tr><td>Franchise pet services</td><td class="score-cell">2.5–4.0x</td><td class="score-cell">2.5–4.0x</td><td class="score-cell">1.0–1.3x</td></tr>
+                  <tr><td>Vet clinics (comparison)</td><td class="score-cell">—</td><td class="score-cell"><span class="s-9">5–10x</span></td><td class="score-cell">Varies</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="doc-callout violet"><strong>The arbitrage.</strong> Acquire at 2.77–3.32x SDE → build to platform-scale → exit at 5–8x EBITDA. Same playbook PE ran in vet care, but with less regulatory complexity, lower capital requirements, and lower entry valuations. Time-sensitive — PE is catching on fast.</div>
+          </div>
+ 
+          <!-- TOP 5 METROS -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Top 5 Geographic Markets</div>
+            <div class="heatmap-wrap">
+              <table class="heatmap">
+                <thead><tr><th>Metro</th><th class="c">Score</th><th>Role</th><th>Rationale</th></tr></thead>
+                <tbody>
+                  <tr><td>Dallas-Fort Worth, TX</td><td class="score-cell"><span class="s-9">9.0</span></td><td>Primary beachhead</td><td>8M+ metro · 1.5–2% growth · $78K HHI · fragmented</td></tr>
+                  <tr><td>Austin, TX</td><td class="score-cell"><span class="s-8">8.8</span></td><td>Premium expansion</td><td>~75% pet households (highest in U.S.) · $87K HHI</td></tr>
+                  <tr><td>Charlotte, NC</td><td class="score-cell"><span class="s-8">8.5</span></td><td>Alt. beachhead</td><td>2.7M metro · less PE competition than DFW</td></tr>
+                  <tr><td>Nashville, TN</td><td class="score-cell"><span class="s-8">8.3</span></td><td>SE complement</td><td>Fast growth · K9 Resorts just entered</td></tr>
+                  <tr><td>Raleigh-Durham, NC</td><td class="score-cell"><span class="s-8">8.1</span></td><td>Charlotte pair</td><td>2.2M · 85mi from Charlotte · 4.9M combined</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="counter-block">
+              <div class="counter-col arg">
+                <div class="counter-lbl">△ Counter-argument</div>
+                <div class="counter-body">DFW's size means Dogtopia, Camp Bow Wow, Best Friends, and Digs Dog Care are already active in Texas. Austin is saturated; valuations run 2.5–4.0x revenue. Rising costs in fast-growing metros may exceed acquisition economics.</div>
+              </div>
+              <div class="counter-col read">
+                <div class="counter-lbl">◆ BizzedAI read</div>
+                <div class="counter-body">Focus on a specific sub-market within the chosen metro, not the whole metro. A cluster of 3–5 locations in a 30mi radius provides density for shared staffing, marketing, and brand recognition. <em>DFW northern suburbs</em> (Frisco, McKinney, Allen) or <em>Charlotte-Raleigh</em> are the two cleanest paths.</div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- SOWS FRAMEWORK -->
+          <div class="doc-section">
+            <div class="doc-section-hd">SOWS Framework — Consolidation Readiness</div>
+            <div class="framework-grid">
+              <div class="fw-card"><div class="fw-letter">S</div><div class="fw-label">Stale</div><div class="fw-score-big">8<span class="tot">/10</span></div><div class="fw-desc">Phone bookings and paper records still dominate; only 39% app-based scheduling.</div></div>
+              <div class="fw-card"><div class="fw-letter">O</div><div class="fw-label">Old</div><div class="fw-score-big">7<span class="tot">/10</span></div><div class="fw-desc">BizBuySell listings regularly show 15–20+ year operating histories.</div></div>
+              <div class="fw-card"><div class="fw-letter">W</div><div class="fw-label">Weak</div><div class="fw-score-big">8<span class="tot">/10</span></div><div class="fw-desc">Compete on proximity, not brand, tech, or differentiation.</div></div>
+              <div class="fw-card"><div class="fw-letter">S</div><div class="fw-label">Simple</div><div class="fw-score-big">9<span class="tot">/10</span></div><div class="fw-desc">No advanced tech, no specialized education, no complex supply chains.</div></div>
+            </div>
+            <div class="fw-composite">
+              <div>
+                <div class="fw-composite-lbl">Composite Score</div>
+                <div class="fw-composite-score">8.0 / 10</div>
+              </div>
+              <div class="fw-composite-note"><strong>Textbook consolidation candidate.</strong> Stale, weak independents at small scale with simple operations ready for professional management.</div>
+            </div>
+          </div>
+ 
+          <!-- BRIT FRAMEWORK -->
+          <div class="doc-section">
+            <div class="doc-section-hd">BRIT Framework — Investment Fit</div>
+            <div class="framework-grid">
+              <div class="fw-card"><div class="fw-letter">B</div><div class="fw-label">Buy</div><div class="fw-score-big">8<span class="tot">/10</span></div><div class="fw-desc">Median $211K SDE on $569K revenue — serviceable with SBA 7(a).</div></div>
+              <div class="fw-card"><div class="fw-letter">R</div><div class="fw-label">Resist</div><div class="fw-score-big">9<span class="tot">/10</span></div><div class="fw-desc">30+ years unbroken growth. Yale-classified acyclical.</div></div>
+              <div class="fw-card"><div class="fw-letter">I</div><div class="fw-label">Increase</div><div class="fw-score-big">8<span class="tot">/10</span></div><div class="fw-desc">Membership conversion, subscription CAGR 14.25%, smart cameras drive 52% more recurring clients.</div></div>
+              <div class="fw-card"><div class="fw-letter">T</div><div class="fw-label">Tech</div><div class="fw-score-big">7<span class="tot">/10</span></div><div class="fw-desc">Mobile bookings up 46%. Tech improves the business around the service, not the service itself.</div></div>
+            </div>
+            <div class="fw-composite">
+              <div>
+                <div class="fw-composite-lbl">Composite Score</div>
+                <div class="fw-composite-score">8.0 / 10</div>
+              </div>
+              <div class="fw-composite-note">Key interplay: <strong>Buy × Increase</strong> — willing to pay up to 3.5x SDE on targets with clearly untapped Increase levers. $200K SDE → $300K+ in 12–18 months compresses the effective multiple from 3.5x to 2.3x.</div>
+            </div>
+          </div>
+ 
+          <!-- SWOT -->
+          <div class="doc-section">
+            <div class="doc-section-hd">SWOT — Through the Acquirer's Lens</div>
+            <div class="swot-grid">
+              <div class="swot-box swot-s">
+                <div class="swot-lbl">◉ Strengths</div>
+                <ul>
+                  <li>30+ yrs unbroken growth; Yale-classified acyclical</li>
+                  <li>Recurring revenue (subscriptions 14.25% CAGR)</li>
+                  <li>34.2% median SDE margins (daycare/boarding)</li>
+                  <li>97% view pets as family — emotional stickiness</li>
+                  <li>Low regulatory burden vs. vet (no medical licensing)</li>
+                </ul>
+              </div>
+              <div class="swot-box swot-w">
+                <div class="swot-lbl">△ Weaknesses</div>
+                <ul>
+                  <li>Labor-intensive; groomer salaries $2K–$5K+/mo</li>
+                  <li>Key-person risk — clients follow groomers who leave</li>
+                  <li>Low barriers to entry for new competitors</li>
+                  <li>Liability exposure (bites, escapes, contagion)</li>
+                  <li>Demand normalization from 2021–22 peaks</li>
+                </ul>
+              </div>
+              <div class="swot-box swot-o">
+                <div class="swot-lbl">◆ Opportunities</div>
+                <ul>
+                  <li>Multiple arbitrage: 2.77–3.32x SDE → 5–8x+ EBITDA</li>
+                  <li>Tech deployment drives 52% more recurring clients</li>
+                  <li>Subscription conversion (71% still pay-as-you-go)</li>
+                  <li>Distressed acquisitions from COVID-era overexpansion</li>
+                  <li>Service bundling: $5K–$12K+ per customer annually</li>
+                </ul>
+              </div>
+              <div class="swot-box swot-t">
+                <div class="swot-lbl">▲ Threats</div>
+                <ul>
+                  <li>PE competition: Mosaic (72 locations), Frontenac (15/yr)</li>
+                  <li>Boarding recession sensitivity (travel-linked)</li>
+                  <li>Market saturation from 2020–23 new openings</li>
+                  <li>Regulatory risk: kennel licensing, zoning</li>
+                  <li>Tariff impact on adjacent pet products revenue</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- SOURCES -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Sources</div>
+            <div class="source-note">APPA, U.S. Pet Industry Reaches $158B in 2025 (Apr 2026) · PetsPlusMag, APPA Report (Mar 2026) · Grand View Research, U.S. Pet Daycare Market (2025) · Peak Business Valuation, Pet Training/Grooming/Boarding Multiples (Jan 2026) · Nasdaq, Pet Industry Recession-Resistant (Feb 2023) · Packaged Facts / Freedonia, U.S. Pet Market Outlook 2025–2026 · High Yield Harry, PE Invading Pet Care (Jan 2026) · Mergers &amp; Acquisitions, PE Pounces on Pet Platforms (Aug 2025) · Mordor Intelligence, U.S. Pet Market 2031 (Feb 2026) · Technavio, Pet Food Market Forecast (Mar 2026) · Boaz Partners / S&amp;P, PE in Animal Health (Nov 2025) · PetfoodIndustry, 100 Years of Pet Spending (Nov 2025) · Scenthound, Thriving Opportunities (Oct 2025) · Wagbar, Recession-Resistant Pet Franchises (2025) · SmartAsset, Economics of the Pet Industry (Aug 2025) · Global Future Foundation, Lipstick Effect (2025) · APPA Blog, Pet Industry in 2026 (Apr 2026) · Yale Budget Lab / Ernie Tedeschi (Apr 2025) · Dogtopia, Are Dog Daycares Recession-Resistant (Aug 2022) · IMPACT Marketing, Changing Demand for Dog Daycare (Sep 2024) · AAHA, Corporate Consolidation &amp; PE (Feb 2025) · Pet Age, Pet Industry M&amp;A 2025–2026 (Dec 2025) · BizBuySell, Daycare &amp; Boarding Multiples (2025) · Capstone Partners, Pet Sector Update (Mar 2026) · Grand View Research, Pet Boarding Market (2030) · Hepper, US Pet Industry Statistics 2026 · BizBuySell, Pet Service Businesses NY / NJ (2026) · Mordor Intelligence, Pet Daycare Market (Jan 2026) · Global Growth Insights, Dog Daycare Market Forecast (Dec 2025) · Mordor Intelligence, Pet Service Market Analysis (Mar 2026).</div>
+          </div>
+ 
+          <div class="doc-footer-bar">
+            <div class="doc-footer-back" onclick="closeExecDoc('pet')">← Back to Research</div>
+            <div>BizzedAI Executive Research · Pet Industry · April 2026 · Confidential</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="gate-unlocked-notice" id="gate-notice-pet">
+        <div class="gun-title">Full research unlocked — enjoy the read.</div>
+        <div class="gun-sub">The complete report is also on its way to your inbox.</div>
+      </div>
+ 
+    </div>
+  </div>
+</div><!-- /exec-doc-pet -->
+ 
+<!-- ================================================================
+     EXEC DOC — EUROPEAN HVAC (Research #001)
+================================================================ -->
+<div id="exec-doc-hvac" style="display:none;position:relative;z-index:100;background:var(--bg);min-height:100vh">
+  <div class="bg-gradient" style="position:fixed;z-index:0"></div>
+  <div class="bg-grid" style="position:fixed;z-index:1"></div>
+  <div style="position:relative;z-index:3">
+ 
+    <div class="doc-topbar">
+      <div class="doc-back" onclick="closeExecDoc('hvac')"><span class="doc-back-arr">←</span>Back to Research</div>
+      <div class="doc-brand">bizzed.ai</div>
+      <div class="doc-topbar-right">Research #001 · April 2026 · Confidential</div>
+    </div>
+ 
+    <div class="doc-body">
+ 
+      <div class="doc-eyebrow" style="color:var(--pink-light)">Executive Research · Market Intelligence · April 2026</div>
+      <div class="doc-title">European <em>HVAC</em><br>Services.</div>
+      <div class="doc-subtitle">$15.7B services market · 94% micro-operators · EPBD binding demand · Germany and UK as entry markets</div>
+ 
+      <div class="exec-verdict-banner focused">
+        <div class="dvb-cell"><div class="dvb-label">Verdict</div><div class="dvb-val">Focused Buy</div></div>
+        <div class="dvb-cell"><div class="dvb-label">Entry Multiple</div><div class="dvb-val" style="color:var(--violet)">3–6x EBITDA</div></div>
+        <div class="dvb-cell"><div class="dvb-label">Platform Exit</div><div class="dvb-val" style="color:var(--pink-light)">10–12x EBITDA</div></div>
+      </div>
+ 
+      <div class="dash-kpi-grid">
+        <div class="dash-kpi"><div class="l">Services Market '25</div><div class="n">$15.7B</div><div class="sub">Maintenance + install + repair</div></div>
+        <div class="dash-kpi"><div class="l">Services CAGR</div><div class="n">~7%</div><div class="sub">Forecast to $23.6B by '31</div></div>
+        <div class="dash-kpi"><div class="l">Micro-operators</div><div class="n">94%</div><div class="sub">~½ of sector employment</div></div>
+        <div class="dash-kpi"><div class="l">Deal Fail Rate</div><div class="n">52%</div><div class="sub">HVAC sale attempts that collapse</div></div>
+      </div>
+ 
+      <div class="doc-callout violet"><strong>The verdict.</strong> European HVAC maintenance is a real acquisition opportunity — defensible, recurring, structurally decoupled from economic cycles. But the install and retrofit side carries meaningful policy risk. <strong>Focus:</strong> maintenance-heavy operators, &gt;50% recurring revenue, single country first, Germany or UK entry.</div>
+ 
+      <!-- KEY TENSIONS -->
+      <div class="doc-section">
+        <div class="doc-section-hd">Key Tensions — What the Evidence Actually Supports</div>
+        <div class="heatmap-wrap">
+          <table class="heatmap">
+            <thead><tr><th>Claim</th><th>What the evidence supports</th><th>What requires qualification</th></tr></thead>
+            <tbody>
+              <tr><td>Europe 5–7 yrs behind US consolidation</td><td>PE activity and fragmentation metrics confirm early-stage market</td><td>US consolidated in a single legal framework; Europe may not resolve at same pace</td></tr>
+              <tr><td>Regulatory tailwinds are durable</td><td>EPBD mandatory inspections are legally binding regardless of politics</td><td>Subsidy-driven install demand is <strong>not</strong> durable — EHPA flagged tightening across the continent</td></tr>
+              <tr><td>Labour shortage is manageable</td><td>Scale helps with retention and training pipelines</td><td>Shortage is structural and demographic — it's a capacity ceiling, not a cost factor</td></tr>
+              <tr><td>Entry multiples of 3–6x widely available</td><td>Small founder-owned businesses do trade at these levels</td><td>Quality at these multiples is scarce; 52% fail rate raises effective sourcing cost</td></tr>
+              <tr><td>Platform exit at 10–12x achievable</td><td>Consistent with current recurring-revenue platform data</td><td>Requires solving labour, integration, and contract formalisation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+ 
+      <!-- GATE -->
+      <div class="doc-gate-wrapper" id="gate-wrapper-hvac">
+        <div class="doc-gate-card" id="gate-card-hvac">
+          <span class="gate-lock-icon">🔐</span>
+          <div class="gate-kicker">Free · Keep reading the full research</div>
+          <div class="gate-title">The rest of the research is one step away.</div>
+          <div class="gate-desc">Enter your name and email and we'll send the full report — including the <strong>country-by-country scorecard, valuation multiples, value-creation waterfall, five material execution risks, and strategic priorities</strong>.</div>
+          <form id="gate-form-hvac" class="gate-form" novalidate>
+            <div class="gate-name-row">
+              <input class="gate-input" id="gate-first-hvac" type="text" placeholder="First name" required autocomplete="given-name">
+              <input class="gate-input" id="gate-last-hvac"  type="text" placeholder="Last name"  required autocomplete="family-name">
+            </div>
+            <input class="gate-input" id="gate-email-hvac" type="text" placeholder="you@acquireco.com" autocomplete="email">
+            <div class="gate-err-msg" id="gate-err-msg-hvac">Please fill in all fields with a valid email.</div>
+            <button class="gate-btn" id="gate-btn-hvac" type="button" onclick="tryUnlockExec('hvac')">Unlock the Full Research ✦</button>
+          </form>
+          <div class="gate-fine">✓ FREE FOREVER &nbsp;·&nbsp; ✓ ONE EMAIL &nbsp;·&nbsp; ✓ ZERO SPAM<br>Unsubscribe with one click, any time.</div>
+        </div>
+ 
+        <div class="doc-gate-blur" id="gate-blur-hvac">
+          <div id="gate-spacer-hvac" style="height:520px;pointer-events:none"></div>
+ 
+          <!-- DEMAND DRIVERS -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Demand Drivers &amp; Regulatory Framework</div>
+            <div class="tension-grid">
+              <div class="tension-row"><span class="tension-sig green">BINDING</span><div class="tension-risk">EPBD (effective May 2024)</div><div class="tension-mit">Zero-emission standards for new buildings by 2030. Minimum energy performance for worst 16–26% of stock by 2030–2033. Non-discretionary service demand.</div></div>
+              <div class="tension-row"><span class="tension-sig green">BINDING</span><div class="tension-risk">EU F-Gas Regulations (updated 2024)</div><div class="tension-mit">Phase-down of high-GWP refrigerants creates mandatory service demand independent of new-build cycle.</div></div>
+              <div class="tension-row"><span class="tension-sig yellow">POLICY RISK</span><div class="tension-risk">Heat pump subsidies</div><div class="tension-mit">Sales fell 22% in '24 vs projections. EHPA flagged France, Germany, Italy, Wallonia, Poland all tightening schemes in '24–'25. Revenue tied to subsidies carries policy risk.</div></div>
+            </div>
+          </div>
+ 
+          <!-- COUNTRY SCORECARD -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Country Scorecard — Where to Enter</div>
+            <div class="heatmap-wrap">
+              <table class="heatmap">
+                <thead><tr><th>Market</th><th class="c">Policy</th><th class="c">Recurring Rev</th><th class="c">Labour</th><th class="c">Entry Mult</th><th>Recommendation</th></tr></thead>
+                <tbody>
+                  <tr><td>🇩🇪 Germany</td><td class="score-cell"><span class="s-8">8</span></td><td class="score-cell"><span class="s-7">7</span></td><td class="score-cell"><span class="s-5">5</span></td><td class="score-cell"><span class="s-8">8</span></td><td><strong>Start here.</strong> Largest market, binding legislation, motivated sellers.</td></tr>
+                  <tr><td>🇬🇧 United Kingdom</td><td class="score-cell"><span class="s-9">9</span></td><td class="score-cell"><span class="s-8">8</span></td><td class="score-cell"><span class="s-6">6</span></td><td class="score-cell"><span class="s-7">7</span></td><td>Strong alternative. Single jurisdiction, active M&amp;A ecosystem.</td></tr>
+                  <tr><td>🇳🇱 Netherlands</td><td class="score-cell"><span class="s-8">8</span></td><td class="score-cell"><span class="s-9">9</span></td><td class="score-cell"><span class="s-6">6</span></td><td class="score-cell"><span class="s-7">7</span></td><td>Second market, once DE or UK depth is established.</td></tr>
+                  <tr><td>🇫🇷 France</td><td class="score-cell"><span class="s-5">5</span></td><td class="score-cell"><span class="s-6">6</span></td><td class="score-cell"><span class="s-6">6</span></td><td class="score-cell"><span class="s-8">8</span></td><td>Attractive multiples, but subsidy volatility makes demand unpredictable.</td></tr>
+                  <tr><td>🇮🇹 Italy / 🇪🇸 Spain</td><td class="score-cell"><span class="s-6">6</span></td><td class="score-cell"><span class="s-4">4</span></td><td class="score-cell"><span class="s-5">5</span></td><td class="score-cell"><span class="s-9">9</span></td><td>Cheapest entry, lowest recurring maturity. Medium-term only.</td></tr>
+                  <tr><td>Eastern Europe</td><td class="score-cell"><span class="s-4">4</span></td><td class="score-cell"><span class="s-3">3</span></td><td class="score-cell"><span class="s-5">5</span></td><td class="score-cell"><span class="s-9">9</span></td><td>Too early. Policy instability and low recurring culture.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+ 
+          <!-- VALUATION -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Valuation Multiples — Europe vs US</div>
+            <div class="heatmap-wrap">
+              <table class="heatmap">
+                <thead><tr><th>Segment</th><th class="c">Europe ('25)</th><th class="c">US ('25)</th><th class="c">Discount</th></tr></thead>
+                <tbody>
+                  <tr><td>PE-led mid-market platform</td><td class="score-cell"><span class="s-9">11.2x</span></td><td class="score-cell">12.8x</td><td class="score-cell">~1.5x</td></tr>
+                  <tr><td>Corporate / strategic buyer</td><td class="score-cell"><span class="s-8">8.5x</span></td><td class="score-cell">9.9x</td><td class="score-cell">~1.4x</td></tr>
+                  <tr><td>Small founder-owned (&lt;3M EBITDA)</td><td class="score-cell"><span class="s-7">3–6x</span></td><td class="score-cell">3–8x</td><td class="score-cell">Aligned</td></tr>
+                  <tr><td>High-quality recurring-revenue platform</td><td class="score-cell"><span class="s-9">10–13x</span></td><td class="score-cell">Mid-teens</td><td class="score-cell">Europe discount</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+ 
+          <!-- VALUE CREATION WATERFALL -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Value Creation Pathway — Multiple Walk</div>
+            <div class="waterfall">
+              <div class="wf-row base"><div class="wf-label"><strong>Base:</strong> small founder-owned entry</div><div class="wf-value">4.5x</div></div>
+              <div class="wf-row add"><div class="wf-label"><strong>Formalise</strong> recurring revenue contracts</div><div class="wf-value">+2.5x</div></div>
+              <div class="wf-row add"><div class="wf-label"><strong>EBITDA scale</strong> via tuck-ins (back-office, procurement)</div><div class="wf-value">+4.0x</div></div>
+              <div class="wf-row add"><div class="wf-label"><strong>Mission-critical</strong> end-market exposure (data centres, healthcare)</div><div class="wf-value">+1.5x</div></div>
+              <div class="wf-row add"><div class="wf-label"><strong>Digital / IoT</strong> capability (BMS, compliance, predictive)</div><div class="wf-value">+1.5x</div></div>
+              <div class="wf-row sub"><div class="wf-label"><strong>Residual key-person risk</strong> if unresolved at integration</div><div class="wf-value">−1.5x</div></div>
+              <div class="wf-row total"><div class="wf-label"><strong>Platform exit</strong> to PE or strategic buyer</div><div class="wf-value">10–12x</div></div>
+            </div>
+          </div>
+ 
+          <!-- EXECUTION RISKS -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Five Material Execution Risks</div>
+            <div class="rank-list">
+              <div class="rank-item"><div class="rank-num">1</div><div><div class="rank-body-ttl">Labour market tightness</div><div class="rank-body-desc">80,000 certified HVAC technician vacancies across the EU. Demographic and structural — not cyclical. Revenue models need credible technician headcount plans from day one.</div></div><div class="rank-stat"><div class="n">80K</div><div class="l">Unfilled EU roles</div></div></div>
+              <div class="rank-item"><div class="rank-num">2</div><div><div class="rank-body-ttl">Owner dependence</div><div class="rank-body-desc">~52% of HVAC businesses that attempt a sale fail to complete. Map every customer and supplier before exclusivity. Budget sourcing overhead into the effective entry multiple.</div></div><div class="rank-stat"><div class="n">52%</div><div class="l">Deal fail rate</div></div></div>
+              <div class="rank-item"><div class="rank-num">3</div><div><div class="rank-body-ttl">Cross-border regulatory complexity</div><div class="rank-body-desc">Operating across jurisdictions requires distinct legal entities, country-specific employment frameworks, and local compliance. Build depth in one country before expanding.</div></div><div class="rank-stat"><div class="n">27</div><div class="l">Member states</div></div></div>
+              <div class="rank-item"><div class="rank-num">4</div><div><div class="rank-body-ttl">Quality asset scarcity</div><div class="rank-body-desc">Not everything at 4–5x is a bargain. Expect to screen 15–25 targets for every one that clears a quality threshold. Low multiples often reflect low quality.</div></div><div class="rank-stat"><div class="n">1:20</div><div class="l">Screen ratio</div></div></div>
+              <div class="rank-item"><div class="rank-num">5</div><div><div class="rank-body-ttl">Policy-dependent demand</div><div class="rank-body-desc">Heat pump installation demand is subsidy-driven. Subsidies have been revised at short notice. Prioritise businesses whose revenue comes from mandatory inspection, not subsidy availability.</div></div><div class="rank-stat"><div class="n">−22%</div><div class="l">HP sales '24</div></div></div>
+            </div>
+          </div>
+ 
+          <!-- STRATEGIC PRIORITIES -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Strategic Priorities</div>
+            <div class="doc-checklist">
+              <div class="chk-item"><span class="chk-badge crit">Priority 1</span><div><div class="chk-title">Start in one country</div><div class="chk-desc">Build operational depth in Germany or UK before cross-border expansion.</div></div></div>
+              <div class="chk-item"><span class="chk-badge crit">Priority 2</span><div><div class="chk-title">Target maintenance-heavy businesses</div><div class="chk-desc">&gt;50% recurring revenue is a non-negotiable screen.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">Priority 3</span><div><div class="chk-title">Treat labour as a primary asset</div><div class="chk-desc">Model technician headcount growth before revenue growth.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">Priority 4</span><div><div class="chk-title">Convert relationships to contracts post-acquisition</div><div class="chk-desc">Highest-returning, lowest-capital value creation lever.</div></div></div>
+              <div class="chk-item"><span class="chk-badge high">Priority 5</span><div><div class="chk-title">Diligence owner dependence explicitly</div><div class="chk-desc">Most common source of post-closing disappointment.</div></div></div>
+              <div class="chk-item"><span class="chk-badge med">Priority 6</span><div><div class="chk-title">Budget honestly for integration costs</div><div class="chk-desc">Cross-border complexity and compliance are systematically under-budgeted.</div></div></div>
+              <div class="chk-item"><span class="chk-badge med">Priority 7</span><div><div class="chk-title">Maintain quality discipline on price</div><div class="chk-desc">A low multiple on a poor business is not value.</div></div></div>
+            </div>
+          </div>
+ 
+          <!-- SOURCES -->
+          <div class="doc-section">
+            <div class="doc-section-hd">Sources</div>
+            <div class="source-note">BizzedAI Research · EHPA Annual Report 2025 · Capstone Partners HVAC Sector Update Q1 2026 · Kroll HVAC M&amp;A Overview 2025 · Mordor Intelligence 2026 · Research and Markets 2026 · Dealsuite M&amp;A Monitor H1 2025 · CLFI UK Multiples Report 2025 · Axial HVAC Valuation Data Q1 2026 · PKF Investment Banking HVAC Update 2025 · European Commission EPBD overview · European Labour Authority EURES Report 2024. This report does not constitute investment, financial, or legal advice. Market data figures are estimates and subject to revision.</div>
+          </div>
+ 
+          <div class="doc-footer-bar">
+            <div class="doc-footer-back" onclick="closeExecDoc('hvac')">← Back to Research</div>
+            <div>BizzedAI Executive Research · European HVAC · April 2026 · Confidential</div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="gate-unlocked-notice" id="gate-notice-hvac">
+        <div class="gun-title">Full research unlocked — enjoy the read.</div>
+        <div class="gun-sub">The complete report is also on its way to your inbox.</div>
+      </div>
+ 
+    </div>
+  </div>
+</div><!-- /exec-doc-hvac -->
+ 
 <script>
 /* ─── Brevo integration (via Cloudflare Function proxy) ─────────────────── */
 /**
@@ -1055,6 +1803,120 @@ document.addEventListener('keydown', function(e) {
 document.querySelectorAll('.card[tabindex]').forEach(function(c) {
   c.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') openDoc();
+  });
+});
+ 
+/* ─── Exec doc open / close / unlock ─────────────────────────────────────── */
+function openExecDoc(kind) {
+  var docId = 'exec-doc-' + kind;
+  var doc = document.getElementById(docId);
+  var mp  = document.getElementById('main-page');
+  if (!doc) return;
+  mp.style.display = 'none';
+  doc.style.display = 'block';
+  window.scrollTo(0, 0);
+  document.body.style.overflow = '';
+ 
+  // If user already signed up, silently unlock this doc
+  try {
+    var saved = localStorage.getItem('bizzed_user');
+    if (saved) {
+      var user = JSON.parse(saved);
+      var gf = document.getElementById('gate-first-' + kind);
+      var gl = document.getElementById('gate-last-' + kind);
+      var ge = document.getElementById('gate-email-' + kind);
+      if (gf) gf.value = user.first || '';
+      if (gl) gl.value = user.last  || '';
+      if (ge) ge.value = user.email || '';
+      unlockExecGate(kind, true);
+    }
+  } catch(e) {}
+}
+ 
+function closeExecDoc(kind) {
+  var docId = 'exec-doc-' + kind;
+  var doc = document.getElementById(docId);
+  if (doc) doc.style.display = 'none';
+  document.getElementById('main-page').style.display = 'block';
+  // scroll back to the exec research section, not the top
+  setTimeout(function(){
+    var t = document.getElementById('exec-research');
+    if (t) t.scrollIntoView({ behavior: 'instant', block: 'start' });
+    else window.scrollTo(0, 0);
+  }, 10);
+  document.body.style.overflow = '';
+}
+ 
+function unlockExecGate(kind, silent) {
+  var card   = document.getElementById('gate-card-' + kind);
+  var blur   = document.getElementById('gate-blur-' + kind);
+  var spacer = document.getElementById('gate-spacer-' + kind);
+  var notice = document.getElementById('gate-notice-' + kind);
+  if (!card) return;
+  card.style.display = 'none';
+  if (spacer) spacer.style.display = 'none';
+  blur.style.filter          = 'none';
+  blur.style.opacity         = '1';
+  blur.style.webkitMaskImage = 'none';
+  blur.style.maskImage       = 'none';
+  blur.style.pointerEvents   = 'auto';
+  blur.style.userSelect      = 'auto';
+  if (!silent && notice) {
+    notice.style.display = 'block';
+    notice.classList.add('show');
+  }
+}
+ 
+function tryUnlockExec(kind) {
+  var first = document.getElementById('gate-first-' + kind).value.trim();
+  var last  = document.getElementById('gate-last-'  + kind).value.trim();
+  var email = document.getElementById('gate-email-' + kind).value.trim();
+  var re    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var err   = document.getElementById('gate-err-msg-' + kind);
+  var btn   = document.getElementById('gate-btn-' + kind);
+  var ok = !!first && !!last && re.test(email);
+  if (!ok) {
+    if (err) err.classList.add('show');
+    ['first','last','email'].forEach(function(f) {
+      var el = document.getElementById('gate-' + f + '-' + kind);
+      if (el) {
+        var val = el.value.trim();
+        var bad = (f === 'email') ? !re.test(val) : !val;
+        if (bad) el.classList.add('err'); else el.classList.remove('err');
+      }
+    });
+    return;
+  }
+  if (err) err.classList.remove('show');
+  btn.disabled = true;
+  btn.textContent = 'Unlocking…';
+ 
+  try {
+    var existing = JSON.parse(localStorage.getItem('bizzed_user') || '{}');
+    localStorage.setItem('bizzed_user', JSON.stringify(Object.assign(existing, { first: first, last: last, email: email })));
+  } catch(e) {}
+ 
+  addToBrevo(email, first, last, 'exec-research-' + kind);
+  unlockExecGate(kind, false);
+}
+ 
+// Make exec archive cards keyboard-accessible too
+document.querySelectorAll('.exec-card[tabindex]').forEach(function(c) {
+  c.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      // infer kind from onclick attribute
+      var m = (c.getAttribute('onclick') || '').match(/openExecDoc\(['"](\w+)['"]\)/);
+      if (m) openExecDoc(m[1]);
+    }
+  });
+});
+ 
+// ESC closes exec docs too
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  ['pet','hvac'].forEach(function(k) {
+    var d = document.getElementById('exec-doc-' + k);
+    if (d && d.style.display === 'block') closeExecDoc(k);
   });
 });
 </script>
