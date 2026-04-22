@@ -23,11 +23,11 @@ body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-
 ::-webkit-scrollbar-thumb{background:rgba(196,181,253,.8);border-radius:4px}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
-
+ 
 canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55}
 .bg-grid{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%)}
 .content{position:relative;z-index:3}
-
+ 
 /* NAV */
 .nav{max-width:1360px;margin:0 auto;padding:24px 48px;display:flex;justify-content:space-between;align-items:center}
 .logo{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer}
@@ -37,7 +37,7 @@ canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.
 .nav-pill.active{color:#fff;border-color:rgba(196,181,253,.5);background:rgba(196,181,253,.1)}
 .nav-btn{background:var(--glass-strong);border:1px solid var(--border);color:#fff;padding:9px 18px;border-radius:10px;font-size:13px;backdrop-filter:blur(10px);transition:all .2s}
 .nav-btn:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
-
+ 
 /* PAGE HEADER */
 .page-header{max-width:1360px;margin:0 auto;padding:60px 48px 40px;text-align:center;animation:fadeUp .6s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -47,7 +47,7 @@ canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.
 .page-header h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
 .page-sub{font-size:17px;color:var(--ink-dim);max-width:540px;margin:0 auto 36px;line-height:1.6}
 .page-sub strong{color:#fff;font-weight:500}
-
+ 
 /* STATS BAR */
 .stats-bar{max-width:1360px;margin:0 auto;padding:0 48px 48px;display:flex;gap:0}
 .stat-item{flex:1;padding:20px 28px;border:1px solid var(--border-soft);background:var(--glass);backdrop-filter:blur(20px);text-align:center}
@@ -56,12 +56,12 @@ canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.
 .stat-item+.stat-item{border-left:none}
 .stat-n{font-family:'Instrument Serif',serif;font-style:italic;font-size:32px;color:var(--violet);line-height:1;margin-bottom:4px}
 .stat-l{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmer);letter-spacing:1.5px;text-transform:uppercase}
-
+ 
 /* FEATURED ISSUE */
 .featured-section{max-width:1360px;margin:0 auto;padding:0 48px 40px}
 .section-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;color:var(--violet);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .section-label::before{content:'';width:28px;height:1px;background:var(--violet)}
-
+ 
 .featured-card{background:var(--glass);border:1px solid rgba(196,181,253,.2);border-radius:24px;padding:40px;backdrop-filter:blur(30px);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;position:relative;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.3);cursor:pointer;transition:all .3s}
 .featured-card::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(196,181,253,.4),transparent 55%,rgba(139,92,246,.25));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .featured-card:hover{transform:translateY(-4px);box-shadow:0 50px 100px rgba(139,92,246,.2)}
@@ -91,7 +91,7 @@ canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.
 .fp-labels span{flex:1;text-align:center}
 .fp-labels span.hl{color:var(--danger)}
 .fp-lock{padding:12px;border-radius:10px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--violet);background:linear-gradient(135deg,rgba(196,181,253,.1),rgba(244,114,182,.06));border:1px dashed rgba(196,181,253,.3);margin-top:12px}
-
+ 
 /* ARCHIVE GRID */
 .archive-section{max-width:1360px;margin:0 auto;padding:20px 48px 60px}
 .archive-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px}
@@ -122,20 +122,207 @@ canvas#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.
 .card-soon-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(196,181,253,.3);text-transform:uppercase;margin-bottom:auto}
 .card-soon-footer{margin-top:28px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--ink-dimmest);text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .soon-pulse{width:6px;height:6px;background:rgba(196,181,253,.4);border-radius:50%;animation:pulse 2s infinite}
-
+ 
 footer{border-top:1px solid var(--border-soft);padding:32px 48px;margin-top:40px;max-width:1360px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-dimmest);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
 footer a{color:var(--ink-dimmer);transition:color .2s;margin-left:20px}
 footer a:hover{color:var(--ink)}
-
+ 
 @media(max-width:1024px){.featured-card{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.grid-3{grid-template-columns:1fr}.stats-bar{flex-direction:column}.stat-item{border-radius:0!important;border-top:none}.stat-item:first-child{border-radius:14px 14px 0 0!important;border-top:1px solid var(--border-soft)!important}}
+ 
+/* =============================================
+   DOC PAGE (REPORT OVERLAY)
+============================================= */
+#doc-page{display:none;position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;animation:docIn .35s ease both}
+#doc-page.open{display:block}
+@keyframes docIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+ 
+.doc-topbar{position:sticky;top:0;z-index:10;background:rgba(10,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-soft);padding:14px 48px;display:flex;justify-content:space-between;align-items:center}
+.doc-back{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--violet);text-transform:uppercase;cursor:pointer;transition:gap .2s}
+.doc-back:hover{gap:12px}
+.doc-brand{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;letter-spacing:-.5px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.doc-topbar-right{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1px;text-transform:uppercase}
+.doc-body{max-width:860px;margin:0 auto;padding:60px 48px 100px;position:relative;z-index:2}
+ 
+.doc-eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--violet);text-transform:uppercase;margin-bottom:28px}
+.doc-eyebrow::before{content:'';width:32px;height:1px;background:var(--violet)}
+.doc-title{font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:-2.5px;font-weight:600;margin-bottom:16px}
+.doc-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--violet)}
+.doc-subtitle{font-size:16px;color:var(--ink-dim);line-height:1.6;max-width:640px;margin-bottom:32px}
+.doc-verdict-banner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:16px;overflow:hidden;margin-bottom:48px;border:1px solid var(--border)}
+.dvb-cell{background:var(--glass);padding:20px 24px;display:flex;flex-direction:column;gap:4px}
+.dvb-cell:first-child{background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(251,191,36,.04))}
+.dvb-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dimmest)}
+.dvb-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:var(--warn);line-height:1}
+.doc-stats{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap}
+.doc-stat{background:var(--glass);border:1px solid var(--border-soft);border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;flex:1;min-width:100px}
+.doc-stat .n{font-family:'Instrument Serif',serif;font-style:italic;font-size:24px;color:var(--violet);line-height:1}
+.doc-stat .l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-dimmer)}
+.doc-section{margin-bottom:48px}
+.doc-section-hd{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.doc-section-hd::after{content:'';flex:1;height:1px;background:var(--border-soft)}
+.doc-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.doc-table th{text-align:left;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dimmer);border-bottom:1px solid var(--border);background:rgba(10,8,22,.4)}
+.doc-table td{padding:12px 14px;font-size:13px;color:var(--ink-dim);line-height:1.5;border-bottom:1px solid var(--border-soft);vertical-align:top}
+.doc-table tr:hover td{background:rgba(255,255,255,.02)}
+.doc-table td:first-child{color:#fff;font-weight:500;font-size:12px}
+.row-warn td{background:rgba(239,68,68,.04)!important}
+.row-warn td:first-child{color:var(--danger)}
+.doc-callout{border-radius:14px;padding:20px 22px;margin-bottom:16px;font-size:13px;line-height:1.6}
+.doc-callout.warn{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.25);color:var(--ink-dim)}
+.doc-callout.warn strong{color:var(--warn)}
+.doc-callout.danger{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);color:var(--ink-dim)}
+.doc-callout.danger strong{color:var(--danger)}
+.doc-callout.violet{background:rgba(196,181,253,.06);border:1px solid rgba(196,181,253,.2);color:var(--ink-dim)}
+.doc-callout.violet strong{color:var(--violet)}
+.doc-checklist{display:flex;flex-direction:column;gap:10px}
+.chk-item{display:flex;gap:14px;align-items:flex-start;background:var(--glass);border:1px solid var(--border-soft);border-radius:12px;padding:14px 16px}
+.chk-badge{flex-shrink:0;padding:3px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;margin-top:1px}
+.chk-badge.crit{background:rgba(239,68,68,.2);color:var(--danger);border:1px solid rgba(239,68,68,.3)}
+.chk-badge.high{background:rgba(251,191,36,.15);color:var(--warn);border:1px solid rgba(251,191,36,.25)}
+.chk-badge.med{background:rgba(196,181,253,.1);color:var(--violet);border:1px solid rgba(196,181,253,.2)}
+.chk-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:3px}
+.chk-desc{font-size:12px;color:var(--ink-dim);line-height:1.5}
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.offer-box{border-radius:14px;padding:20px}
+.offer-box.a{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2)}
+.offer-box.b{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.2)}
+.offer-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.offer-box.a .offer-label{color:var(--danger)}
+.offer-box.b .offer-label{color:var(--success)}
+.offer-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;gap:12px}
+.offer-row:last-child{border-bottom:none}
+.offer-row-k{color:var(--ink-dimmer);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px}
+.offer-row-v{color:#fff;font-weight:500;text-align:right;font-size:12px}
+.flag-list{display:flex;flex-direction:column;gap:8px}
+.flag-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5}
+.flag-item.green{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.15);color:var(--ink-dim)}
+.flag-item.red{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);color:var(--ink-dim)}
+.flag-item .icon{flex-shrink:0;width:20px;text-align:center;margin-top:1px}
+.flag-item strong{color:#fff}
+.doc-chart{background:rgba(10,8,22,.5);padding:12px 12px 4px;border-radius:12px;border:1px solid var(--border-soft);display:flex;align-items:flex-end;gap:6px;height:100px}
+.doc-chart div{flex:1;border-radius:4px 4px 0 0}
+.doc-chart-labels{display:flex;gap:6px;margin-top:8px;padding:0 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmer)}
+.doc-chart-labels span{flex:1;text-align:center}
+.doc-chart-labels span.hl{color:var(--danger)}
+.doc-footer-bar{margin-top:80px;padding-top:24px;border-top:1px solid var(--border-soft);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1px}
+.doc-footer-back{display:flex;align-items:center;gap:8px;color:var(--violet);cursor:pointer;text-transform:uppercase;letter-spacing:1.5px;font-size:10px;transition:gap .2s}
+.doc-footer-back:hover{gap:12px}
+ 
+/* GATE */
+.doc-gate-wrapper{position:relative}
+.doc-gate-blur{filter:blur(6px);opacity:.4;pointer-events:none;user-select:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);transition:filter .5s ease,opacity .5s ease}
+.doc-gate-card{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:min(540px,100%);z-index:10;background:rgba(8,6,20,.9);border:1px solid rgba(196,181,253,.28);border-radius:24px;padding:44px 40px;backdrop-filter:blur(40px);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(196,181,253,.06);text-align:center}
+.doc-gate-card::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(196,181,253,.5),transparent 50%,rgba(244,114,182,.3));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.gate-lock-icon{font-size:36px;margin-bottom:18px;display:block;filter:drop-shadow(0 0 16px rgba(196,181,253,.5))}
+.gate-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:10px}
+.gate-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;line-height:1.1;color:#fff;margin-bottom:12px}
+.gate-desc{font-size:13px;color:var(--ink-dim);line-height:1.65;margin-bottom:28px;max-width:380px;margin-left:auto;margin-right:auto}
+.gate-desc strong{color:#fff}
+.gate-form{display:flex;flex-direction:column;gap:10px}
+.gate-name-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gate-input{width:100%;padding:14px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(196,181,253,.18);border-radius:11px;color:#fff;font-size:14px;outline:none;font-family:'Instrument Sans',sans-serif;transition:border-color .2s,background .2s}
+.gate-input::placeholder{color:var(--ink-dimmest)}
+.gate-input:focus{border-color:rgba(196,181,253,.45);background:rgba(255,255,255,.09)}
+.gate-input.err{border-color:rgba(239,68,68,.55)}
+.gate-btn{width:100%;padding:16px;margin-top:4px;background:linear-gradient(135deg,var(--violet-deep),var(--pink));color:#fff;border-radius:12px;font-size:15px;font-weight:600;box-shadow:0 10px 32px rgba(139,92,246,.45);transition:all .2s;letter-spacing:.3px}
+.gate-btn:hover{transform:translateY(-1px);box-shadow:0 14px 40px rgba(139,92,246,.6)}
+.gate-btn:disabled{opacity:.55;cursor:default;transform:none}
+.gate-fine{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:.5px;margin-top:14px;line-height:1.6}
+.gate-err-msg{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--danger);margin-top:8px;display:none;letter-spacing:.3px}
+.doc-gate-wrapper.unlocked .doc-gate-card{display:none}
+.doc-gate-wrapper.unlocked .doc-gate-blur{filter:none;opacity:1;pointer-events:auto;user-select:auto;-webkit-mask-image:none;mask-image:none;animation:contentReveal .65s ease both}
+@keyframes contentReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.gate-unlocked-notice{display:none;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28);border-radius:16px;padding:20px 24px;margin-bottom:36px;text-align:center}
+.gate-unlocked-notice.show{display:block;animation:fadeUp .5s ease both}
+.gun-title{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--success);margin-bottom:5px}
+.gun-sub{font-size:13px;color:var(--ink-dim)}
+ 
+/* =============================================
+   DD HEALTH DASHBOARD (new at top of report)
+============================================= */
+.dd-dashboard{background:rgba(10,8,22,.6);border:1px solid rgba(196,181,253,.18);border-radius:24px;padding:32px;margin-bottom:40px;position:relative;overflow:hidden}
+.dd-dashboard::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(196,181,253,.3),transparent 50%,rgba(139,92,246,.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.dd-dash-hd{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2.5px;color:var(--violet);text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.dd-dash-hd::before{content:'';width:28px;height:1px;background:var(--violet)}
+.dd-scores-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px}
+.dd-score-item{display:flex;flex-direction:column;align-items:center;gap:10px}
+.dd-ring-wrap{position:relative;width:110px;height:110px}
+.dd-ring-wrap svg{width:110px;height:110px;transform:rotate(-90deg)}
+.dd-ring-bg{fill:none;stroke:rgba(255,255,255,.07);stroke-width:8}
+.dd-ring-fill{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.25,.46,.45,.94)}
+.dd-ring-fill.brit{stroke:url(#gradBrit)}
+.dd-ring-fill.bizzed{stroke:url(#gradBizzed)}
+.dd-ring-fill.sows{stroke:url(#gradSows)}
+.dd-ring-fill.deal{stroke:url(#gradDeal)}
+.dd-ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.dd-ring-pct{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:#fff;line-height:1}
+.dd-ring-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--ink-dimmest);text-transform:uppercase}
+.dd-score-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--ink-dim);text-transform:uppercase;text-align:center}
+ 
+/* Dealbreaker ring — inverted color (low = good) */
+.dd-ring-fill.deal-low{stroke:url(#gradDealGood)}
+.dd-ring-fill.deal-high{stroke:url(#gradDealBad)}
+ 
+/* Verdict strip */
+.dd-verdict-strip{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(251,191,36,.04));border:1px solid rgba(251,191,36,.3);border-radius:14px;padding:16px 20px;margin-bottom:24px}
+.dd-verdict-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--warn);text-transform:uppercase}
+.dd-verdict-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--warn);flex:1}
+.dd-verdict-score{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--warn);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);padding:6px 14px;border-radius:8px}
+ 
+/* Key Risk Factors */
+.dd-risks-hd{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--ink-dimmer);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dd-risks-hd .dd-risk-icon{color:var(--danger)}
+.dd-risk-rows{display:flex;flex-direction:column;gap:6px}
+.dd-risk-row{border-radius:8px;overflow:hidden}
+.dd-risk-hd{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .15s;user-select:none}
+.dd-risk-row.crit .dd-risk-hd{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.22)}
+.dd-risk-row.high .dd-risk-hd{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2)}
+.dd-risk-row.str  .dd-risk-hd{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2)}
+.dd-risk-row.crit .dd-risk-hd:hover{background:rgba(239,68,68,.14)}
+.dd-risk-row.high .dd-risk-hd:hover{background:rgba(251,191,36,.12)}
+.dd-risk-row.str  .dd-risk-hd:hover{background:rgba(16,185,129,.12)}
+.dd-risk-badge{flex-shrink:0;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid}
+.dd-risk-row.crit .dd-risk-badge{background:rgba(239,68,68,.2);color:var(--danger);border-color:rgba(239,68,68,.35)}
+.dd-risk-row.high .dd-risk-badge{background:rgba(251,191,36,.15);color:var(--warn);border-color:rgba(251,191,36,.3)}
+.dd-risk-row.str  .dd-risk-badge{background:rgba(16,185,129,.15);color:var(--success);border-color:rgba(16,185,129,.3)}
+.dd-risk-title{font-size:13px;font-weight:600;flex:1;line-height:1.3}
+.dd-risk-row.crit .dd-risk-title{color:#fca5a5}
+.dd-risk-row.high .dd-risk-title{color:#fde68a}
+.dd-risk-row.str  .dd-risk-title{color:#6ee7b7}
+.dd-risk-arrow{font-size:10px;transition:transform .2s;flex-shrink:0}
+.dd-risk-row.open .dd-risk-arrow{transform:rotate(180deg)}
+.dd-risk-row.crit .dd-risk-arrow{color:var(--danger)}
+.dd-risk-row.high .dd-risk-arrow{color:var(--warn)}
+.dd-risk-row.str  .dd-risk-arrow{color:var(--success)}
+.dd-risk-body{display:none;padding:10px 14px;font-size:12px;color:var(--ink-dim);line-height:1.6}
+.dd-risk-row.open .dd-risk-body{display:block}
+.dd-risk-row.crit .dd-risk-body{background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.15);border-top:none}
+.dd-risk-row.high .dd-risk-body{background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.12);border-top:none}
+.dd-risk-row.str  .dd-risk-body{background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);border-top:none}
+.dd-risk-group-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin:12px 0 6px;display:flex;align-items:center;gap:6px;color:var(--ink-dimmer)}
+.dd-risk-group-lbl:first-child{margin-top:0}
+.dd-risk-group-lbl.crit{color:var(--danger)}
+.dd-risk-group-lbl.high{color:var(--warn)}
+.dd-risk-group-lbl.str{color:var(--success)}
+ 
+@media(max-width:700px){
+  .dd-scores-row{grid-template-columns:repeat(2,1fr)}
+  .doc-topbar{padding:14px 20px}
+  .doc-body{padding:40px 20px 80px}
+  .doc-verdict-banner{grid-template-columns:1fr}
+  .offer-grid{grid-template-columns:1fr}
+  .gate-name-row{grid-template-columns:1fr}
+  .doc-gate-card{padding:32px 22px}
+  .gate-title{font-size:24px}
+}
 </style>
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
 <div class="bg-grid"></div>
-<div class="content">
-
+<div class="content" id="listing-page">
+ 
   <nav class="nav">
     <a href="index.html" class="logo">bizzed.ai</a>
     <div class="nav-center">
@@ -146,13 +333,13 @@ footer a:hover{color:var(--ink)}
     </div>
     <a href="https://www.bizzed.ai/get-started" class="nav-btn">Get Started →</a>
   </nav>
-
+ 
   <section class="page-header">
     <div class="page-eyebrow">Weekly · Free Forever · Since 2024</div>
     <h1>Deal <em>Teardowns</em></h1>
     <p class="page-sub">Every Tuesday, one real SMB listing run through <strong>17 specialized AI agents</strong>. Financials, red flags, downside models, verdict. Built for serious buyers.</p>
   </section>
-
+ 
   <div class="stats-bar">
     <div class="stat-item"><div class="stat-n">48</div><div class="stat-l">Issues Published</div></div>
     <div class="stat-item"><div class="stat-n">17</div><div class="stat-l">AI Agents Per Deal</div></div>
@@ -160,10 +347,10 @@ footer a:hover{color:var(--ink)}
     <div class="stat-item"><div class="stat-n">Tue</div><div class="stat-l">Weekly Cadence</div></div>
     <div class="stat-item"><div class="stat-n">1,842</div><div class="stat-l">Subscribers</div></div>
   </div>
-
+ 
   <section class="featured-section">
     <div class="section-label">Latest issue · live now</div>
-    <div class="featured-card" onclick="window.location='index.html?report=048'">
+    <div class="featured-card" onclick="openDoc('048')">
       <div>
         <div class="ft-tag"><span class="d"></span>ISSUE #048 · APRIL 15, 2026</div>
         <div class="ft-title">Albany Metro <em>HVAC.</em><br>Buy it, or walk?</div>
@@ -192,14 +379,14 @@ footer a:hover{color:var(--ink)}
       </div>
     </div>
   </section>
-
+ 
   <section class="archive-section" id="archive">
     <div class="archive-head">
       <h2>The <em>archive.</em></h2>
       <div class="archive-count">1 PAST ISSUE · 2026</div>
     </div>
     <div class="grid-3">
-      <div class="card" onclick="window.location='index.html?report=048'" role="button" tabindex="0">
+      <div class="card" onclick="openDoc('048')" role="button" tabindex="0">
         <div class="card-hd"><span class="card-num">#048 · APR 15</span><span class="card-verdict v-cond">CONDITIONAL BUY</span></div>
         <div class="card-title">Albany Metro HVAC.</div>
         <div class="card-meta">$4.36M REV · 17 EMPLOYEES · HVAC / SHEET METAL</div>
@@ -243,7 +430,7 @@ footer a:hover{color:var(--ink)}
       </div>
     </div>
   </section>
-
+ 
   <footer>
     <div>© 2026 Bizzed AI · Due Diligence, Reimagined</div>
     <div>
@@ -253,9 +440,502 @@ footer a:hover{color:var(--ink)}
       <a href="#">Privacy</a>
     </div>
   </footer>
-
-</div>
+ 
+</div><!-- /listing-page -->
+ 
+<!-- ================================================================
+     DOCUMENT PAGE — ALBANY METRO HVAC #048
+================================================================ -->
+<div id="doc-page">
+ 
+  <div class="doc-topbar">
+    <button class="doc-back" onclick="closeDoc()">← Back to Teardowns</button>
+    <span class="doc-brand">bizzed.ai</span>
+    <span class="doc-topbar-right">Issue #048 · Apr 15, 2026</span>
+  </div>
+ 
+  <div class="doc-body">
+ 
+    <div class="doc-eyebrow">Weekly Deal Teardown · Issue #048</div>
+    <h1 class="doc-title">Albany Metro <em>HVAC.</em></h1>
+    <p class="doc-subtitle">$4.36M revenue · 17 employees · 18-year-old business · Asking $2.4M · SBA pre-approved @ $1M</p>
+ 
+    <!-- =========================================
+         DD HEALTH DASHBOARD
+    ========================================= -->
+    <div class="dd-dashboard">
+      <div class="dd-dash-hd">Deal Health Overview</div>
+ 
+      <!-- SVG gradient defs (hidden) -->
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="gradBrit" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#c4b5fd"/>
+            <stop offset="100%" stop-color="#8b5cf6"/>
+          </linearGradient>
+          <linearGradient id="gradBizzed" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f472b6"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+          <linearGradient id="gradSows" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6ee7b7"/>
+            <stop offset="100%" stop-color="#10b981"/>
+          </linearGradient>
+          <linearGradient id="gradDealGood" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6ee7b7"/>
+            <stop offset="100%" stop-color="#10b981"/>
+          </linearGradient>
+          <linearGradient id="gradDealBad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#fca5a5"/>
+            <stop offset="100%" stop-color="#ef4444"/>
+          </linearGradient>
+        </defs>
+      </svg>
+ 
+      <!-- 4 score rings -->
+      <div class="dd-scores-row">
+        <!-- BRIT Potential -->
+        <div class="dd-score-item">
+          <div class="dd-ring-wrap">
+            <svg viewBox="0 0 110 110">
+              <circle class="dd-ring-bg" cx="55" cy="55" r="46"/>
+              <circle class="dd-ring-fill brit" cx="55" cy="55" r="46"
+                data-pct="62"
+                stroke-dasharray="289"
+                stroke-dashoffset="289"/>
+            </svg>
+            <div class="dd-ring-center">
+              <span class="dd-ring-pct" data-target="62">0%</span>
+              <span class="dd-ring-sub">BRIT</span>
+            </div>
+          </div>
+          <span class="dd-score-lbl">BRIT Potential</span>
+        </div>
+        <!-- Bizzed Score -->
+        <div class="dd-score-item">
+          <div class="dd-ring-wrap">
+            <svg viewBox="0 0 110 110">
+              <circle class="dd-ring-bg" cx="55" cy="55" r="46"/>
+              <circle class="dd-ring-fill bizzed" cx="55" cy="55" r="46"
+                data-pct="58"
+                stroke-dasharray="289"
+                stroke-dashoffset="289"/>
+            </svg>
+            <div class="dd-ring-center">
+              <span class="dd-ring-pct" data-target="58">0%</span>
+              <span class="dd-ring-sub">Score</span>
+            </div>
+          </div>
+          <span class="dd-score-lbl">Bizzed Score</span>
+        </div>
+        <!-- SOWS Score -->
+        <div class="dd-score-item">
+          <div class="dd-ring-wrap">
+            <svg viewBox="0 0 110 110">
+              <circle class="dd-ring-bg" cx="55" cy="55" r="46"/>
+              <circle class="dd-ring-fill sows" cx="55" cy="55" r="46"
+                data-pct="55"
+                stroke-dasharray="289"
+                stroke-dashoffset="289"/>
+            </svg>
+            <div class="dd-ring-center">
+              <span class="dd-ring-pct" data-target="55">0%</span>
+              <span class="dd-ring-sub">SOWS</span>
+            </div>
+          </div>
+          <span class="dd-score-lbl">SOWS Score</span>
+        </div>
+        <!-- Dealbreaker Score (lower = better) -->
+        <div class="dd-score-item">
+          <div class="dd-ring-wrap">
+            <svg viewBox="0 0 110 110">
+              <circle class="dd-ring-bg" cx="55" cy="55" r="46"/>
+              <circle class="dd-ring-fill deal-high" cx="55" cy="55" r="46"
+                data-pct="34"
+                stroke-dasharray="289"
+                stroke-dashoffset="289"/>
+            </svg>
+            <div class="dd-ring-center">
+              <span class="dd-ring-pct" data-target="34">0%</span>
+              <span class="dd-ring-sub">Risk</span>
+            </div>
+          </div>
+          <span class="dd-score-lbl">Dealbreaker Score</span>
+        </div>
+      </div>
+ 
+      <!-- Verdict strip -->
+      <div class="dd-verdict-strip">
+        <span class="dd-verdict-badge">◉ Verdict</span>
+        <span class="dd-verdict-val">Conditional Buy @ $1.9M</span>
+        <span class="dd-verdict-score">62 / 100</span>
+      </div>
+ 
+      <!-- Key Risk Factors -->
+      <div class="dd-risks-hd"><span class="dd-risk-icon">⚠</span> Key Risk Factors</div>
+      <div class="dd-risk-rows">
+        <div class="dd-risk-group-lbl crit">⬤ Critical Risks</div>
+        <div class="dd-risk-row crit" onclick="this.classList.toggle('open')">
+          <div class="dd-risk-hd">
+            <span class="dd-risk-badge">CRITICAL</span>
+            <span class="dd-risk-title">Owner Holds All Licenses — Transfer Uncertainty</span>
+            <span class="dd-risk-arrow">▼</span>
+          </div>
+          <div class="dd-risk-body">The retiring owner is the license holder for HVAC contracting in New York. License transfer or re-testing timelines can take 3–12 months, halting operations. Escrow release must be contingent on successful transfer.</div>
+        </div>
+        <div class="dd-risk-row crit" onclick="this.classList.toggle('open')">
+          <div class="dd-risk-hd">
+            <span class="dd-risk-badge">CRITICAL</span>
+            <span class="dd-risk-title">80% Revenue from Single GC Customer</span>
+            <span class="dd-risk-arrow">▼</span>
+          </div>
+          <div class="dd-risk-body">Roughly 80% of revenue flows from one general contractor. Loss of this client post-acquisition would be catastrophic. Require multi-year contract guarantees or a significant price adjustment before proceeding.</div>
+        </div>
+        <div class="dd-risk-group-lbl high">⬤ High Risks</div>
+        <div class="dd-risk-row high" onclick="this.classList.toggle('open')">
+          <div class="dd-risk-hd">
+            <span class="dd-risk-badge">HIGH</span>
+            <span class="dd-risk-title">2023 SDE Collapse — Unverified Recovery</span>
+            <span class="dd-risk-arrow">▼</span>
+          </div>
+          <div class="dd-risk-body">SDE dropped sharply in 2023 before recovering in 2024–25. The cause has not been independently verified. A QoE must explain and validate the recovery before any earnout or full price is paid.</div>
+        </div>
+        <div class="dd-risk-row high" onclick="this.classList.toggle('open')">
+          <div class="dd-risk-hd">
+            <span class="dd-risk-badge">HIGH</span>
+            <span class="dd-risk-title">SBA Covers Only $1M of $2.4M Ask</span>
+            <span class="dd-risk-arrow">▼</span>
+          </div>
+          <div class="dd-risk-body">The buyer must fund a $1.4M gap through equity and seller financing. At $1.9M the payback drops from 3.8 to 2.7 years, making the deal workable — but only at the counter-price.</div>
+        </div>
+        <div class="dd-risk-group-lbl str">⬤ Key Strengths</div>
+        <div class="dd-risk-row str" onclick="this.classList.toggle('open')">
+          <div class="dd-risk-hd">
+            <span class="dd-risk-badge">STRENGTH</span>
+            <span class="dd-risk-title">In-House Sheet Metal Fab — Real Competitive Moat</span>
+            <span class="dd-risk-arrow">▼</span>
+          </div>
+          <div class="dd-risk-body">In-house fabrication captures margin that competitors send out. It's capital-intensive to replicate and adds genuine enterprise value beyond cash flow. A defensible operational advantage.</div>
+        </div>
+        <div class="dd-risk-row str" onclick="this.classList.toggle('open')">
+          <div class="dd-risk-hd">
+            <span class="dd-risk-badge">STRENGTH</span>
+            <span class="dd-risk-title">46% Revenue Growth Since 2021 + SBA Pre-Approved</span>
+            <span class="dd-risk-arrow">▼</span>
+          </div>
+          <div class="dd-risk-body">Riding the Albany semiconductor construction wave with strong top-line growth. SBA pre-approval of $1M signals professionally maintained books. A quality-of-earnings review should be straightforward.</div>
+        </div>
+      </div>
+    </div><!-- /dd-dashboard -->
+ 
+    <!-- VERDICT BANNER -->
+    <div class="doc-verdict-banner">
+      <div class="dvb-cell">
+        <span class="dvb-label">Verdict</span>
+        <span class="dvb-val">Conditional Buy</span>
+      </div>
+      <div class="dvb-cell">
+        <span class="dvb-label">Target Price</span>
+        <span class="dvb-val" style="color:var(--violet)">$1.9M</span>
+      </div>
+      <div class="dvb-cell">
+        <span class="dvb-label">Asking Price</span>
+        <span class="dvb-val" style="color:var(--ink-dim)">$2.4M</span>
+      </div>
+    </div>
+ 
+    <!-- STATS ROW -->
+    <div class="doc-stats">
+      <div class="doc-stat"><span class="n">$4.36M</span><span class="l">Revenue 2025</span></div>
+      <div class="doc-stat"><span class="n">$740K</span><span class="l">SDE 2025</span></div>
+      <div class="doc-stat"><span class="n">3.24x</span><span class="l">Ask Multiple</span></div>
+      <div class="doc-stat"><span class="n">2.57x</span><span class="l">Target Multiple</span></div>
+      <div class="doc-stat"><span class="n">17</span><span class="l">Employees</span></div>
+      <div class="doc-stat"><span class="n">18yr</span><span class="l">Operating History</span></div>
+    </div>
+ 
+    <!-- SECTION: BUSINESS SNAPSHOT -->
+    <div class="doc-section">
+      <div class="doc-section-hd">Business Snapshot</div>
+      <table class="doc-table">
+        <thead><tr><th>Attribute</th><th>Detail</th><th>BizzedAI Flag</th></tr></thead>
+        <tbody>
+          <tr><td>Business Type</td><td>HVAC installation & sheet metal fabrication</td><td>Niche moat — hard to replicate fab</td></tr>
+          <tr><td>Location</td><td>Albany Metro, New York</td><td>Semiconductor construction wave tailwind</td></tr>
+          <tr><td>Revenue (2025)</td><td>$4.36M</td><td>+46% since 2021</td></tr>
+          <tr><td>SDE (2025)</td><td>$740,000</td><td>Post-collapse recovery unverified</td></tr>
+          <tr class="row-warn"><td>Customer Concentration</td><td>~80% from one GC</td><td>⚠ Critical risk — requires contract lock-in</td></tr>
+          <tr><td>Employees</td><td>17 full-time</td><td>Owner-dependent — key person risk</td></tr>
+          <tr class="row-warn"><td>Owner Tenure</td><td>18 years, retiring</td><td>⚠ Holds licenses — transfer critical path</td></tr>
+          <tr><td>SBA Status</td><td>Pre-approved @ $1M</td><td>Signals clean books</td></tr>
+        </tbody>
+      </table>
+    </div>
+ 
+    <!-- SECTION: FINANCIALS -->
+    <div class="doc-section">
+      <div class="doc-section-hd">Financial History</div>
+      <div class="doc-callout warn"><strong>2023 Earnings Collapse:</strong> SDE dropped significantly in 2023 before recovering. The cause is unverified — a QoE report must explain this before full price is paid.</div>
+      <div class="doc-chart">
+        <div class="bar-n" style="height:52%"></div>
+        <div class="bar-n" style="height:64%"></div>
+        <div class="bar-d" style="height:30%"></div>
+        <div class="bar-n" style="height:74%"></div>
+        <div class="bar-n" style="height:100%"></div>
+      </div>
+      <div class="doc-chart-labels">
+        <span>'21</span><span>'22</span><span class="hl">'23 ▼</span><span>'24</span><span>'25</span>
+      </div>
+      <table class="doc-table" style="margin-top:16px">
+        <thead><tr><th>Year</th><th>Revenue</th><th>SDE (Est.)</th><th>Margin</th></tr></thead>
+        <tbody>
+          <tr><td>2021</td><td>~$2.98M</td><td>~$520K</td><td>17.4%</td></tr>
+          <tr><td>2022</td><td>~$3.42M</td><td>~$610K</td><td>17.8%</td></tr>
+          <tr class="row-warn"><td>2023</td><td>~$3.60M</td><td>~$310K</td><td>8.6% ⚠</td></tr>
+          <tr><td>2024</td><td>~$4.10M</td><td>~$690K</td><td>16.8%</td></tr>
+          <tr><td>2025</td><td>$4.36M</td><td>$740K</td><td>17.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+ 
+    <!-- SECTION: DEAL STRUCTURE -->
+    <div class="doc-section">
+      <div class="doc-section-hd">Deal Structure Analysis</div>
+      <div class="offer-grid">
+        <div class="offer-box a">
+          <div class="offer-label">Seller's Ask</div>
+          <div class="offer-row"><span class="offer-row-k">Price</span><span class="offer-row-v">$2.4M</span></div>
+          <div class="offer-row"><span class="offer-row-k">Multiple</span><span class="offer-row-v">3.24x SDE</span></div>
+          <div class="offer-row"><span class="offer-row-k">SBA Coverage</span><span class="offer-row-v">$1.0M (42%)</span></div>
+          <div class="offer-row"><span class="offer-row-k">Equity Gap</span><span class="offer-row-v">$1.4M</span></div>
+          <div class="offer-row"><span class="offer-row-k">Payback</span><span class="offer-row-v">~3.8 years</span></div>
+        </div>
+        <div class="offer-box b">
+          <div class="offer-label">BizzedAI Counter</div>
+          <div class="offer-row"><span class="offer-row-k">Price</span><span class="offer-row-v">$1.9M</span></div>
+          <div class="offer-row"><span class="offer-row-k">Multiple</span><span class="offer-row-v">2.57x SDE</span></div>
+          <div class="offer-row"><span class="offer-row-k">SBA Coverage</span><span class="offer-row-v">$1.0M (53%)</span></div>
+          <div class="offer-row"><span class="offer-row-k">Equity Gap</span><span class="offer-row-v">$900K</span></div>
+          <div class="offer-row"><span class="offer-row-k">Payback</span><span class="offer-row-v">~2.7 years ✓</span></div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- SECTION: RED FLAGS & STRENGTHS -->
+    <div class="doc-section">
+      <div class="doc-section-hd">Red Flags & Strengths</div>
+      <div class="flag-list">
+        <div class="flag-item red"><span class="icon">🚨</span><div><strong>License transfer risk</strong> — owner holds all NY HVAC contracting licenses. Transfer takes 3–12 months and can halt operations.</div></div>
+        <div class="flag-item red"><span class="icon">🚨</span><div><strong>80% GC concentration</strong> — single customer dependency. No contract = no business. Must be locked in at LOI.</div></div>
+        <div class="flag-item red"><span class="icon">⚠️</span><div><strong>2023 earnings collapse</strong> — unexplained SDE drop. Requires independent QoE before earnout or full price.</div></div>
+        <div class="flag-item red"><span class="icon">⚠️</span><div><strong>Financing gap</strong> — SBA only covers 42%. Buyer needs $1.4M in equity + seller carry at ask price.</div></div>
+        <div class="flag-item green"><span class="icon">✅</span><div><strong>In-house sheet metal fabrication</strong> — real operational moat. Competitors must outsource; this shop captures that margin.</div></div>
+        <div class="flag-item green"><span class="icon">✅</span><div><strong>+46% revenue growth 2021–2025</strong> — riding Albany's semiconductor construction boom. Genuine tailwind.</div></div>
+        <div class="flag-item green"><span class="icon">✅</span><div><strong>SBA pre-approval @ $1M</strong> — signals clean, professionally maintained books. Due diligence should be smooth.</div></div>
+        <div class="flag-item green"><span class="icon">✅</span><div><strong>18-year operating history</strong> — established relationships, supplier terms, and institutional knowledge. Defensible in a trade market.</div></div>
+      </div>
+    </div>
+ 
+    <!-- GATED SECTION -->
+    <div id="gate-wrapper-048" class="doc-gate-wrapper">
+      <div class="gate-unlocked-notice" id="gate-notice-048">
+        <div class="gun-title">You're in. Full report unlocked.</div>
+        <div class="gun-sub">Reading time: ~10 minutes. The full analysis, conditions, and downside model are below.</div>
+      </div>
+      <div id="gate-card-048" class="doc-gate-card">
+        <span class="gate-lock-icon">🔒</span>
+        <div class="gate-kicker">Full Report · Members Only</div>
+        <h3 class="gate-title">Unlock the Complete Analysis</h3>
+        <p class="gate-desc">Get the full conditions, downside model, BRIT framework scores, and our structured counter-offer strategy. <strong>Free — just your name and email.</strong></p>
+        <div class="gate-form" id="gate-form-048">
+          <div class="gate-name-row">
+            <input class="gate-input" id="gate-first-048" type="text" placeholder="First name" autocomplete="given-name">
+            <input class="gate-input" id="gate-last-048" type="text" placeholder="Last name" autocomplete="family-name">
+          </div>
+          <input class="gate-input" id="gate-email-048" type="email" placeholder="you@acquireco.com" autocomplete="email">
+          <button class="gate-btn" id="gate-btn-048" onclick="unlockGate('048')">Unlock Full Report ✦</button>
+          <div class="gate-err-msg" id="gate-err-048"></div>
+          <p class="gate-fine">✓ Free forever · ✓ No spam · ✓ Unsubscribe anytime</p>
+        </div>
+      </div>
+      <div class="doc-gate-blur" id="gate-blur-048">
+ 
+        <!-- GATED: CONDITIONS CHECKLIST -->
+        <div class="doc-section">
+          <div class="doc-section-hd">Conditions to Proceed</div>
+          <div class="doc-checklist">
+            <div class="chk-item">
+              <span class="chk-badge crit">Critical</span>
+              <div><div class="chk-title">License Transfer Escrow Lock</div><div class="chk-desc">Tie a portion of purchase price (min. $200K) in escrow contingent on successful license transfer to buyer or designated employee within 90 days of close.</div></div>
+            </div>
+            <div class="chk-item">
+              <span class="chk-badge crit">Critical</span>
+              <div><div class="chk-title">Multi-Year GC Contract Required</div><div class="chk-desc">Require a minimum 2-year contract (or right-of-first-refusal) from the primary GC before LOI. Without this, the 80% concentration risk is terminal.</div></div>
+            </div>
+            <div class="chk-item">
+              <span class="chk-badge high">High</span>
+              <div><div class="chk-title">Independent QoE on 2023 SDE Collapse</div><div class="chk-desc">Commission a Quality of Earnings report specifically focused on the 2023 EBITDA decline. The explanation must be verified before earnout or full payment.</div></div>
+            </div>
+            <div class="chk-item">
+              <span class="chk-badge high">High</span>
+              <div><div class="chk-title">Owner Transition Agreement — 12 Months</div><div class="chk-desc">Require a 12-month paid transition period with defined customer introductions and knowledge transfer milestones. Owner's network IS the business at this stage.</div></div>
+            </div>
+            <div class="chk-item">
+              <span class="chk-badge med">Medium</span>
+              <div><div class="chk-title">Equipment Audit & Replacement Schedule</div><div class="chk-desc">The sheet metal fab equipment is a key asset. An independent audit with a 5-year replacement schedule is required to price capital expenditure risk into the model.</div></div>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- GATED: DOWNSIDE MODEL -->
+        <div class="doc-section">
+          <div class="doc-section-hd">Downside Scenario Model</div>
+          <div class="doc-callout danger"><strong>Bear Case:</strong> GC contract is not renewed post-acquisition. Revenue drops 65% to ~$1.5M. At $1.9M purchase price, buyer is underwater within 18 months without immediate customer diversification.</div>
+          <table class="doc-table">
+            <thead><tr><th>Scenario</th><th>Revenue</th><th>SDE</th><th>Payback @ $1.9M</th></tr></thead>
+            <tbody>
+              <tr><td>Bull (GC retained + growth)</td><td>$5.2M</td><td>$900K</td><td>2.1 years</td></tr>
+              <tr><td>Base (GC retained, flat)</td><td>$4.4M</td><td>$740K</td><td>2.7 years</td></tr>
+              <tr class="row-warn"><td>Bear (GC lost after 12mo)</td><td>$1.5M</td><td>$180K</td><td>10.6 years ⚠</td></tr>
+              <tr class="row-warn"><td>Catastrophic (GC + license fail)</td><td>$800K</td><td>-$40K</td><td>Never ✗</td></tr>
+            </tbody>
+          </table>
+        </div>
+ 
+        <!-- GATED: BRIT FRAMEWORK -->
+        <div class="doc-section">
+          <div class="doc-section-hd">BRIT Framework Scores</div>
+          <div class="doc-callout violet"><strong>BRIT</strong> = Business quality · Risk profile · Investment return · Transfer complexity. Each dimension scored 0–25. Composite: <strong>62/100</strong> — viable with conditions.</div>
+          <table class="doc-table">
+            <thead><tr><th>Dimension</th><th>Score</th><th>Key Driver</th></tr></thead>
+            <tbody>
+              <tr><td>Business Quality</td><td style="color:var(--warn)">16/25</td><td>Strong moat (fab), offset by concentration</td></tr>
+              <tr><td>Risk Profile</td><td style="color:var(--danger)">12/25</td><td>License transfer + GC concentration = high risk</td></tr>
+              <tr><td>Investment Return</td><td style="color:var(--violet)">19/25</td><td>Attractive at $1.9M; marginal at $2.4M</td></tr>
+              <tr><td>Transfer Complexity</td><td style="color:var(--warn)">15/25</td><td>License, owner knowledge, key employee retention</td></tr>
+              <tr><td><strong>Composite</strong></td><td style="color:#fff"><strong>62/100</strong></td><td>Conditional Buy — proceed only at $1.9M</td></tr>
+            </tbody>
+          </table>
+        </div>
+ 
+      </div><!-- /gate-blur -->
+    </div><!-- /gate-wrapper -->
+ 
+    <div class="doc-footer-bar">
+      <button class="doc-footer-back" onclick="closeDoc()">← Back to Teardowns</button>
+      <span>Issue #048 · Albany Metro HVAC · BizzedAI · Apr 2026</span>
+    </div>
+ 
+  </div><!-- /doc-body -->
+</div><!-- /doc-page -->
+ 
 <script>
+/* ========================
+   OPEN / CLOSE DOC
+======================== */
+function openDoc(id) {
+  var docPage = document.getElementById('doc-page');
+  var listingPage = document.getElementById('listing-page');
+  listingPage.style.display = 'none';
+  docPage.classList.add('open');
+  docPage.scrollTop = 0;
+  document.body.style.overflow = 'hidden'; // doc-page handles its own scroll
+  // Check returning user
+  try {
+    var saved = JSON.parse(localStorage.getItem('bizzed_user') || 'null');
+    if (saved && saved.email) { unlockGateImmediate(id); }
+  } catch(e) {}
+  // Animate rings after small delay
+  setTimeout(animateRings, 300);
+}
+ 
+function closeDoc() {
+  var docPage = document.getElementById('doc-page');
+  var listingPage = document.getElementById('listing-page');
+  docPage.classList.remove('open');
+  listingPage.style.display = '';
+  document.body.style.overflow = '';
+}
+ 
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDoc();
+});
+ 
+/* ========================
+   GATE UNLOCK
+======================== */
+function unlockGate(id) {
+  var first = document.getElementById('gate-first-' + id);
+  var last  = document.getElementById('gate-last-' + id);
+  var email = document.getElementById('gate-email-' + id);
+  var err   = document.getElementById('gate-err-' + id);
+  var btn   = document.getElementById('gate-btn-' + id);
+  var re    = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ 
+  [first, last, email].forEach(function(el){ el.classList.remove('err'); });
+  err.style.display = 'none';
+ 
+  var ok = true;
+  if (!first.value.trim()) { first.classList.add('err'); ok = false; }
+  if (!last.value.trim())  { last.classList.add('err'); ok = false; }
+  if (!re.test(email.value.trim())) { email.classList.add('err'); ok = false; }
+  if (!ok) { err.textContent = 'Please fill in all fields with a valid email.'; err.style.display='block'; return; }
+ 
+  btn.disabled = true;
+  btn.textContent = 'Unlocking…';
+ 
+  try {
+    var user = {first: first.value.trim(), last: last.value.trim(), email: email.value.trim()};
+    localStorage.setItem('bizzed_user', JSON.stringify(user));
+  } catch(e){}
+ 
+  // Send to Brevo
+  fetch('/subscribe', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email: email.value.trim(), firstName: first.value.trim(), lastName: last.value.trim(), source: 'teardown-048'})
+  }).catch(function(){});
+ 
+  setTimeout(function() { unlockGateImmediate(id); }, 800);
+}
+ 
+function unlockGateImmediate(id) {
+  var wrapper = document.getElementById('gate-wrapper-' + id);
+  var notice  = document.getElementById('gate-notice-' + id);
+  if (wrapper) { wrapper.classList.add('unlocked'); }
+  if (notice)  { notice.classList.add('show'); }
+}
+ 
+/* ========================
+   RING ANIMATIONS
+======================== */
+function animateRings() {
+  var circumference = 289;
+  document.querySelectorAll('.dd-ring-fill').forEach(function(circle) {
+    var pct = parseInt(circle.getAttribute('data-pct') || 0);
+    var offset = circumference - (pct / 100) * circumference;
+    circle.style.strokeDashoffset = offset;
+  });
+  // Animate the counter numbers
+  document.querySelectorAll('.dd-ring-pct').forEach(function(el) {
+    var target = parseInt(el.getAttribute('data-target') || 0);
+    var start = 0;
+    var duration = 1400;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + '%';
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+ 
+/* ========================
+   PARTICLE BACKGROUND
+======================== */
 (function() {
   var canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
