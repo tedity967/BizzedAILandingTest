@@ -153,12 +153,12 @@ footer a:hover{color:var(--ink)}
 @keyframes docIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes docOut{from{opacity:1}to{opacity:0;transform:translateY(10px)}}
  
-.doc-topbar{position:sticky;top:0;z-index:10;background:rgba(10,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-soft);padding:14px 48px;display:flex;justify-content:space-between;align-items:center;position:sticky;/* needs relative for abs child */}
-.doc-back{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--violet);text-transform:uppercase;cursor:pointer;transition:gap .2s;flex:1}
+.doc-topbar{position:sticky;top:0;z-index:10;background:rgba(10,8,22,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-soft);padding:14px 48px;display:flex;justify-content:space-between;align-items:center}
+.doc-back{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--violet);text-transform:uppercase;cursor:pointer;transition:gap .2s}
 .doc-back:hover{gap:12px}
 .doc-back-arr{font-size:16px}
-.doc-brand{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;position:absolute;left:50%;transform:translateX(-50%)}
-.doc-topbar-right{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1px;text-transform:uppercase;flex:1;text-align:right}
+.doc-brand{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.doc-topbar-right{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:1px;text-transform:uppercase}
 .doc-body{max-width:860px;margin:0 auto;padding:60px 48px 100px;position:relative;z-index:2}
  
 .doc-eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--violet);text-transform:uppercase;margin-bottom:28px}
@@ -361,109 +361,6 @@ footer a:hover{color:var(--ink)}
 @media(max-width:560px){
   h1{font-size:40px;letter-spacing:-1.5px}
 }
- 
-/* =============================================
-   EXECUTIVE OVERVIEW
-============================================= */
-.exec-overview{
-  background:linear-gradient(135deg,rgba(196,181,253,.06),rgba(244,114,182,.04));
-  border:1px solid rgba(196,181,253,.2);
-  border-radius:20px;
-  padding:32px;
-  margin-bottom:48px;
-  position:relative;
-  overflow:hidden;
-}
-.exec-overview::before{
-  content:'';position:absolute;inset:0;border-radius:20px;padding:1px;
-  background:linear-gradient(135deg,rgba(196,181,253,.3),transparent 50%,rgba(244,114,182,.15));
-  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
-}
-.exec-kicker{
-  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
-  text-transform:uppercase;color:var(--violet);margin-bottom:24px;
-  display:flex;align-items:center;gap:10px;
-}
-.exec-kicker::before{content:'';width:24px;height:1px;background:var(--violet)}
- 
-.exec-grid{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start}
- 
-/* CONFIDENCE GAUGE */
-.conf-gauge-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:160px}
-.conf-gauge{position:relative;width:140px;height:140px}
-.conf-gauge svg{transform:rotate(-90deg)}
-.conf-track{fill:none;stroke:rgba(255,255,255,.07);stroke-width:10;stroke-linecap:round}
-.conf-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.conf-num{font-family:'Instrument Serif',serif;font-style:italic;font-size:36px;line-height:1;color:#fff}
-.conf-label-small{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-dimmer);margin-top:2px}
-.conf-caption{text-align:center}
-.conf-verdict-text{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--warn);line-height:1.1}
-.conf-sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-dimmest);margin-top:4px}
- 
-/* RISK ALERTS */
-.risk-col{display:flex;flex-direction:column;gap:8px}
-.risk-group-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dimmest);margin-bottom:4px;margin-top:8px}
-.risk-group-label:first-child{margin-top:0}
- 
-.risk-alert{
-  border-radius:12px;overflow:hidden;cursor:pointer;
-  transition:transform .15s;
-  border:1px solid;
-}
-.risk-alert:hover{transform:translateX(3px)}
-.risk-alert-hd{
-  display:flex;align-items:center;gap:10px;
-  padding:12px 16px;
-  font-size:13px;font-weight:500;
-}
-.risk-alert-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
-.risk-alert-text{flex:1}
-.risk-alert-chevron{font-size:10px;transition:transform .25s;opacity:.6;margin-left:auto;flex-shrink:0}
-.risk-alert.open .risk-alert-chevron{transform:rotate(180deg)}
-.risk-alert-body{
-  max-height:0;overflow:hidden;
-  transition:max-height .3s ease,padding .3s ease;
-  font-size:12px;line-height:1.6;
-  padding:0 16px;
-}
-.risk-alert.open .risk-alert-body{max-height:200px;padding:0 16px 14px}
- 
-/* severity colours */
-.risk-alert.crit{
-  background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.22);
-}
-.risk-alert.crit .risk-alert-hd{color:var(--danger)}
-.risk-alert.crit .risk-alert-icon{background:rgba(239,68,68,.2);color:var(--danger)}
-.risk-alert.crit .risk-alert-body{color:rgba(239,68,68,.75)}
- 
-.risk-alert.high{
-  background:rgba(251,191,36,.05);border-color:rgba(251,191,36,.22);
-}
-.risk-alert.high .risk-alert-hd{color:var(--warn)}
-.risk-alert.high .risk-alert-icon{background:rgba(251,191,36,.15);color:var(--warn)}
-.risk-alert.high .risk-alert-body{color:rgba(251,191,36,.7)}
- 
-.risk-alert.med{
-  background:rgba(196,181,253,.05);border-color:rgba(196,181,253,.18);
-}
-.risk-alert.med .risk-alert-hd{color:var(--violet)}
-.risk-alert.med .risk-alert-icon{background:rgba(196,181,253,.12);color:var(--violet)}
-.risk-alert.med .risk-alert-body{color:rgba(196,181,253,.65)}
- 
-.risk-alert.good{
-  background:rgba(16,185,129,.05);border-color:rgba(16,185,129,.2);
-}
-.risk-alert.good .risk-alert-hd{color:var(--success)}
-.risk-alert.good .risk-alert-icon{background:rgba(16,185,129,.15);color:var(--success)}
-.risk-alert.good .risk-alert-body{color:rgba(16,185,129,.7)}
- 
-@media(max-width:700px){
-  .exec-grid{grid-template-columns:1fr}
-  .conf-gauge-wrap{flex-direction:row;min-width:unset}
-  .conf-gauge{width:100px;height:100px}
-  .conf-num{font-size:26px}
-}
 </style>
 </head>
 <body>
@@ -497,7 +394,7 @@ footer a:hover{color:var(--ink)}
           <input type="text" id="hero-signup-last" placeholder="Last name" autocomplete="family-name">
         </div>
         <input type="email" id="hero-signup-email" placeholder="you@acquireco.com" required autocomplete="email">
-        <button type="submit" id="hero-signup-btn">Subscribe ✦</button>
+        <button type="submit" id="hero-signup-btn">Get Report ✦</button>
       </form>
       <div class="signup-meta" id="hero-signup-meta">✓ 1,842 OPERATORS · ✓ FREE FOREVER · ✓ ZERO SPAM</div>
       <div class="signup-success" id="hero-signup-success">
@@ -633,114 +530,6 @@ footer a:hover{color:var(--ink)}
     </div>
  
     <div class="doc-body">
- 
-      <!-- ── EXECUTIVE OVERVIEW ── -->
-      <div class="exec-overview" id="exec-overview">
-        <div class="exec-kicker">Executive Overview · At a Glance</div>
-        <div class="exec-grid">
- 
-          <!-- CONFIDENCE GAUGE -->
-          <div class="conf-gauge-wrap">
-            <div class="conf-gauge">
-              <svg width="140" height="140" viewBox="0 0 140 140" style="transform:rotate(-90deg)">
-                <defs>
-                  <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#fbbf24"/>
-                    <stop offset="100%" stop-color="#f59e0b"/>
-                  </linearGradient>
-                </defs>
-                <!-- background track -->
-                <circle cx="70" cy="70" r="54"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.08)"
-                  stroke-width="10"
-                  stroke-linecap="round"/>
-                <!-- animated arc -->
-                <circle id="conf-fill-circle" cx="70" cy="70" r="54"
-                  fill="none"
-                  stroke="url(#gaugeGrad)"
-                  stroke-width="10"
-                  stroke-linecap="round"
-                  stroke-dasharray="339.3"
-                  stroke-dashoffset="339.3"/>
-              </svg>
-              <div class="conf-center">
-                <div class="conf-num" id="conf-num">0</div>
-                <div class="conf-label-small">/ 100</div>
-              </div>
-            </div>
-            <div class="conf-caption">
-              <div class="conf-verdict-text">Conditional Buy</div>
-              <div class="conf-sub">Deal Confidence Score</div>
-            </div>
-          </div>
- 
-          <!-- RISK ALERTS -->
-          <div class="risk-col">
- 
-            <div class="risk-group-label">⬤ Critical Risks</div>
- 
-            <div class="risk-alert crit" onclick="toggleRisk(this)">
-              <div class="risk-alert-hd">
-                <div class="risk-alert-icon">!</div>
-                <span class="risk-alert-text">2023 Earnings Collapse — Root Cause Unknown</span>
-                <span class="risk-alert-chevron">▼</span>
-              </div>
-              <div class="risk-alert-body">SDE fell 59% on a 16% revenue drop. Cause is unverified — could be a bad debt write-off, lost project, or structural cost issue. Until explained by tax returns, this is a deal-stopper.</div>
-            </div>
- 
-            <div class="risk-alert crit" onclick="toggleRisk(this)">
-              <div class="risk-alert-hd">
-                <div class="risk-alert-icon">!</div>
-                <span class="risk-alert-text">80% Revenue Concentrated in GC Relationships</span>
-                <span class="risk-alert-chevron">▼</span>
-              </div>
-              <div class="risk-alert-body">GC relationships are personal to the retiring owner. Post-close attrition risk is high and unpriced at $2.4M ask. An earn-out tied to 24-month GC retention is non-negotiable.</div>
-            </div>
- 
-            <div class="risk-alert crit" onclick="toggleRisk(this)">
-              <div class="risk-alert-hd">
-                <div class="risk-alert-icon">!</div>
-                <span class="risk-alert-text">Licensing Held by Retiring Owner</span>
-                <span class="risk-alert-chevron">▼</span>
-              </div>
-              <div class="risk-alert-body">If the master plumber and HVAC license is held solely by the owner, it must be transferred or replaced before close. This is a potential deal-breaker — verify immediately.</div>
-            </div>
- 
-            <div class="risk-group-label">◆ High Risks</div>
- 
-            <div class="risk-alert high" onclick="toggleRisk(this)">
-              <div class="risk-alert-hd">
-                <div class="risk-alert-icon">▲</div>
-                <span class="risk-alert-text">Key Employee Risk — 17 Staff for $4.4M Revenue</span>
-                <span class="risk-alert-chevron">▼</span>
-              </div>
-              <div class="risk-alert-body">Losing 2–3 top estimators or technicians post-close could be catastrophic. Require signed stay-bonus agreements for top 5 employees as a condition of close.</div>
-            </div>
- 
-            <div class="risk-alert high" onclick="toggleRisk(this)">
-              <div class="risk-alert-hd">
-                <div class="risk-alert-icon">▲</div>
-                <span class="risk-alert-text">SBA Covers Only $1M of $2.4M Ask</span>
-                <span class="risk-alert-chevron">▼</span>
-              </div>
-              <div class="risk-alert-body">Buyer must fund the $1.4M gap through equity and seller financing. At $2.4M, debt service eats ~20% of SDE. At $1.9M target price, payback drops from 3.8 to 2.7 years.</div>
-            </div>
- 
-            <div class="risk-group-label">✦ Strengths</div>
- 
-            <div class="risk-alert good" onclick="toggleRisk(this)">
-              <div class="risk-alert-hd">
-                <div class="risk-alert-icon">✓</div>
-                <span class="risk-alert-text">In-House Sheet Metal Fab — Real Moat</span>
-                <span class="risk-alert-chevron">▼</span>
-              </div>
-              <div class="risk-alert-body">Fabrication shop captures margin and is hard to replicate quickly. SBA pre-approval of $1M signals clean books. 46% revenue growth since 2021 with Albany semiconductor tailwind through 2030.</div>
-            </div>
- 
-          </div>
-        </div>
-      </div>
  
       <!-- ── FREE SECTION ── -->
       <div class="doc-eyebrow">Due Diligence Report · BizzedAI · April 2026</div>
@@ -1071,36 +860,6 @@ document.getElementById('hero-signup-form').addEventListener('submit', function(
   } catch(e) {}
 })();
  
-/* ─── Executive Overview: gauge + risk toggles ───────────────────────────── */
-function toggleRisk(el) {
-  var isOpen = el.classList.contains('open');
-  // Close all in same col
-  el.closest('.risk-col').querySelectorAll('.risk-alert.open').forEach(function(a){ a.classList.remove('open'); });
-  if (!isOpen) el.classList.add('open');
-}
- 
-// Animate gauge when doc page opens
-function animateGauge() {
-  var circle = document.getElementById('conf-fill-circle');
-  var numEl  = document.getElementById('conf-num');
-  if (!circle || !numEl) return;
-  var score    = 62;
-  var circumf  = 2 * Math.PI * 54; // 339.29
-  var endOffset = circumf * (1 - score / 100); // ~129.1
-  var dur  = 1400;
-  var t0   = null;
-  function step(ts) {
-    if (!t0) t0 = ts;
-    var prog = Math.min((ts - t0) / dur, 1);
-    var ease = 1 - Math.pow(1 - prog, 3); // ease-out-cubic
-    var offset = circumf - ease * (circumf - endOffset);
-    circle.setAttribute('stroke-dashoffset', offset.toFixed(2));
-    numEl.textContent = Math.round(ease * score);
-    if (prog < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
- 
 /* ─── Doc page open / close ──────────────────────────────────────────────── */
 function openDoc() {
   var dp = document.getElementById('doc-page');
@@ -1109,12 +868,6 @@ function openDoc() {
   dp.style.display = 'block';
   window.scrollTo(0, 0);
   document.body.style.overflow = '';
-  // Reset and re-animate the gauge
-  var c = document.getElementById('conf-fill-circle');
-  var n = document.getElementById('conf-num');
-  if (c) { c.setAttribute('stroke-dashoffset', '339.3'); }
-  if (n) n.textContent = '0';
-  setTimeout(animateGauge, 120);
  
   // If the user has already given their details, skip the gate silently
   try {
