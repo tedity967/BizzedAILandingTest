@@ -316,6 +316,91 @@ footer a:hover{color:var(--ink)}
   .doc-gate-card{padding:32px 22px}
   .gate-title{font-size:24px}
 }
+ 
+/* BZ Dashboard CSS */
+/* =============================================
+   BZ DASHBOARD — shared dark panel system
+============================================= */
+.bz-dash{margin-bottom:36px}
+.bz-dash-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bz-dash-4col{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+.bz-dash-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.bz-kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px;background:rgba(255,255,255,.02);border:1px solid var(--border-soft);border-radius:10px}
+.bz-kpi-item{text-align:center}
+.bz-kpi-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:5px}
+.bz-kpi-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:#fff;line-height:1}
+ 
+.bz-panel{background:rgba(10,8,22,.6);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px}
+.bz-panel-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.bz-panel-hd>span:first-child{color:rgba(255,255,255,.7);font-weight:600}
+.bz-panel-sub{color:rgba(255,255,255,.25);font-size:8px;letter-spacing:1px}
+.bz-panel-note{font-size:11px;color:rgba(255,255,255,.45);line-height:1.6;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+.bz-panel-note strong{color:rgba(255,255,255,.8)}
+/* Segment bars */
+.bz-seg-list{display:flex;flex-direction:column;gap:12px}
+.bz-seg-row{display:grid;grid-template-columns:90px 1fr 50px;gap:10px;align-items:center}
+.bz-seg-name{font-size:12px;color:rgba(255,255,255,.65)}
+.bz-seg-bar-wrap{height:14px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.bz-seg-bar{height:100%;border-radius:3px}
+.bz-seg-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);text-align:right}
+/* Chart wrapper */
+.bz-chart-wrap{margin-bottom:8px}
+.bz-chart-legend{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap}
+.bz-chart-legend span{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);letter-spacing:1px;display:flex;align-items:center;gap:5px}
+.bz-ld{width:10px;height:4px;border-radius:2px;display:inline-block;flex-shrink:0}
+/* Metro / scoring bars */
+.bz-metro-list{display:flex;flex-direction:column;gap:12px}
+.bz-metro-row{display:flex;flex-direction:column;gap:4px}
+.bz-metro-name{font-size:12px;color:rgba(255,255,255,.75);font-weight:500}
+.bz-metro-bar-wrap{display:flex;align-items:center;gap:8px}
+.bz-metro-bar{height:10px;border-radius:3px;flex:1;background:linear-gradient(90deg,#6d4aff,#a78bfa)}
+.bz-metro-score{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);min-width:28px;text-align:right}
+.bz-metro-sub{font-size:10px;color:rgba(255,255,255,.3);line-height:1.4}
+/* Vertical bar chart wrapper */
+.bz-barv-wrap{margin-bottom:8px}
+/* Deal mini compare */
+.bz-deal-mini{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-top:4px}
+.bz-deal-mini-col{border-radius:10px;padding:10px 12px}
+.bz-dmc-ask{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2)}
+.bz-dmc-counter{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2)}
+.bz-dmc-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:4px}
+.bz-dmc-price{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--danger);line-height:1;margin-bottom:6px}
+.bz-dmc-row{display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.bz-dmc-row span:first-child{color:rgba(255,255,255,.3);font-family:'JetBrains Mono',monospace;font-size:9px}
+.bz-dmc-row span:last-child{color:rgba(255,255,255,.6)}
+.bz-bad{color:var(--danger)!important;font-weight:600}
+.bz-good{color:var(--success)!important;font-weight:600}
+.bz-deal-mini-vs{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:2px;text-align:center}
+/* BRIT framework */
+.bz-brit-list{display:flex;flex-direction:column;gap:8px}
+.bz-brit-row{display:grid;grid-template-columns:16px 1fr 60px 28px;gap:8px;align-items:center}
+.bz-brit-letter{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;line-height:1;text-align:center}
+.bz-brit-name{font-size:11px;color:rgba(255,255,255,.55)}
+.bz-brit-track{height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.bz-brit-track div{height:100%;border-radius:3px}
+.bz-brit-score{font-family:'JetBrains Mono',monospace;font-size:12px;text-align:right}
+.bz-brit-total-row{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);margin-top:4px}
+.bz-brit-total-row>span:first-child{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:rgba(255,255,255,.3)}
+.bz-brit-total-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;color:#fff}
+/* Scenario list */
+.bz-scenario-list{display:flex;flex-direction:column;gap:7px}
+.bz-sc-row{display:grid;grid-template-columns:52px 1fr 80px 60px;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;border:1px solid var(--border-soft)}
+.bz-sc-bull{border-color:rgba(16,185,129,.2)!important;background:rgba(16,185,129,.04)}
+.bz-sc-base{border-color:rgba(196,181,253,.2)!important;background:rgba(196,181,253,.03)}
+.bz-sc-bear{border-color:rgba(251,191,36,.2)!important;background:rgba(251,191,36,.03)}
+.bz-sc-cat{border-color:rgba(239,68,68,.2)!important;background:rgba(239,68,68,.03)}
+.bz-sc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.4);text-transform:uppercase}
+.bz-sc-rev{font-size:11px;color:rgba(255,255,255,.7)}
+.bz-sc-bar-wrap{height:6px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.bz-sc-bar-wrap div{height:100%;border-radius:3px}
+.bz-sc-payback{font-family:'JetBrains Mono',monospace;font-size:11px;text-align:right}
+@media(max-width:900px){
+  .bz-dash-2col{grid-template-columns:1fr}
+  .bz-dash-4col{grid-template-columns:1fr 1fr}
+  .bz-dash-3col{grid-template-columns:1fr}
+  .bz-kpi-strip{grid-template-columns:1fr 1fr}
+}
+ 
 </style>
 </head>
 <body>
@@ -627,6 +712,238 @@ footer a:hover{color:var(--ink)}
         </div>
       </div>
     </div><!-- /dd-dashboard -->
+ 
+<!-- FINANCIAL ANALYTICS DASHBOARD -->
+      <div class="bz-dash" style="margin-bottom:32px">
+ 
+        <!-- ROW 1: Revenue bars + Margin line -->
+        <div class="bz-dash-2col">
+ 
+          <!-- LEFT: Revenue & SDE bar chart + Deal compare -->
+          <div class="bz-panel">
+            <div class="bz-panel-hd">
+              <span>REVENUE &amp; SDE HISTORY</span>
+              <span class="bz-panel-sub">2021–2025</span>
+            </div>
+            <div class="bz-chart-wrap">
+              <svg viewBox="0 0 400 180" width="100%" style="display:block;overflow:visible">
+                <defs>
+                  <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(196,181,253,0.9)"/>
+                    <stop offset="100%" stop-color="rgba(196,181,253,0.3)"/>
+                  </linearGradient>
+                  <linearGradient id="sdeGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(16,185,129,0.9)"/>
+                    <stop offset="100%" stop-color="rgba(16,185,129,0.3)"/>
+                  </linearGradient>
+                  <linearGradient id="sdeWarn" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(239,68,68,0.9)"/>
+                    <stop offset="100%" stop-color="rgba(239,68,68,0.3)"/>
+                  </linearGradient>
+                </defs>
+                <line x1="40" y1="10" x2="385" y2="10" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+                <line x1="40" y1="50" x2="385" y2="50" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+                <line x1="40" y1="90" x2="385" y2="90" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+                <line x1="40" y1="130" x2="385" y2="130" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+                <text x="34" y="14" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">$4.4M</text>
+                <text x="34" y="54" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">$3.0M</text>
+                <text x="34" y="94" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">$1.5M</text>
+                <text x="34" y="134" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">$0</text>
+                <rect x="50" y="77" width="22" height="53" rx="2" fill="url(#revGrad)"/>
+                <rect x="74" y="116" width="22" height="14" rx="2" fill="url(#sdeGrad)"/>
+                <text x="73" y="148" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="9" font-family="monospace">'21</text>
+                <rect x="115" y="69" width="22" height="61" rx="2" fill="url(#revGrad)"/>
+                <rect x="139" y="113" width="22" height="17" rx="2" fill="url(#sdeGrad)"/>
+                <text x="138" y="148" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="9" font-family="monospace">'22</text>
+                <rect x="180" y="66" width="22" height="64" rx="2" fill="url(#revGrad)" opacity="0.6"/>
+                <rect x="204" y="121" width="22" height="9" rx="2" fill="url(#sdeWarn)"/>
+                <text x="203" y="148" text-anchor="middle" fill="var(--danger)" font-size="9" font-family="monospace">'23⚠</text>
+                <rect x="245" y="57" width="22" height="73" rx="2" fill="url(#revGrad)"/>
+                <rect x="269" y="111" width="22" height="19" rx="2" fill="url(#sdeGrad)"/>
+                <text x="268" y="148" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="9" font-family="monospace">'24</text>
+                <rect x="310" y="53" width="22" height="77" rx="2" fill="url(#revGrad)"/>
+                <rect x="334" y="110" width="22" height="20" rx="2" fill="url(#sdeGrad)"/>
+                <text x="333" y="148" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="9" font-family="monospace">'25</text>
+                <text x="73" y="73" text-anchor="middle" fill="#c4b5fd" font-size="8" font-family="monospace">$2.98M</text>
+                <text x="138" y="65" text-anchor="middle" fill="#c4b5fd" font-size="8" font-family="monospace">$3.42M</text>
+                <text x="203" y="62" text-anchor="middle" fill="rgba(196,181,253,.5)" font-size="8" font-family="monospace">$3.60M</text>
+                <text x="268" y="53" text-anchor="middle" fill="#c4b5fd" font-size="8" font-family="monospace">$4.10M</text>
+                <text x="333" y="49" text-anchor="middle" fill="#c4b5fd" font-size="8" font-family="monospace">$4.36M</text>
+              </svg>
+            </div>
+            <div class="bz-chart-legend" style="margin-bottom:16px">
+              <span><span class="bz-ld" style="background:#a78bfa"></span>REVENUE</span>
+              <span><span class="bz-ld" style="background:#10b981"></span>SDE</span>
+              <span><span class="bz-ld" style="background:#ef4444"></span>2023 COLLAPSE</span>
+            </div>
+            <!-- Mini KPI strip to fill the space -->
+            <div class="bz-kpi-strip">
+              <div class="bz-kpi-item">
+                <div class="bz-kpi-label">5-YR GROWTH</div>
+                <div class="bz-kpi-val" style="color:var(--success)">+46%</div>
+              </div>
+              <div class="bz-kpi-item">
+                <div class="bz-kpi-label">AVG MARGIN</div>
+                <div class="bz-kpi-val" style="color:var(--violet)">15.5%</div>
+              </div>
+              <div class="bz-kpi-item">
+                <div class="bz-kpi-label">2023 DIP</div>
+                <div class="bz-kpi-val" style="color:var(--danger)">-51%</div>
+              </div>
+              <div class="bz-kpi-item">
+                <div class="bz-kpi-label">RECOVERY</div>
+                <div class="bz-kpi-val" style="color:var(--success)">+139%</div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- RIGHT: SDE Margin line + Deal structure -->
+          <div class="bz-panel">
+            <div class="bz-panel-hd">
+              <span>SDE MARGIN %</span>
+              <span class="bz-panel-sub">2021–2025</span>
+            </div>
+            <svg viewBox="0 0 380 140" width="100%" style="display:block;overflow:visible;margin-bottom:14px">
+              <defs>
+                <linearGradient id="marginAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(244,114,182,0.3)"/>
+                  <stop offset="100%" stop-color="rgba(244,114,182,0)"/>
+                </linearGradient>
+              </defs>
+              <line x1="40" y1="15" x2="365" y2="15" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+              <line x1="40" y1="55" x2="365" y2="55" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+              <line x1="40" y1="95" x2="365" y2="95" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+              <text x="34" y="19" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">20%</text>
+              <text x="34" y="59" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">13%</text>
+              <text x="34" y="99" text-anchor="end" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">6%</text>
+              <polygon points="60,29 130,27 200,96 270,31 340,30 340,120 60,120" fill="url(#marginAreaGrad)"/>
+              <polyline points="60,29 130,27 200,96 270,31 340,30" fill="none" stroke="#f472b6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="60" cy="29" r="4" fill="#f472b6"/>
+              <circle cx="130" cy="27" r="4" fill="#f472b6"/>
+              <circle cx="200" cy="96" r="5" fill="#ef4444" stroke="#fff" stroke-width="1.5"/>
+              <circle cx="270" cy="31" r="4" fill="#f472b6"/>
+              <circle cx="340" cy="30" r="4" fill="#10b981"/>
+              <text x="60" y="20" text-anchor="middle" fill="#f472b6" font-size="9" font-family="monospace" font-weight="bold">17.4%</text>
+              <text x="130" y="18" text-anchor="middle" fill="#f472b6" font-size="9" font-family="monospace" font-weight="bold">17.8%</text>
+              <text x="200" y="115" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace" font-weight="bold">8.6%⚠</text>
+              <text x="270" y="22" text-anchor="middle" fill="#f472b6" font-size="9" font-family="monospace" font-weight="bold">16.8%</text>
+              <text x="340" y="21" text-anchor="middle" fill="#10b981" font-size="9" font-family="monospace" font-weight="bold">17.0%</text>
+              <text x="60" y="135" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">'21</text>
+              <text x="130" y="135" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">'22</text>
+              <text x="200" y="135" text-anchor="middle" fill="#ef4444" font-size="9" font-family="monospace">'23</text>
+              <text x="270" y="135" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">'24</text>
+              <text x="340" y="135" text-anchor="middle" fill="rgba(255,255,255,.35)" font-size="9" font-family="monospace">'25</text>
+            </svg>
+            <div class="bz-deal-mini">
+              <div class="bz-deal-mini-col bz-dmc-ask">
+                <div class="bz-dmc-lbl">SELLER ASK</div>
+                <div class="bz-dmc-price">$2.4M</div>
+                <div class="bz-dmc-row"><span>Multiple</span><span>3.24× SDE</span></div>
+                <div class="bz-dmc-row"><span>Payback</span><span class="bz-bad">3.8 yrs ✗</span></div>
+              </div>
+              <div class="bz-deal-mini-vs">VS</div>
+              <div class="bz-deal-mini-col bz-dmc-counter">
+                <div class="bz-dmc-lbl">BIZZEDAI TARGET</div>
+                <div class="bz-dmc-price" style="color:var(--success)">$1.9M</div>
+                <div class="bz-dmc-row"><span>Multiple</span><span>2.57× SDE</span></div>
+                <div class="bz-dmc-row"><span>Payback</span><span class="bz-good">2.7 yrs ✓</span></div>
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+ 
+        <!-- ROW 2: BRIT + Risk donut + Scenarios -->
+        <div class="bz-dash-3col" style="margin-top:14px">
+ 
+          <div class="bz-panel">
+            <div class="bz-panel-hd"><span>BRIT FRAMEWORK</span><span class="bz-panel-sub">SCORE /25</span></div>
+            <div class="bz-brit-list">
+              <div class="bz-brit-row">
+                <span class="bz-brit-letter" style="color:#a78bfa">B</span>
+                <span class="bz-brit-name">Business Quality</span>
+                <div class="bz-brit-track"><div style="width:64%;background:linear-gradient(90deg,#fbbf24,rgba(251,191,36,.3))"></div></div>
+                <span class="bz-brit-score" style="color:#fbbf24">16</span>
+              </div>
+              <div class="bz-brit-row">
+                <span class="bz-brit-letter" style="color:#ef4444">R</span>
+                <span class="bz-brit-name">Risk Profile</span>
+                <div class="bz-brit-track"><div style="width:48%;background:linear-gradient(90deg,#ef4444,rgba(239,68,68,.3))"></div></div>
+                <span class="bz-brit-score" style="color:#ef4444">12</span>
+              </div>
+              <div class="bz-brit-row">
+                <span class="bz-brit-letter" style="color:#10b981">I</span>
+                <span class="bz-brit-name">Investment Return</span>
+                <div class="bz-brit-track"><div style="width:76%;background:linear-gradient(90deg,#10b981,rgba(16,185,129,.3))"></div></div>
+                <span class="bz-brit-score" style="color:#10b981">19</span>
+              </div>
+              <div class="bz-brit-row">
+                <span class="bz-brit-letter" style="color:#fbbf24">T</span>
+                <span class="bz-brit-name">Transfer Complexity</span>
+                <div class="bz-brit-track"><div style="width:60%;background:linear-gradient(90deg,#fbbf24,rgba(251,191,36,.3))"></div></div>
+                <span class="bz-brit-score" style="color:#fbbf24">15</span>
+              </div>
+              <div class="bz-brit-total-row">
+                <span>COMPOSITE</span>
+                <span class="bz-brit-total-val">62 / 100</span>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="bz-panel">
+            <div class="bz-panel-hd"><span>RISK PROFILE</span><span class="bz-panel-sub">BREAKDOWN</span></div>
+            <div style="display:flex;align-items:center;gap:16px;justify-content:center;padding:6px 0">
+              <svg viewBox="0 0 120 120" width="100" height="100">
+                <circle cx="60" cy="60" r="44" fill="none" stroke="#ef4444" stroke-width="16" stroke-dasharray="110.6 165.9" stroke-dashoffset="69.1" opacity="0.9"/>
+                <circle cx="60" cy="60" r="44" fill="none" stroke="#fbbf24" stroke-width="16" stroke-dasharray="96.8 179.7" stroke-dashoffset="-41.5" opacity="0.9"/>
+                <circle cx="60" cy="60" r="44" fill="none" stroke="#8b5cf6" stroke-width="16" stroke-dasharray="69.1 207.4" stroke-dashoffset="-138.3" opacity="0.9"/>
+                <circle cx="60" cy="60" r="35" fill="rgba(10,8,22,.9)"/>
+                <text x="60" y="56" text-anchor="middle" fill="#fff" font-size="15" font-family="serif" font-style="italic" font-weight="bold">34</text>
+                <text x="60" y="68" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="7" font-family="monospace">RISK</text>
+              </svg>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.65)"><span style="width:10px;height:10px;border-radius:2px;background:#ef4444;display:inline-block"></span>Critical 40%</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.65)"><span style="width:10px;height:10px;border-radius:2px;background:#fbbf24;display:inline-block"></span>High 35%</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.65)"><span style="width:10px;height:10px;border-radius:2px;background:#8b5cf6;display:inline-block"></span>Medium 25%</div>
+              </div>
+            </div>
+            <div class="bz-panel-note" style="padding-top:10px;margin-top:6px">Risk score <strong>34/100</strong> — manageable only if critical risks mitigated at LOI.</div>
+          </div>
+ 
+          <div class="bz-panel">
+            <div class="bz-panel-hd"><span>DOWNSIDE SCENARIOS</span><span class="bz-panel-sub">@ $1.9M</span></div>
+            <div class="bz-scenario-list">
+              <div class="bz-sc-row bz-sc-bull">
+                <div class="bz-sc-tag">BULL</div>
+                <div class="bz-sc-rev">$5.2M · $900K SDE</div>
+                <div class="bz-sc-bar-wrap"><div style="width:90%;background:var(--success)"></div></div>
+                <div class="bz-sc-payback" style="color:var(--success)">2.1y</div>
+              </div>
+              <div class="bz-sc-row bz-sc-base">
+                <div class="bz-sc-tag">BASE</div>
+                <div class="bz-sc-rev">$4.4M · $740K SDE</div>
+                <div class="bz-sc-bar-wrap"><div style="width:68%;background:var(--violet)"></div></div>
+                <div class="bz-sc-payback" style="color:var(--violet)">2.7y</div>
+              </div>
+              <div class="bz-sc-row bz-sc-bear">
+                <div class="bz-sc-tag">BEAR</div>
+                <div class="bz-sc-rev">$1.5M · $180K SDE</div>
+                <div class="bz-sc-bar-wrap"><div style="width:28%;background:var(--warn)"></div></div>
+                <div class="bz-sc-payback" style="color:var(--warn)">10.6y</div>
+              </div>
+              <div class="bz-sc-row bz-sc-cat">
+                <div class="bz-sc-tag">CATAS.</div>
+                <div class="bz-sc-rev">$800K · -$40K SDE</div>
+                <div class="bz-sc-bar-wrap"><div style="width:5%;background:var(--danger)"></div></div>
+                <div class="bz-sc-payback" style="color:var(--danger)">Never</div>
+              </div>
+            </div>
+            <div class="bz-panel-note" style="padding-top:10px;margin-top:6px">Bear/Cat. triggered by GC loss — multi-year contract at LOI is non-negotiable.</div>
+          </div>
+ 
+        </div>
+      </div><!-- /bz-dash teardown -->
+ 
  
     <!-- VERDICT BANNER -->
     <div class="doc-verdict-banner">
