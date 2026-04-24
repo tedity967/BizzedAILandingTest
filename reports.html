@@ -453,9 +453,9 @@ footer a:hover{color:var(--ink)}
 .accordion-section.open .accordion-body { display: block; }
  
 /* GATE */
-.doc-gate-wrapper{position:relative}
-.doc-gate-blur{filter:blur(6px);opacity:.4;pointer-events:none;user-select:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);transition:filter .5s ease,opacity .5s ease}
-.doc-gate-card{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:min(540px,100%);z-index:10;background:rgba(8,6,20,.9);border:1px solid rgba(244,114,182,.28);border-radius:24px;padding:44px 40px;backdrop-filter:blur(40px);box-shadow:0 40px 100px rgba(0,0,0,.7);text-align:center}
+.doc-gate-wrapper{position:relative;overflow:hidden}
+.doc-gate-blur{filter:blur(6px);opacity:.4;pointer-events:none;user-select:none;max-height:0;overflow:hidden;transition:filter .5s ease,opacity .5s ease,max-height .5s ease}
+.doc-gate-card{position:relative;width:100%;z-index:10;background:rgba(8,6,20,.95);border:1px solid rgba(244,114,182,.28);border-radius:24px;padding:44px 40px;backdrop-filter:blur(40px);box-shadow:0 40px 100px rgba(0,0,0,.7);text-align:center}
 .doc-gate-card::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(244,114,182,.5),transparent 50%,rgba(139,92,246,.3));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .gate-lock-icon{font-size:36px;margin-bottom:18px;display:block}
 .gate-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--pink-light);margin-bottom:10px}
@@ -474,7 +474,7 @@ footer a:hover{color:var(--ink)}
 .gate-fine{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:.5px;margin-top:14px;line-height:1.6}
 .gate-err-msg{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--danger);margin-top:8px;display:none}
 .doc-gate-wrapper.unlocked .doc-gate-card{display:none}
-.doc-gate-wrapper.unlocked .doc-gate-blur{filter:none;opacity:1;pointer-events:auto;user-select:auto;-webkit-mask-image:none;mask-image:none;animation:contentReveal .65s ease both}
+.doc-gate-wrapper.unlocked .doc-gate-blur{filter:none;opacity:1;pointer-events:auto;user-select:auto;max-height:none;overflow:visible;animation:contentReveal .65s ease both}
 @keyframes contentReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .gate-unlocked-notice{display:none;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28);border-radius:16px;padding:20px 24px;margin-bottom:36px;text-align:center}
 .gate-unlocked-notice.show{display:block;animation:fadeUp .5s ease both}
@@ -843,6 +843,30 @@ footer a:hover{color:var(--ink)}
       </button>
       <div class="accordion-body" id="accordion-body-pet">
  
+        <!-- GATE inside accordion -->
+        <div id="gate-wrapper-pet" class="doc-gate-wrapper">
+          <div class="gate-unlocked-notice" id="gate-notice-pet">
+            <div class="gun-title">Full research unlocked.</div>
+            <div class="gun-sub">The five target markets, deal structure, and our acquisition playbook are below.</div>
+          </div>
+          <div id="gate-card-pet" class="doc-gate-card">
+            <span class="gate-lock-icon">🔒</span>
+            <div class="gate-kicker">Full Research · Members Only</div>
+            <h3 class="gate-title">Unlock the Full Analysis</h3>
+            <p class="gate-desc">Get our five target markets, deal structure recommendations, and the full acquisition playbook. <strong>Free — just your name and email.</strong></p>
+            <div class="gate-form">
+              <div class="gate-name-row">
+                <input class="gate-input" id="gate-first-pet" type="text" placeholder="First name">
+                <input class="gate-input" id="gate-last-pet" type="text" placeholder="Last name">
+              </div>
+              <input class="gate-input" id="gate-email-pet" type="email" placeholder="you@acquireco.com">
+              <button class="gate-btn" id="gate-btn-pet" onclick="unlockGate('pet')">Unlock Full Research ✦</button>
+              <div class="gate-err-msg" id="gate-err-pet"></div>
+              <p class="gate-fine">✓ Free forever · ✓ No spam · ✓ Unsubscribe anytime</p>
+            </div>
+          </div>
+          <div class="doc-gate-blur" id="gate-blur-pet">
+ 
         <div class="doc-section">
           <div class="doc-section-hd">Why This Sector, Why Now</div>
           <div class="doc-callout success"><strong>Recession Resilience:</strong> The U.S. pet industry has posted uninterrupted revenue growth for 30+ consecutive years, including through 2008–09 and 2020. Consumers trade down on vacations — not on their pets.</div>
@@ -890,29 +914,6 @@ footer a:hover{color:var(--ink)}
           </table>
         </div>
  
-        <!-- GATE inside accordion -->
-        <div id="gate-wrapper-pet" class="doc-gate-wrapper">
-          <div class="gate-unlocked-notice" id="gate-notice-pet">
-            <div class="gun-title">Full research unlocked.</div>
-            <div class="gun-sub">The five target markets, deal structure, and our acquisition playbook are below.</div>
-          </div>
-          <div id="gate-card-pet" class="doc-gate-card">
-            <span class="gate-lock-icon">🔒</span>
-            <div class="gate-kicker">Full Research · Members Only</div>
-            <h3 class="gate-title">Unlock the Full Analysis</h3>
-            <p class="gate-desc">Get our five target markets, deal structure recommendations, and the full acquisition playbook. <strong>Free — just your name and email.</strong></p>
-            <div class="gate-form">
-              <div class="gate-name-row">
-                <input class="gate-input" id="gate-first-pet" type="text" placeholder="First name">
-                <input class="gate-input" id="gate-last-pet" type="text" placeholder="Last name">
-              </div>
-              <input class="gate-input" id="gate-email-pet" type="email" placeholder="you@acquireco.com">
-              <button class="gate-btn" id="gate-btn-pet" onclick="unlockGate('pet')">Unlock Full Research ✦</button>
-              <div class="gate-err-msg" id="gate-err-pet"></div>
-              <p class="gate-fine">✓ Free forever · ✓ No spam · ✓ Unsubscribe anytime</p>
-            </div>
-          </div>
-          <div class="doc-gate-blur" id="gate-blur-pet">
             <div class="doc-section">
               <div class="doc-section-hd">Five Target Markets to Start In</div>
               <table class="doc-table">
@@ -1204,6 +1205,30 @@ footer a:hover{color:var(--ink)}
       </button>
       <div class="accordion-body" id="accordion-body-hvac">
  
+        <!-- GATE -->
+        <div id="gate-wrapper-hvac" class="doc-gate-wrapper">
+          <div class="gate-unlocked-notice" id="gate-notice-hvac">
+            <div class="gun-title">Full research unlocked.</div>
+            <div class="gun-sub">Deal structure, target operator profile, and the 52% deal fail rate analysis are below.</div>
+          </div>
+          <div id="gate-card-hvac" class="doc-gate-card">
+            <span class="gate-lock-icon">🔒</span>
+            <div class="gate-kicker">Full Research · Members Only</div>
+            <h3 class="gate-title">Unlock the Full Analysis</h3>
+            <p class="gate-desc">Get the deal structure guide, target operator profile, and our breakdown of why 52% of European HVAC deals fail at LOI. <strong>Free — just your name and email.</strong></p>
+            <div class="gate-form">
+              <div class="gate-name-row">
+                <input class="gate-input" id="gate-first-hvac" type="text" placeholder="First name">
+                <input class="gate-input" id="gate-last-hvac" type="text" placeholder="Last name">
+              </div>
+              <input class="gate-input" id="gate-email-hvac" type="email" placeholder="you@acquireco.com">
+              <button class="gate-btn" id="gate-btn-hvac" onclick="unlockGate('hvac')">Unlock Full Research ✦</button>
+              <div class="gate-err-msg" id="gate-err-hvac"></div>
+              <p class="gate-fine">✓ Free forever · ✓ No spam · ✓ Unsubscribe anytime</p>
+            </div>
+          </div>
+          <div class="doc-gate-blur" id="gate-blur-hvac">
+ 
         <div class="doc-section">
           <div class="doc-section-hd">The Rollup Thesis</div>
       <div class="doc-callout pink"><strong>Maintenance is the moat:</strong> European HVAC operators with 60%+ revenue from maintenance contracts trade at a 40–60% premium to install-heavy peers. The thesis is: acquire maintenance-heavy operators, consolidate routing, and exit at platform multiples.</div>
@@ -1230,33 +1255,6 @@ footer a:hover{color:var(--ink)}
       </table>
     </div>
  
- 
- 
- 
- 
-    <!-- GATE -->
-    <div id="gate-wrapper-hvac" class="doc-gate-wrapper">
-      <div class="gate-unlocked-notice" id="gate-notice-hvac">
-        <div class="gun-title">Full research unlocked.</div>
-        <div class="gun-sub">Deal structure, target operator profile, and the 52% deal fail rate analysis are below.</div>
-      </div>
-      <div id="gate-card-hvac" class="doc-gate-card">
-        <span class="gate-lock-icon">🔒</span>
-        <div class="gate-kicker">Full Research · Members Only</div>
-        <h3 class="gate-title">Unlock the Full Analysis</h3>
-        <p class="gate-desc">Get the deal structure guide, target operator profile, and our breakdown of why 52% of European HVAC deals fail at LOI. <strong>Free — just your name and email.</strong></p>
-        <div class="gate-form">
-          <div class="gate-name-row">
-            <input class="gate-input" id="gate-first-hvac" type="text" placeholder="First name">
-            <input class="gate-input" id="gate-last-hvac" type="text" placeholder="Last name">
-          </div>
-          <input class="gate-input" id="gate-email-hvac" type="email" placeholder="you@acquireco.com">
-          <button class="gate-btn" id="gate-btn-hvac" onclick="unlockGate('hvac')">Unlock Full Research ✦</button>
-          <div class="gate-err-msg" id="gate-err-hvac"></div>
-          <p class="gate-fine">✓ Free forever · ✓ No spam · ✓ Unsubscribe anytime</p>
-        </div>
-      </div>
-      <div class="doc-gate-blur" id="gate-blur-hvac">
  
         <div class="doc-section">
           <div class="doc-section-hd">Why 52% of Deals Fail at LOI</div>
