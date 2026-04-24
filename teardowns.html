@@ -233,9 +233,9 @@ footer a:hover{color:var(--ink)}
  
  
 /* GATE */
-.doc-gate-wrapper{position:relative}
-.doc-gate-blur{filter:blur(6px);opacity:.4;pointer-events:none;user-select:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.5) 12%,#000 40%);transition:filter .5s ease,opacity .5s ease}
-.doc-gate-card{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:min(540px,100%);z-index:10;background:rgba(8,6,20,.9);border:1px solid rgba(196,181,253,.28);border-radius:24px;padding:44px 40px;backdrop-filter:blur(40px);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(196,181,253,.06);text-align:center}
+.doc-gate-wrapper{position:relative;overflow:hidden}
+.doc-gate-blur{filter:blur(6px);opacity:.4;pointer-events:none;user-select:none;max-height:0;overflow:hidden;transition:filter .5s ease,opacity .5s ease,max-height .5s ease}
+.doc-gate-card{position:relative;width:100%;z-index:10;background:rgba(8,6,20,.95);border:1px solid rgba(196,181,253,.28);border-radius:24px;padding:44px 40px;backdrop-filter:blur(40px);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(196,181,253,.06);text-align:center}
 .doc-gate-card::before{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(196,181,253,.5),transparent 50%,rgba(244,114,182,.3));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 .gate-lock-icon{font-size:36px;margin-bottom:18px;display:block;filter:drop-shadow(0 0 16px rgba(196,181,253,.5))}
 .gate-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:10px}
@@ -254,7 +254,7 @@ footer a:hover{color:var(--ink)}
 .gate-fine{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-dimmest);letter-spacing:.5px;margin-top:14px;line-height:1.6}
 .gate-err-msg{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--danger);margin-top:8px;display:none;letter-spacing:.3px}
 .doc-gate-wrapper.unlocked .doc-gate-card{display:none}
-.doc-gate-wrapper.unlocked .doc-gate-blur{filter:none;opacity:1;pointer-events:auto;user-select:auto;-webkit-mask-image:none;mask-image:none;animation:contentReveal .65s ease both}
+.doc-gate-wrapper.unlocked .doc-gate-blur{filter:none;opacity:1;pointer-events:auto;user-select:auto;max-height:none;overflow:visible;animation:contentReveal .65s ease both}
 @keyframes contentReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .gate-unlocked-notice{display:none;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28);border-radius:16px;padding:20px 24px;margin-bottom:36px;text-align:center}
 .gate-unlocked-notice.show{display:block;animation:fadeUp .5s ease both}
@@ -450,10 +450,9 @@ footer a:hover{color:var(--ink)}
   <nav class="nav">
     <a href="index.html" class="logo">bizzed.ai</a>
     <div class="nav-center">
-      <a href="https://www.bizzed.ai/" class="nav-pill">Product</a>
+      <a href="https://www.bizzed.ai/" class="nav-pill">Home</a>
       <a href="reports.html" class="nav-pill">Reports</a>
       <a href="teardowns.html" class="nav-pill active">Teardowns</a>
-      <a href="https://www.bizzed.ai/" class="nav-pill">Pricing</a>
     </div>
     <a href="https://www.bizzed.ai/get-started" class="nav-btn">Get Started →</a>
   </nav>
@@ -476,7 +475,7 @@ footer a:hover{color:var(--ink)}
     <div class="section-label">Latest issue · live now</div>
     <div class="featured-card" onclick="openDoc('049')">
       <div>
-        <div class="ft-tag"><span class="d"></span>ISSUE #049 · APRIL 22, 2026</div>
+        <div class="ft-tag"><span class="d"></span>ISSUE #002 · APRIL 22, 2026</div>
         <div class="ft-title">Texas Dog <em>Grooming.</em><br>Pay the premium, or walk?</div>
         <div class="ft-meta">$750K–$800K REV · 12 EMPLOYEES · ASKING $549K · EST. 2023</div>
         <div class="ft-desc">A high-growth Texas groomer averaging $126 per visit — 50–90% above national. 2,400-client base, a 2–3 week waitlist, AI-driven booking. But: only 3 years old, 3.52x asking multiple, and groomer labour is the scarcest resource in pet services.</div>
@@ -487,7 +486,7 @@ footer a:hover{color:var(--ink)}
         <button class="ft-cta">Read the full teardown →</button>
       </div>
       <div class="ft-preview">
-        <div class="fp-hd"><span>DEAL_TEARDOWN · #049</span><span>TEXAS</span></div>
+        <div class="fp-hd"><span>DEAL_TEARDOWN · #002</span><span>TEXAS</span></div>
         <div class="fp-stats">
           <div class="fp-s"><div class="n">$156K</div><div class="l">Current SDE</div></div>
           <div class="fp-s"><div class="n">3.52x</div><div class="l">Ask Mult</div></div>
@@ -514,7 +513,7 @@ footer a:hover{color:var(--ink)}
     <div class="grid-3">
  
       <div class="card" onclick="openDoc('048')" role="button" tabindex="0">
-        <div class="card-hd"><span class="card-num">#048 · APR 15</span><span class="card-verdict v-cond">CONDITIONAL BUY</span></div>
+        <div class="card-hd"><span class="card-num">#001 · APR 15</span><span class="card-verdict v-cond">CONDITIONAL BUY</span></div>
         <div class="card-title">Albany Metro HVAC.</div>
         <div class="card-meta">$4.36M REV · 17 EMPLOYEES · HVAC / SHEET METAL</div>
         <div class="card-stats">
@@ -572,19 +571,42 @@ footer a:hover{color:var(--ink)}
   <div class="doc-topbar">
     <button class="doc-back" onclick="closeDoc()">← Back to Teardowns</button>
     <span class="doc-brand">bizzed.ai</span>
-    <span class="doc-topbar-right" id="doc-topbar-label">Issue #049 · Apr 22, 2026</span>
+    <span class="doc-topbar-right" id="doc-topbar-label">Issue #002 · Apr 22, 2026</span>
   </div>
  
   <!-- ============================================================
-       ISSUE #049 — TEXAS DOG GROOMING
+       ISSUE #002 — TEXAS DOG GROOMING
   ============================================================ -->
   <div class="doc-body" id="doc-049" style="display:none">
-    <div class="doc-eyebrow">Weekly Deal Teardown · Issue #049</div>
+    <div class="doc-eyebrow">Weekly Deal Teardown · Issue #002</div>
     <h1 class="doc-title">Texas Dog <em>Grooming.</em></h1>
     <p class="doc-subtitle">$750K–$800K projected revenue · 12 employees · Est. 2023 · Asking $549K · $126 average ticket · 2,400+ clients</p>
  
     <!-- THESIS VERDICT BANNER -->
-    
+    <div class="thesis-verdict-strip">
+      <div class="tvs-top-row">
+        <div class="tvs-cell tvs-verdict">
+          <span class="tvs-label">THESIS VERDICT</span>
+          <span class="tvs-val">Hold</span>
+        </div>
+        <div class="tvs-cell">
+          <span class="tvs-label">TARGET SECTOR</span>
+          <span class="tvs-val tvs-pink">Pet Services</span>
+        </div>
+        <div class="tvs-cell">
+          <span class="tvs-label">COUNTER PRICE</span>
+          <span class="tvs-val tvs-violet">$425K–$475K</span>
+        </div>
+      </div>
+      <div class="tvs-stats-row">
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">58</span><span class="tvs-stat-lbl">BizzedAI Score</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">$549K</span><span class="tvs-stat-lbl">Asking Price</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">$156K</span><span class="tvs-stat-lbl">Current SDE</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">3.52x</span><span class="tvs-stat-lbl">Ask Multiple</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">$126</span><span class="tvs-stat-lbl">Avg Ticket</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">2,400+</span><span class="tvs-stat-lbl">Clients</span></div>
+      </div>
+    </div>
  
     <!-- DEAL HEALTH OVERVIEW -->
     <div class="dd-dashboard" style="margin-bottom:32px">
@@ -747,31 +769,6 @@ footer a:hover{color:var(--ink)}
           </div>
           <div class="dd-risk-body">2,100 sq ft facility has room for 1–2 additional grooming stations. The seller projects $243K in additional revenue with no capital investment. Most grooming businesses that want to grow must invest in facility expansion first.</div>
         </div>
-      </div>
-    </div>
- 
-<div class="thesis-verdict-strip">
-      <div class="tvs-top-row">
-        <div class="tvs-cell tvs-verdict">
-          <span class="tvs-label">THESIS VERDICT</span>
-          <span class="tvs-val">Hold</span>
-        </div>
-        <div class="tvs-cell">
-          <span class="tvs-label">TARGET SECTOR</span>
-          <span class="tvs-val tvs-pink">Pet Services</span>
-        </div>
-        <div class="tvs-cell">
-          <span class="tvs-label">COUNTER PRICE</span>
-          <span class="tvs-val tvs-violet">$425K–$475K</span>
-        </div>
-      </div>
-      <div class="tvs-stats-row">
-        <div class="tvs-stat-pill"><span class="tvs-stat-val">58</span><span class="tvs-stat-lbl">BizzedAI Score</span></div>
-        <div class="tvs-stat-pill"><span class="tvs-stat-val">$549K</span><span class="tvs-stat-lbl">Asking Price</span></div>
-        <div class="tvs-stat-pill"><span class="tvs-stat-val">$156K</span><span class="tvs-stat-lbl">Current SDE</span></div>
-        <div class="tvs-stat-pill"><span class="tvs-stat-val">3.52x</span><span class="tvs-stat-lbl">Ask Multiple</span></div>
-        <div class="tvs-stat-pill"><span class="tvs-stat-val">$126</span><span class="tvs-stat-lbl">Avg Ticket</span></div>
-        <div class="tvs-stat-pill"><span class="tvs-stat-val">2,400+</span><span class="tvs-stat-lbl">Clients</span></div>
       </div>
     </div>
  
@@ -1085,17 +1082,17 @@ footer a:hover{color:var(--ink)}
  
     <div class="doc-footer-bar">
       <button class="doc-footer-back" onclick="closeDoc()">&#8592; Back to Teardowns</button>
-      <span>Issue #049 · Texas Dog Grooming · BizzedAI · Apr 2026</span>
+      <span>Issue #002 · Texas Dog Grooming · BizzedAI · Apr 2026</span>
     </div>
  
     </div><!-- /doc-049 -->
  
   <!-- ============================================================
-       ISSUE #048 — ALBANY METRO HVAC
+       ISSUE #001 — ALBANY METRO HVAC
   ============================================================ -->
   <div class="doc-body" id="doc-048" style="display:none">
  
-    <div class="doc-eyebrow">Weekly Deal Teardown · Issue #048</div>
+    <div class="doc-eyebrow">Weekly Deal Teardown · Issue #001</div>
     <h1 class="doc-title">Albany Metro <em>HVAC.</em></h1>
     <p class="doc-subtitle">$4.36M revenue · 17 employees · 18-year-old business · Asking $2.4M · SBA pre-approved @ $1M</p>
  
@@ -1414,8 +1411,8 @@ footer a:hover{color:var(--ink)}
               <circle cx="340" cy="30" r="4" fill="#10b981"/>
               <text x="60" y="20" text-anchor="middle" fill="#f472b6" font-size="11" font-family="monospace" font-weight="bold">17.4%</text>
               <text x="130" y="18" text-anchor="middle" fill="#f472b6" font-size="11" font-family="monospace" font-weight="bold">17.8%</text>
-              <text x="200" y="87" text-anchor="middle" fill="#ef4444" font-size="11" font-family="monospace" font-weight="bold">8.6%</text>
-              <text x="200" y="120" text-anchor="middle" fill="#ef4444" font-size="10" font-family="monospace" font-weight="bold">⚠ COLLAPSE</text>
+              <text x="200" y="82" text-anchor="middle" fill="#ef4444" font-size="11" font-family="monospace" font-weight="bold">8.6%</text>
+              <text x="200" y="115" text-anchor="middle" fill="#ef4444" font-size="10" font-family="monospace" font-weight="bold">⚠ COLLAPSE</text>
               <text x="270" y="22" text-anchor="middle" fill="#f472b6" font-size="11" font-family="monospace" font-weight="bold">16.8%</text>
               <text x="340" y="21" text-anchor="middle" fill="#10b981" font-size="11" font-family="monospace" font-weight="bold">17.0%</text>
               <text x="60" y="135" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="11" font-family="monospace">'21</text>
@@ -1730,7 +1727,7 @@ footer a:hover{color:var(--ink)}
  
     <div class="doc-footer-bar">
       <button class="doc-footer-back" onclick="closeDoc()">← Back to Teardowns</button>
-      <span>Issue #048 · Albany Metro HVAC · BizzedAI · Apr 2026</span>
+      <span>Issue #001 · Albany Metro HVAC · BizzedAI · Apr 2026</span>
     </div>
  
     </div><!-- /doc-048 -->
@@ -1741,8 +1738,8 @@ footer a:hover{color:var(--ink)}
    OPEN / CLOSE DOC
 ======================== */
 var TEARDOWN_META = {
-  '049': { label: 'Issue #049 · Apr 22, 2026' },
-  '048': { label: 'Issue #048 · Apr 15, 2026' }
+  '049': { label: 'Issue #002 · Apr 22, 2026' },
+  '048': { label: 'Issue #001 · Apr 15, 2026' }
 };
  
 function openDoc(id) {
