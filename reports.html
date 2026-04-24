@@ -129,10 +129,10 @@ footer a:hover{color:var(--ink)}
 /* =============================================
    BZ DASHBOARD — shared dark panel system
 ============================================= */
-.bz-dash{margin-bottom:40px}
-.bz-dash-2col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bz-dash{margin-bottom:32px}
+.bz-dash-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .bz-dash-4col{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
-.bz-panel{background:rgba(10,8,22,.6);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:26px 28px}
+.bz-panel{background:rgba(10,8,22,.6);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:26px 28px;display:flex;flex-direction:column}
 .bz-panel-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase}
 .bz-panel-hd>span:first-child{color:rgba(255,255,255,.7);font-weight:600}
 .bz-panel-sub{color:rgba(255,255,255,.25);font-size:8px;letter-spacing:1px}
@@ -214,6 +214,22 @@ footer a:hover{color:var(--ink)}
   .bz-vb-row,.bz-vb-hdr{grid-template-columns:1fr}
 }
  
+ 
+/* THESIS VERDICT STRIP */
+.thesis-verdict-strip{display:flex;flex-direction:column;gap:8px;margin-bottom:40px;margin-left:auto;margin-right:auto}
+.tvs-top-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.08);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.tvs-cell{background:rgba(255,255,255,.04);padding:20px 24px;display:flex;flex-direction:column;gap:5px}
+.tvs-cell.tvs-verdict{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.04))}
+.tvs-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.tvs-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:#10b981;line-height:1.1}
+.tvs-val.tvs-pink{color:var(--pink-light)}
+.tvs-val.tvs-violet{color:var(--violet)}
+.tvs-stats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.tvs-stat-pill{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tvs-stat-val{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--pink-light);line-height:1}
+.tvs-stat-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+@media(max-width:768px){.tvs-top-row{grid-template-columns:1fr}.tvs-stats-row{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:480px){.tvs-stats-row{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -335,11 +351,11 @@ footer a:hover{color:var(--ink)}
 .doc-prose { max-width: 740px; margin-left: auto; margin-right: auto; }
 .doc-section, .doc-verdict-banner, .doc-stats, .doc-eyebrow, .doc-title, .doc-subtitle, .doc-footer-bar { max-width: 740px; margin-left: auto; margin-right: auto; }
  
-.doc-eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--pink-light);text-transform:uppercase;margin-bottom:28px}
+.doc-eyebrow{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--pink-light);text-transform:uppercase;margin-bottom:28px}
 .doc-eyebrow::before{content:'';width:32px;height:1px;background:var(--pink-light)}
-.doc-title{font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:-2.5px;font-weight:600;margin-bottom:16px}
+.doc-title{font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:-2.5px;font-weight:600;margin-bottom:16px;text-align:center}
 .doc-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--pink-light)}
-.doc-subtitle{font-size:16px;color:var(--ink-dim);line-height:1.6;max-width:640px;margin-bottom:32px}
+.doc-subtitle{font-size:16px;color:var(--ink-dim);line-height:1.6;max-width:640px;margin-bottom:32px;text-align:center;margin-left:auto;margin-right:auto}
 .doc-verdict-banner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:16px;overflow:hidden;margin-bottom:48px;border:1px solid var(--border)}
 .dvb-cell{background:var(--glass);padding:20px 24px;display:flex;flex-direction:column;gap:4px}
 .dvb-cell:first-child{background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(16,185,129,.04))}
@@ -493,6 +509,32 @@ footer a:hover{color:var(--ink)}
     <div class="doc-eyebrow">Executive Research · Sector #002</div>
     <h1 class="doc-title">The <em>Pet Industry.</em></h1>
     <p class="doc-subtitle">$158B U.S. market · 30+ years unbroken growth · 20,000+ independent operators · Non-vet services are the entry point PE has barely touched.</p>
+ 
+    <!-- THESIS VERDICT STRIP -->
+    <div class="thesis-verdict-strip">
+      <div class="tvs-top-row">
+        <div class="tvs-cell tvs-verdict">
+          <span class="tvs-label">THESIS VERDICT</span>
+          <span class="tvs-val">Strong Buy</span>
+        </div>
+        <div class="tvs-cell">
+          <span class="tvs-label">TARGET SUBSECTOR</span>
+          <span class="tvs-val tvs-pink">Non-Vet Services</span>
+        </div>
+        <div class="tvs-cell">
+          <span class="tvs-label">ENTRY MULTIPLE</span>
+          <span class="tvs-val tvs-violet">2.77–3.32x SDE</span>
+        </div>
+      </div>
+      <div class="tvs-stats-row">
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">$158B</span><span class="tvs-stat-lbl">U.S. Market 2025</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">5.8%</span><span class="tvs-stat-lbl">Market CAGR</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">8.78%</span><span class="tvs-stat-lbl">Daycare CAGR</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">2.77x</span><span class="tvs-stat-lbl">Entry SDE</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">5–8x</span><span class="tvs-stat-lbl">Exit EBITDA</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">20K+</span><span class="tvs-stat-lbl">Independents</span></div>
+      </div>
+    </div>
  
     <!-- PET DASHBOARD — full-width, larger charts -->
     <style>
@@ -768,29 +810,7 @@ footer a:hover{color:var(--ink)}
  
     </div><!-- /pet dashboard -->
  
-    <div class="doc-verdict-banner">
-      <div class="dvb-cell">
-        <span class="dvb-label">Thesis Verdict</span>
-        <span class="dvb-val">Strong Buy</span>
-      </div>
-      <div class="dvb-cell">
-        <span class="dvb-label">Target Subsector</span>
-        <span class="dvb-val" style="color:var(--pink-light)">Non-Vet Services</span>
-      </div>
-      <div class="dvb-cell">
-        <span class="dvb-label">Entry Multiple</span>
-        <span class="dvb-val" style="color:var(--violet)">2.77–3.32x SDE</span>
-      </div>
-    </div>
  
-    <div class="doc-stats">
-      <div class="doc-stat"><span class="n">$158B</span><span class="l">U.S. Market 2025</span></div>
-      <div class="doc-stat"><span class="n">5.8%</span><span class="l">Market CAGR</span></div>
-      <div class="doc-stat"><span class="n">8.78%</span><span class="l">Daycare CAGR</span></div>
-      <div class="doc-stat"><span class="n">2.77x</span><span class="l">Entry SDE</span></div>
-      <div class="doc-stat"><span class="n">5–8x</span><span class="l">Exit EBITDA</span></div>
-      <div class="doc-stat"><span class="n">20K+</span><span class="l">Independents</span></div>
-    </div>
  
     <!-- CONCLUSION FIRST -->
     <div class="doc-section" style="margin-top:8px">
@@ -945,6 +965,32 @@ footer a:hover{color:var(--ink)}
     <h1 class="doc-title">European <em>HVAC Services.</em></h1>
     <p class="doc-subtitle">$15.7B market · 94% micro-operators · 7% CAGR · Germany & UK as primary entry markets · Maintenance-heavy rollup thesis.</p>
  
+    <!-- THESIS VERDICT STRIP -->
+    <div class="thesis-verdict-strip">
+      <div class="tvs-top-row">
+        <div class="tvs-cell tvs-verdict" style="background:linear-gradient(135deg,rgba(244,114,182,.15),rgba(244,114,182,.04))">
+          <span class="tvs-label">THESIS VERDICT</span>
+          <span class="tvs-val tvs-pink">Focused Buy</span>
+        </div>
+        <div class="tvs-cell">
+          <span class="tvs-label">PRIMARY MARKETS</span>
+          <span class="tvs-val tvs-violet">Germany / UK</span>
+        </div>
+        <div class="tvs-cell">
+          <span class="tvs-label">ENTRY MULTIPLE</span>
+          <span class="tvs-val" style="color:rgba(255,255,255,.75)">3–6x EBITDA</span>
+        </div>
+      </div>
+      <div class="tvs-stats-row">
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">$15.7B</span><span class="tvs-stat-lbl">Market Size</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">7%</span><span class="tvs-stat-lbl">CAGR</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">94%</span><span class="tvs-stat-lbl">Micro-Operators</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">3–6x</span><span class="tvs-stat-lbl">Entry EBITDA</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val">10–12x</span><span class="tvs-stat-lbl">Platform Exit</span></div>
+        <div class="tvs-stat-pill"><span class="tvs-stat-val" style="color:var(--danger)">52%</span><span class="tvs-stat-lbl">Deal Fail Rate</span></div>
+      </div>
+    </div>
+ 
     <!-- HVAC DASHBOARD -->
     <div class="bz-dash">
       <div class="bz-dash-2col">
@@ -1040,7 +1086,7 @@ footer a:hover{color:var(--ink)}
  
       </div>
  
-      <div class="bz-dash-2col" style="margin-top:14px">
+      <div class="bz-dash-2col" style="margin-top:16px">
  
         <!-- BOTTOM LEFT: Entry vs Exit multiple chart — improved -->
         <div class="bz-panel">
@@ -1125,29 +1171,7 @@ footer a:hover{color:var(--ink)}
       </div>
     </div><!-- /hvac dashboard -->
  
-    <div class="doc-verdict-banner">
-      <div class="dvb-cell" style="background:linear-gradient(135deg,rgba(244,114,182,.12),rgba(244,114,182,.04))">
-        <span class="dvb-label">Thesis Verdict</span>
-        <span class="dvb-val" style="color:var(--pink-light)">Focused Buy</span>
-      </div>
-      <div class="dvb-cell">
-        <span class="dvb-label">Primary Markets</span>
-        <span class="dvb-val" style="color:var(--violet)">Germany / UK</span>
-      </div>
-      <div class="dvb-cell">
-        <span class="dvb-label">Entry Multiple</span>
-        <span class="dvb-val" style="color:var(--ink-dim)">3–6x EBITDA</span>
-      </div>
-    </div>
  
-    <div class="doc-stats">
-      <div class="doc-stat"><span class="n">$15.7B</span><span class="l">Market Size</span></div>
-      <div class="doc-stat"><span class="n">7%</span><span class="l">CAGR</span></div>
-      <div class="doc-stat"><span class="n">94%</span><span class="l">Micro-Operators</span></div>
-      <div class="doc-stat"><span class="n">3–6x</span><span class="l">Entry EBITDA</span></div>
-      <div class="doc-stat"><span class="n">10–12x</span><span class="l">Platform Exit</span></div>
-      <div class="doc-stat"><span class="n">52%</span><span class="l">Deal Fail Rate</span></div>
-    </div>
  
     <!-- CONCLUSION FIRST -->
     <div class="doc-section" style="margin-top:8px">
